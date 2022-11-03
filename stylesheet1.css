@@ -33,7 +33,6 @@ header{
 }
 
 .navbar{
-    float: right;
     width: 85%;
     height: auto;
 }
@@ -51,7 +50,7 @@ nav ul{
 
 nav ul li{
     list-style: none;
-    width: 20%;
+    width: 30%;
     float: left;
 }
 
@@ -365,7 +364,7 @@ body.dark {
 
 .PositionRegler{
     right:30px;
-    position:absolute;
+    position:relative;
 }
 
 /*###################################index2 --> Bilder bei klick vergrößern--##############################################*/
