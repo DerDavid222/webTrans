@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="de">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Ausgelagerte CSS -->
+      <link rel="stylesheet" href="stylesheet1.css">
+      <link rel="stylesheet" href="stylesheet2.css">
+      <link rel="stylesheet" href="stylesheet3.css">
+
+      <!--Ausgelagertes Java-Script-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+      <!-- Load Icons -->
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+      <title>SamTrans</title>
+   </head>
+   <body>
+      <header>
+         <section class="logo">
+            <img src="Bilder/SamTransLogoNeu.jpg" class="logo_size" alt="Firmen_Logo">
+         </section>
+         <section class="navbar">
+            <nav>
+               <ul>
+                  <li>
+                     <a href="index.html">Startseite</a>
+                  </li>
+                  <li>
+                     <a href="index2.html">Das Team</a>
+                  </li>
+                  <li>
+                     <a href="index3.html" class="active">Kontakt</a>
+                  </li>
+                  <div class="PositionRegler">
+                     <input type="checkbox" class="checkbox" id="chk" />
+                     <label class="label" for="chk">
+                        <i class="fas fa-sun"></i> 
+                        <i class="fas fa-moon"></i>
+                        <div class="ball"></div>
+                     </label>
+                  </div>
+               </ul>
+            </nav>
+         </section>
+      </header>
+      <!--HIER BEGINNT MAIN!!!!-->
+      <main>
+         <section class="InteresseBox">
+            <article class="article">
+               <h4>Sie haben Interesse an einer Zusammenarbeit?</h4>
+               <br>
+               Falls ja, steht Ihnen das Formular zur Auftragsanfrage auf der Rechten Seite zur Verfügung. <br>
+               Sobald wir Ihre Anfrage entegegen genommen und überprüft haben, werden wir uns entweder per Mail
+               oder über den postalischen Weg bei Ihnen melden! <br>
+               <br>
+               Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae impedit maiores ut quasi quisquam nesciunt, et ipsum deserunt. Tenetur, commodi?
+            </article>
+         </section>
+         <section class="Formular">
+            <form class="FormularGesamt" name="Auftrag" onsubmit="pruefen();"> 
+               <h2>Auftragsanfrage</h2>
+               <br>
+               <table>
+                  <tr>
+                     <p>Um was für eine Art von Auftrag handelt es sich?</p>
+                     <td></td>
+                     <td>
+                        <select name="AuftragsArt" id="Auftragsart">
+                           <option value ="nationaler Transport" selected required >Nationaler Transport</option>
+                           <option value ="internationaler Transport" required >Internationaler Transport</option>
+                           <option value ="Umzug" required >Umzug</option>
+                           <option value ="Lagerhaltung" required >Lagerhaltung</option>
+                        </select>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>Auftragszweck</td>
+                     <td>
+                        <input type="radio" name="xor" id="Privat"  value="privat">
+                        <label class="AuftragPrivat" for="Privat">Privat</label>
+                        <input type="radio" name="xor" id="Geschaeftlich"  value="Geschaeftlich">
+                        <label class="AuftragGeschaeftlich" for="Geschaeftlich">Gesch&auml;ftlich</label> 
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>Vorname </td>
+                     <td><input type="text" name="Vorname" id="Vorname" placeholder="Max"/>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>Nachname </td>
+                     <td><input type="text" name="Nachname" id="Nachname" placeholder="Mustermann">
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>E-Mail Adresse </td>
+                     <td><input type="email" name="EMail" id="email" placeholder="Mustermann@email.de">
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>Stra&szlig;</td>
+                     <td><input type="text" name="Strasse" id="strasse" placeholder="Ihre Stra&szlig;e">
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>Postleitzahl </td>
+                     <td><input type="number" name="plz" id="plz" placeholder="45678" max-length="5">
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>Wohnort </td>
+                     <td><input type="text" name="Wohnort" id="ort" placeholder="Musterstadt">
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>Beschreibung</td>
+                     <td><textarea type="text" name="Text" id="beschreibung" cols="30" rows="10" placeholder="Bitte beschreiben Sie Ihre Auftragserteilung."></textarea>
+                     </td>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>Auführungsdatum </td>
+                     <td><input type="date" name="Datum" id="eventdate" placeholder="Datum wählen">
+                     </td>
+                  </tr>
+                  <tr></tr>
+                  <tr>
+                     <td>
+                      <input class="ButtonStyle" id="submitbtn" type="submit" name="Senden" value="Absenden">
+                     </td>
+                  </tr>
+               </table>
+            </form>
+         </section>
+         <!--HIER ENDET MAIN!!!!!-->
+      </main>
+      <footer>
+         <section class="contact">
+            <h3>Kontakt</h3>
+            <p class="footer-text">
+               Samuel Cicek<br>
+               Panoramastraße 6<br>
+               72393 Burladingen <br>
+               Tel: 015204853712 <br>
+            </p>
+         </section>
+         <section class="info">
+            <h3>SamTrans</h3>
+            <p class="footer-text">
+               -Nationale & internationale Transporte <br>
+               -24h Express Dienst <br>
+               -Umzüge Europaweit <br>
+               -Lagerei <br>
+            </p>
+         </section>
+         <section class="current">
+            <h3>Aktuelles</h3>
+            <p class="footer-text">
+               Besinnliche Feiertage und einen guten Rutsch
+               ins das neue Jahr 2021!<br>
+               <br>
+               Wir sind wieder wie gewohnt ab dem 04.01.2021 für Sie da!
+         </section>
+         <section class="links">
+            <h3>Social Media</h3>
+            <a href="https://de-de.facebook.com/pages/category/Transportation-Service/Samuel-Cicek-Transporte-217734082149721/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/samuel.cicek.transporte/?hl=de" target="_blank"><i class="fab fa-instagram"></i></a>
+         </section>
+      </footer>
+      <script src="pruefung.js"></script>
+   </body>
+</html>
