@@ -1,0 +1,22 @@
+main {
+    width: 90%;
+    position: relative;
+    top: 100px;
+    bottom: 370px;
+    align-items: center;
+}
+
+.dl_bild{
+    width: 100px;
+    height: auto;
+    margin: 5px;
+}
+
+.dl_section{
+    margin: 20px;
+    padding: 20px;
+}
+
+.dl_p{
+    width: 60%;
+}
