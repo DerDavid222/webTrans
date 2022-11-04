@@ -52,82 +52,83 @@
           uns zu stellen.
         </section>
       </section>
-      <!-- <section class="Formular">
-           <form class="FormularGesamt" name="Auftrag" onsubmit="pruefen();"> 
-              <h2>Auftragsanfrage</h2>
-              <br>
-              <table>
-                 <tr>
-                    <p>Um was für eine Art von Auftrag handelt es sich?</p>
-                    <td></td>
-                    <td>
-                       <select name="AuftragsArt" id="Auftragsart">
-                          <option value ="nationaler Transport" selected required >Nationaler Transport</option>
-                          <option value ="internationaler Transport" required >Internationaler Transport</option>
-                          <option value ="Umzug" required >Umzug</option>
-                          <option value ="Lagerhaltung" required >Lagerhaltung</option>
-                       </select>
-                    </td>
-                 </tr>
-                 <tr>
-                    <td>Auftragszweck</td>
-                    <td>
-                       <input type="radio" name="xor" id="Privat"  value="privat">
-                       <label class="AuftragPrivat" for="Privat">Privat</label>
-                       <input type="radio" name="xor" id="Geschaeftlich"  value="Geschaeftlich">
-                       <label class="AuftragGeschaeftlich" for="Geschaeftlich">Gesch&auml;ftlich</label> 
-                    </td>
-                 </tr>
-                 <tr>
-                    <td>Vorname </td>
-                    <td><input type="text" name="Vorname" id="Vorname" placeholder="Max"/>
-                    </td>
-                 </tr>
-                 <tr>
-                    <td>Nachname </td>
-                    <td><input type="text" name="Nachname" id="Nachname" placeholder="Mustermann">
-                    </td>
-                 </tr>
-                 <tr>
-                    <td>E-Mail Adresse </td>
-                    <td><input type="email" name="EMail" id="email" placeholder="Mustermann@email.de">
-                    </td>
-                 </tr>
-                 <tr>
-                    <td>Stra&szlig;</td>
-                    <td><input type="text" name="Strasse" id="strasse" placeholder="Ihre Stra&szlig;e">
-                    </td>
-                 </tr>
-                 <tr>
-                    <td>Postleitzahl </td>
-                    <td><input type="number" name="plz" id="plz" placeholder="45678" max-length="5">
-                    </td>
-                 </tr>
-                 <tr>
-                    <td>Wohnort </td>
-                    <td><input type="text" name="Wohnort" id="ort" placeholder="Musterstadt">
-                    </td>
-                 </tr>
-                 <tr>
-                    <td>Beschreibung</td>
-                    <td><textarea type="text" name="Text" id="beschreibung" cols="30" rows="10" placeholder="Bitte beschreiben Sie Ihre Auftragserteilung."></textarea>
-                    </td>
-                    </td>
-                 </tr>
-                 <tr>
-                    <td>Auführungsdatum </td>
-                    <td><input type="date" name="Datum" id="eventdate" placeholder="Datum wählen">
-                    </td>
-                 </tr>
-                 <tr></tr>
-                 <tr>
-                    <td>
-                     <input class="ButtonStyle" id="submitbtn" type="submit" name="Senden" value="Absenden">
-                    </td>
-                 </tr>
-              </table>
-           </form>
-        </section> -->
+      <section class="Formular">
+        <form class="FormularGesamt" name="Auftrag" onsubmit="pruefen();"> 
+           <h2>Auftragsanfrage</h2>
+           <br>
+           <table>
+              <tr>
+                 <p class="Beschreibung">Um was für eine Art von Auftrag handelt es sich?</p>
+                 <td></td>
+                 <td>
+                    <select name="AuftragsArt" id="Auftragsart">
+                       <option value ="nationaler Transport" selected required >Nationaler Transport</option>
+                       <option value ="internationaler Transport" required >Internationaler Transport</option>
+                       <option value ="Umzug" required >Umzug</option>
+                       <option value ="Lagerhaltung" required >Lagerhaltung</option>
+                    </select>
+                 </td>
+              </tr>
+              <tr>
+                 <td class="Beschreibung">Auftragszweck</td>
+                 <td>
+                    <input type="radio" name="xor" id="Privat"  value="privat">
+                    <label class="AuftragPrivat" for="Privat">Privat</label>
+                    <input type="radio" name="xor" id="Geschaeftlich"  value="Geschaeftlich">
+                    <label class="AuftragGeschaeftlich" for="Geschaeftlich">Gesch&auml;ftlich</label> 
+                 </td>
+              </tr>
+              <tr>
+                 <td class="Beschreibung">Vorname </td>
+                 <td><input type="text" name="Vorname" id="Vorname" placeholder="Max"/>
+                 </td>
+              </tr>
+              <tr>
+                 <td class="Beschreibung">Nachname </td>
+                 <td><input type="text" name="Nachname" id="Nachname" placeholder="Mustermann">
+                 </td>
+              </tr>
+              <tr>
+                 <td class="Beschreibung">E-Mail Adresse </td>
+                 <td><input type="email" name="EMail" id="email" placeholder="Mustermann@email.de">
+                 </td>
+              </tr>
+              <tr>
+                 <td class="Beschreibung">Stra&szlig;</td>
+                 <td><input type="text" name="Strasse" id="strasse" placeholder="Ihre Stra&szlig;e">
+                 </td>
+              </tr>
+              <tr>
+                 <td class="Beschreibung">Postleitzahl </td>
+                 <td><input type="number" name="plz" id="plz" placeholder="45678" max-length="5">
+                 </td>
+              </tr>
+              <tr>
+                 <td class="Beschreibung">Wohnort </td>
+                 <td><input type="text" name="Wohnort" id="ort" placeholder="Musterstadt">
+                 </td>
+              </tr>
+              <tr>
+                 <td class="Beschreibung">Beschreibung</td>
+                 <td><textarea type="text" name="Text" id="beschreibung" cols="30" rows="10" placeholder="Bitte beschreiben Sie Ihre Auftragserteilung."></textarea>
+                 </td>
+                 </td>
+              </tr>
+              <tr>
+                 <td class="Beschreibung">Auführungsdatum </td>
+                 <td><input type="date" name="Datum" id="eventdate" placeholder="Datum wählen">
+                 </td>
+              </tr>
+              <tr></tr>
+              <tr>
+                 <td>
+                  <input class="ButtonStyle" id="submitbtn" type="submit" name="Senden" value="Absenden">
+                 </td>
+              </tr>
+           </table>
+        </form>
+     </section>
+
       <!--HIER ENDET MAIN!!!!!-->
     </main>
     <!-----------------------------------FOOTER------------------------------------->
