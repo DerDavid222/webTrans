@@ -1,69 +1,177 @@
 <!DOCTYPE html>
 <html lang="de">
-    <head>
-        <link rel="stylesheet" href="../css/header_stylesheet.css">        
-        <link rel="stylesheet" href="../css/footer_stylesheet.css">
+  <head>
+    <link rel="stylesheet" href="../css/header_stylesheet.css" />
+    <link rel="stylesheet" href="../css/footer_stylesheet.css" />
+    <link rel="stylesheet" href="../css/anfrage_stylesheet.css" />
 
-        <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-a11y="true"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script
+      src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
+      data-auto-a11y="true"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-        <meta charset="utf-8">
-        <title>WebTrans</title>
-    </head>
+    <meta charset="utf-8" />
+    <title>WebTrans</title>
+  </head>
 
-    <body>
-<!-----------------------------------HEADER------------------------------------->
-        <header>
-                <img src="../Bilder/SamTransLogoNeu.jpg" class="logo" alt="Firmen_Logo">
-                
-                <nav class="navbar">
-                    <ul>
-                        <li>
-                            <a href="start.html">Start</a>
-                        </li>
-                        <li>
-                            <a href="dienstleistungen.html">Dienstleistungen</a>
-                        </li>
-                        <li>
-                            <a href="anfrage.html" class="active">Anfrage</a>
-                        </li>
-                        <li>
-                            <a href="anfrage.html" class="login">Login</a>
-                        </li>
-                    </ul>
-                </nav>
-        </header>
+  <body>
+    <!-----------------------------------HEADER------------------------------------>
+    <header>
+      <img src="../Bilder/SamTransLogoNeu.jpg" class="logo" alt="Firmen_Logo" />
 
-<!-----------------------------------FOOTER------------------------------------->
-        <footer>        
-            <ul>
-                <li><h3 class="footer-text">Kontakt & Impressum</h3></li>
-                <li class="footer-text">Samuel Cicek</li>
-                <li class="footer-text">Panoramastraße 6</li>
-                <li class="footer-text">72393 Burladingen</li>
-                <li class="footer-text">Tel: 015204853712</li>
-                <li><a href="anfrage.html" class="footer-text">Impressum</a></li>
-            </ul>
+      <nav class="navbar">
+        <ul>
+          <li>
+            <a href="start.html">Start</a>
+          </li>
+          <li>
+            <a href="dienstleistungen.html">Dienstleistungen</a>
+          </li>
+          <li>
+            <a href="anfrage.html" class="active">Anfrage</a>
+          </li>
+          <li>
+            <a href="anfrage.html" class="login">Login</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
 
-            <ul>
-                <li><h3 class="footer-text">SamTrans</h3></li>
-                <li class="footer-text">Nationale & internationale Transporte</li>
-                <li class="footer-text">24h Express Dienst</li>
-                <li class="footer-text">Umzüge Europaweit</li>
-                <li class="footer-text">Lagerei</li>
-            </ul>
-            <ul>
-                <li><h3 class="footer-text">Aktuelles</h3></li>
-                <li class="footer-text">Besinnliche Feiertage und einen guten Rutsch ins das neue Jahr 2021!</li>
-                <li class="footer-text">Wir sind wieder wie gewohnt ab dem 04.01.2021 für Sie da!</li>
-            </ul>
-            <ul>
-            <li><h3>Social Media</h3></li>
-                <li>
-                <a href="https://de-de.facebook.com/pages/category/Transportation-Service/Samuel-Cicek-Transporte-217734082149721/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/samuel.cicek.transporte/?hl=de" target="_blank"><i class="fab fa-instagram"></i></a>
-                </li>
-            </ul>
-        </footer>
-    </body>
+    <!-----------------------------------MAIN--------------------------------------->
+    <main>
+      <section class="InteresseBox">
+        <h2>Sie haben Interesse an unserern Dienstleistungen?</h2>
+        <section class="Text">
+          <br />
+          Falls ja, können Sie gerne eine unverbindliche Anfrage über das
+          nebenstehende Formular an uns senden. <br /><br />
+          Sobald wir Ihre Anfrage entegegengenommen und überprüft haben, werden
+          wir uns per Mail bei Ihnen melden. <br /><br />
+          <b>Hinweis: </b>Sie benötigen ein Benutzerkonto, um eine Anfrage an
+          uns zu stellen.
+        </section>
+      </section>
+      <!-- <section class="Formular">
+           <form class="FormularGesamt" name="Auftrag" onsubmit="pruefen();"> 
+              <h2>Auftragsanfrage</h2>
+              <br>
+              <table>
+                 <tr>
+                    <p>Um was für eine Art von Auftrag handelt es sich?</p>
+                    <td></td>
+                    <td>
+                       <select name="AuftragsArt" id="Auftragsart">
+                          <option value ="nationaler Transport" selected required >Nationaler Transport</option>
+                          <option value ="internationaler Transport" required >Internationaler Transport</option>
+                          <option value ="Umzug" required >Umzug</option>
+                          <option value ="Lagerhaltung" required >Lagerhaltung</option>
+                       </select>
+                    </td>
+                 </tr>
+                 <tr>
+                    <td>Auftragszweck</td>
+                    <td>
+                       <input type="radio" name="xor" id="Privat"  value="privat">
+                       <label class="AuftragPrivat" for="Privat">Privat</label>
+                       <input type="radio" name="xor" id="Geschaeftlich"  value="Geschaeftlich">
+                       <label class="AuftragGeschaeftlich" for="Geschaeftlich">Gesch&auml;ftlich</label> 
+                    </td>
+                 </tr>
+                 <tr>
+                    <td>Vorname </td>
+                    <td><input type="text" name="Vorname" id="Vorname" placeholder="Max"/>
+                    </td>
+                 </tr>
+                 <tr>
+                    <td>Nachname </td>
+                    <td><input type="text" name="Nachname" id="Nachname" placeholder="Mustermann">
+                    </td>
+                 </tr>
+                 <tr>
+                    <td>E-Mail Adresse </td>
+                    <td><input type="email" name="EMail" id="email" placeholder="Mustermann@email.de">
+                    </td>
+                 </tr>
+                 <tr>
+                    <td>Stra&szlig;</td>
+                    <td><input type="text" name="Strasse" id="strasse" placeholder="Ihre Stra&szlig;e">
+                    </td>
+                 </tr>
+                 <tr>
+                    <td>Postleitzahl </td>
+                    <td><input type="number" name="plz" id="plz" placeholder="45678" max-length="5">
+                    </td>
+                 </tr>
+                 <tr>
+                    <td>Wohnort </td>
+                    <td><input type="text" name="Wohnort" id="ort" placeholder="Musterstadt">
+                    </td>
+                 </tr>
+                 <tr>
+                    <td>Beschreibung</td>
+                    <td><textarea type="text" name="Text" id="beschreibung" cols="30" rows="10" placeholder="Bitte beschreiben Sie Ihre Auftragserteilung."></textarea>
+                    </td>
+                    </td>
+                 </tr>
+                 <tr>
+                    <td>Auführungsdatum </td>
+                    <td><input type="date" name="Datum" id="eventdate" placeholder="Datum wählen">
+                    </td>
+                 </tr>
+                 <tr></tr>
+                 <tr>
+                    <td>
+                     <input class="ButtonStyle" id="submitbtn" type="submit" name="Senden" value="Absenden">
+                    </td>
+                 </tr>
+              </table>
+           </form>
+        </section> -->
+      <!--HIER ENDET MAIN!!!!!-->
+    </main>
+    <!-----------------------------------FOOTER------------------------------------->
+    <footer>
+      <ul>
+        <li><h3 class="footer-text">Kontakt & Impressum</h3></li>
+        <li class="footer-text">Samuel Cicek</li>
+        <li class="footer-text">Panoramastraße 6</li>
+        <li class="footer-text">72393 Burladingen</li>
+        <li class="footer-text">Tel: 015204853712</li>
+        <li><a href="anfrage.html" class="footer-text">Impressum</a></li>
+      </ul>
+
+      <ul>
+        <li><h3 class="footer-text">SamTrans</h3></li>
+        <li class="footer-text">Nationale & internationale Transporte</li>
+        <li class="footer-text">24h Express Dienst</li>
+        <li class="footer-text">Umzüge Europaweit</li>
+        <li class="footer-text">Lagerei</li>
+      </ul>
+      <ul>
+        <li><h3 class="footer-text">Aktuelles</h3></li>
+        <li class="footer-text">
+          Besinnliche Feiertage und einen guten Rutsch ins das neue Jahr 2021!
+        </li>
+        <li class="footer-text">
+          Wir sind wieder wie gewohnt ab dem 04.01.2021 für Sie da!
+        </li>
+      </ul>
+      <ul>
+        <li><h3>Social Media</h3></li>
+        <li>
+          <a
+            href="https://de-de.facebook.com/pages/category/Transportation-Service/Samuel-Cicek-Transporte-217734082149721/"
+            target="_blank"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a
+            href="https://www.instagram.com/samuel.cicek.transporte/?hl=de"
+            target="_blank"
+            ><i class="fab fa-instagram"></i
+          ></a>
+        </li>
+      </ul>
+    </footer>
+  </body>
 </html>
