@@ -41,7 +41,7 @@
     <!-----------------------------------MAIN--------------------------------------->
     <main>
       <section class="InteresseBox">
-        <h2>Sie haben Interesse an unserern Dienstleistungen?</h2>
+        <h1 class="Überschrift">Sie haben Interesse an unserern Dienstleistungen?</h1>
         <section class="Text">
           <br />
           Falls ja, können Sie gerne eine unverbindliche Anfrage über das
@@ -54,14 +54,28 @@
       </section>
       <section class="Formular">
         <form class="FormularGesamt" name="Auftrag" onsubmit="pruefen();"> 
-           <h2>Auftragsanfrage</h2>
+           <h1 class="Überschrift">Auftragsanfrage</h1>
            <br>
            <table>
-              <tr>
-                 <p class="Beschreibung">Um was für eine Art von Auftrag handelt es sich?</p>
-                 <td></td>
+            <tr>
+                <td class="Beschreibung">Benutzername </td>
+                <td><input type="text" class="InputText" name="Vorname" id="Vorname"/>
+                </td>
+             </tr>
+             <tr>
+                <td class="Beschreibung">Passwort </td>
+                <td><input type="password" class="InputText" name="Vorname" id="Vorname" />
+                </td>
+             </tr>
+             <tr>
+                <td></td>
+                <td><a href=".../registrierung.html">Noch kein Kunde? Hier registrieren</a></td>
+             </tr>
+             <tr><td class="TopPad"></td></tr>
+              <tr class="TopPad">
+                 <td class="Beschreibung">Dienstleistung</td>
                  <td>
-                    <select name="AuftragsArt" id="Auftragsart">
+                    <select name="AuftragsArt" class="InputText" id="Auftragsart">
                        <option value ="nationaler Transport" selected required >Nationaler Transport</option>
                        <option value ="internationaler Transport" required >Internationaler Transport</option>
                        <option value ="Umzug" required >Umzug</option>
@@ -73,54 +87,28 @@
                  <td class="Beschreibung">Auftragszweck</td>
                  <td>
                     <input type="radio" name="xor" id="Privat"  value="privat">
-                    <label class="AuftragPrivat" for="Privat">Privat</label>
+                    <label class="Beschreibung" for="Privat">Privat</label>
                     <input type="radio" name="xor" id="Geschaeftlich"  value="Geschaeftlich">
-                    <label class="AuftragGeschaeftlich" for="Geschaeftlich">Gesch&auml;ftlich</label> 
-                 </td>
-              </tr>
-              <tr>
-                 <td class="Beschreibung">Vorname </td>
-                 <td><input type="text" name="Vorname" id="Vorname" placeholder="Max"/>
-                 </td>
-              </tr>
-              <tr>
-                 <td class="Beschreibung">Nachname </td>
-                 <td><input type="text" name="Nachname" id="Nachname" placeholder="Mustermann">
-                 </td>
-              </tr>
-              <tr>
-                 <td class="Beschreibung">E-Mail Adresse </td>
-                 <td><input type="email" name="EMail" id="email" placeholder="Mustermann@email.de">
-                 </td>
-              </tr>
-              <tr>
-                 <td class="Beschreibung">Stra&szlig;</td>
-                 <td><input type="text" name="Strasse" id="strasse" placeholder="Ihre Stra&szlig;e">
-                 </td>
-              </tr>
-              <tr>
-                 <td class="Beschreibung">Postleitzahl </td>
-                 <td><input type="number" name="plz" id="plz" placeholder="45678" max-length="5">
-                 </td>
-              </tr>
-              <tr>
-                 <td class="Beschreibung">Wohnort </td>
-                 <td><input type="text" name="Wohnort" id="ort" placeholder="Musterstadt">
+                    <label class="Beschreibung" for="Geschaeftlich">Gesch&auml;ftlich</label> 
+                    <input type="radio" name="xor" id="Sonstiges"  value="Sonstiges">
+                    <label class="Beschreibung" for="Sonstiges">Sonstiges</label> 
                  </td>
               </tr>
               <tr>
                  <td class="Beschreibung">Beschreibung</td>
-                 <td><textarea type="text" name="Text" id="beschreibung" cols="30" rows="10" placeholder="Bitte beschreiben Sie Ihre Auftragserteilung."></textarea>
+                 <td><textarea type="text" class="InputText" name="Text" id="beschreibung" cols="30" rows="10" placeholder="Bitte beschreiben Sie Ihre Auftragserteilung."></textarea>
                  </td>
                  </td>
               </tr>
               <tr>
                  <td class="Beschreibung">Auführungsdatum </td>
-                 <td><input type="date" name="Datum" id="eventdate" placeholder="Datum wählen">
+                 <td><input type="date" class="InputText" name="Datum" id="eventdate" placeholder="Datum wählen">
                  </td>
               </tr>
               <tr></tr>
               <tr>
+                 <td></td>
+                 <td></td>
                  <td>
                   <input class="ButtonStyle" id="submitbtn" type="submit" name="Senden" value="Absenden">
                  </td>

@@ -2,7 +2,6 @@
 
 .InteresseBox {
   float: left;
-  background-color: rgb(201, 199, 199);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 18px;
@@ -26,13 +25,37 @@
   float: right;
   margin-right: 100px;
   margin-top: 200px;
-  width: 500px;
+  width: auto;
   height: auto;
-  margin-bottom: 10px;
+  margin-bottom: 200px;
   padding: 25px 25px 25px 25px;
 }
 
 .Beschreibung {
   font-size: 18px;
   font-weight: 500;
+}
+
+.Überschrift {
+  font-size: 35px;
+}
+
+.ButtonStyle {
+  width: 100px;
+  height: auto;
+  background-color: azure;
+  border-color: azure;
+}
+
+.InputText {
+  width: 300px;
+  font-size: 15px;
+}
+
+td {
+  padding: 4px;
+}
+
+.TopPad {
+  padding-top: 50px;
 }
