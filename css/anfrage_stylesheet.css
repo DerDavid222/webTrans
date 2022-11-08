@@ -10,10 +10,7 @@ main{
 }
 
 .InteresseBox {
-  float: left;
   font-size: 18px;
-  margin-top:70px;
-  margin-left: 80px;
   margin-bottom: 100px;
   width: 350px;
   height: auto;
@@ -26,7 +23,6 @@ main{
 }
 
 .Formular {
-  float: right;
   margin-right: 100px;
   width: auto;
   height: auto;
@@ -48,15 +44,6 @@ main{
   height: auto;
   background-color: azure;
   border-color: azure;
-}
-
-.InputText {
-  width: 300px;
-  font-size: 15px;
-}
-
-td {
-  padding: 4px;
 }
 
 .TopPad {
@@ -89,7 +76,7 @@ main td{
 .input_txt{
   margin-bottom: 10px;
   font-size: 18px;
-  width: 280px;
+  width: 100%;
 }
 
 .submit_btn{
@@ -110,3 +97,36 @@ main td{
   cursor: pointer;
 }
 
+@media only screen and (min-width: 960px) {
+  main{
+    margin-top:100px;
+  }
+
+  .main_section{
+    margin:auto;
+    width:50%;
+  }
+
+  .input_txt{
+    margin-bottom: 10px;
+    font-size: 18px;
+    width: 280px;
+  }
+
+  @media only screen and (min-width: 1210px) {
+    .main_section{
+      width:100%;
+    }
+    
+    .InteresseBox{
+      float: left;
+      margin-top:70px;
+      margin-left: 40px;
+    }
+  
+    .Formular{
+      float: right;
+      margin-left: 50px;
+    }
+  }
+}
