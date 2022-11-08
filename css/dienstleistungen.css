@@ -31,6 +31,7 @@ main button{
     background-color: rgb(211, 26, 26);
     border: none;
     color: #FFFFFF;
+    padding:2px;
 }
 
 main button:hover{

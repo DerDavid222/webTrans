@@ -39,7 +39,7 @@ header nav ul{
 header nav li{
     text-align: left;
     list-style: none;
-    width: fit-content;
+    width: 130px;
 }
 
 header nav a{
@@ -58,7 +58,8 @@ header nav a{
 }
 
 .login{
-    right: 30px;
+    width:80px;
+    right: 0px;
     position: absolute;
 }
 
@@ -102,5 +103,6 @@ header nav li:hover, .login:hover, header nav a:hover {
 
     .login{
         width:5%;
+        right: 30px;
     }
 }
