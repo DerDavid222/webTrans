@@ -19,8 +19,6 @@ footer a{
 }
 
 footer ul{
-    float: left;
-    width: 25%;
     height: auto;
     margin-top: 50px;
     margin-bottom: 50px;
@@ -52,4 +50,11 @@ footer h3{
     margin-left: 10px; 
     font-size: 30px;
     color: #ffffff;
+}
+
+@media only screen and (min-width: 960px) {
+    footer ul{    
+        float: left;
+        width: 25%;
+    }
 }
