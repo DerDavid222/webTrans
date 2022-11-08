@@ -46,7 +46,7 @@
     <!-----------------------------------MAIN--------------------------------------->
     <main>
       <section class="InteresseBox">
-        <h1 class="Überschrift">Sie haben Interesse an unserern Dienstleistungen?</h1>
+        <h1>Sie haben Interesse an unseren Dienstleistungen?</h1>
         <section class="Text">
           <br />
           Falls ja, können Sie gerne eine unverbindliche Anfrage über das
@@ -59,17 +59,17 @@
       </section>
       <section class="Formular">
         <form class="FormularGesamt" name="Auftrag" onsubmit="pruefen();"> 
-           <h1 class="Überschrift">Auftragsanfrage</h1>
+           <h1>Auftragsanfrage</h1>
            <br>
            <table>
             <tr>
-                <td class="Beschreibung">Benutzername </td>
-                <td><input type="text" class="InputText" name="Vorname" id="Vorname"/>
+                <td class="input_label">Benutzername </td>
+                <td><input type="text" class="input_txt" name="Vorname" id="Vorname"/>
                 </td>
              </tr>
              <tr>
-                <td class="Beschreibung">Passwort </td>
-                <td><input type="password" class="InputText" name="Vorname" id="Vorname" />
+                <td class="input_label">Passwort </td>
+                <td><input type="password" class="input_txt" name="Vorname" id="Vorname" />
                 </td>
              </tr>
              <tr>
@@ -78,9 +78,9 @@
              </tr>
              <tr><td class="TopPad"></td></tr>
               <tr class="TopPad">
-                 <td class="Beschreibung">Dienstleistung</td>
+                 <td class="input_label">Dienstleistung</td>
                  <td>
-                    <select name="AuftragsArt" class="InputText" id="Auftragsart">
+                    <select name="AuftragsArt" class="input_txt" id="Auftragsart">
                        <option value ="nationaler Transport" selected required >Nationaler Transport</option>
                        <option value ="internationaler Transport" required >Internationaler Transport</option>
                        <option value ="Umzug" required >Umzug</option>
@@ -89,7 +89,7 @@
                  </td>
               </tr>
               <tr>
-                 <td class="Beschreibung">Auftragszweck</td>
+                 <td class="input_label">Auftragszweck</td>
                  <td>
                     <input type="radio" name="xor" id="Privat"  value="privat">
                     <label class="Beschreibung" for="Privat">Privat</label>
@@ -97,25 +97,21 @@
                     <label class="Beschreibung" for="Geschaeftlich">Gesch&auml;ftlich</label> 
                     <input type="radio" name="xor" id="Sonstiges"  value="Sonstiges">
                     <label class="Beschreibung" for="Sonstiges">Sonstiges</label> 
-                 </td>
+                  </td>
               </tr>
               <tr>
-                 <td class="Beschreibung">Beschreibung</td>
-                 <td><textarea type="text" class="InputText" name="Text" id="beschreibung" cols="30" rows="10" placeholder="Bitte beschreiben Sie Ihre Auftragserteilung."></textarea>
-                 </td>
-                 </td>
+                 <td class="input_label">Beschreibung</td>
+                 <td><textarea type="text" class="input_txt" name="Text" id="beschreibung" cols="30" rows="10" placeholder="Bitte beschreiben Sie Ihre Auftragserteilung."></textarea></td>
               </tr>
               <tr>
-                 <td class="Beschreibung">Auführungsdatum </td>
-                 <td><input type="date" class="InputText" name="Datum" id="eventdate" placeholder="Datum wählen">
-                 </td>
+                 <td class="input_label">Auführungsdatum </td>
+                 <td><input type="date" class="input_txt" name="Datum" id="eventdate" placeholder="Datum wählen"></td>
               </tr>
               <tr></tr>
               <tr>
                  <td></td>
-                 <td></td>
-                 <td>
-                  <input class="ButtonStyle" id="submitbtn" type="submit" name="Senden" value="Absenden">
+                 <td class="submit_td">
+                  <input class="submit_btn" id="submitbtn" type="submit" name="Senden" value="Absenden">
                  </td>
               </tr>
            </table>
