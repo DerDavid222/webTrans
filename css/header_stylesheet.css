@@ -10,15 +10,15 @@ header {
     top: 0;
     margin-bottom: 10px;
     width: 100%;
-    height: 100px; 
 }
 
 .logo{
-    position: absolute;
-    float: left;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
     width: auto;
-    height: 90%;
-    margin:4px;
+    height: 100px;
+    
 }
 
 .navbar{
@@ -33,14 +33,13 @@ header nav{
 }
 
 header nav ul{
-    float: right;
     width: 90%;
 }
 
 header nav li{
+    text-align: left;
     list-style: none;
-    width: 20%;
-    float: left;
+    width: fit-content;
 }
 
 header nav a{
@@ -76,4 +75,32 @@ header nav li:hover, .login:hover, header nav a:hover {
 .active {
     color: rgb(211, 26, 26);
     border-bottom: 2px solid rgb(211, 26, 26);
+}
+
+@media only screen and (min-width: 960px) {
+    header{
+        height: 100px; 
+    }
+    
+    header nav ul{
+        float: right;
+    }
+
+    header nav li{
+        float: left;
+        width: 20%;
+
+    }
+
+    .logo{
+        position: absolute;
+        float: left;
+        width: auto;
+        height: 90%;
+        margin:4px;
+    }
+
+    .login{
+        width:5%;
+    }
 }
