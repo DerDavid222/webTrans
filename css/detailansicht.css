@@ -15,6 +15,17 @@
     border: none;
     color: #ffffff;
   }
+
+  .description {
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 40px;
+  }
+
+  .header2 {
+    text-align: center;
+    font-size: 35px;
+  }
 }
 
 main {
@@ -42,12 +53,12 @@ main {
 .card button {
   border: none;
   outline: 0;
-  padding: 20px;
+  padding: 10px;
   color: white;
   background-color: #000;
   text-align: center;
   cursor: pointer;
-  width: 50%;
+  width: fit-content;
   font-size: 25px;
 }
 
@@ -64,6 +75,7 @@ main {
 .header2 {
   text-align: center;
   font-size: 35px;
+  word-wrap: break-word;
 }
 
 .header3 {
@@ -84,7 +96,6 @@ main {
 
 .description {
   font-size: 20px;
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-left: 10px;
   margin-top: 40px;
 }
