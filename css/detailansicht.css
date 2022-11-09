@@ -8,12 +8,25 @@
     position: static;
   }
 
-  main button {
-    width: 30%;
+  .but {
+    width: 40%;
     font-weight: bold;
-    background-color: rgb(211, 26, 26);
+    padding: 10px;
+    margin: 10px;
+    background-color: #000;
     border: none;
     color: #ffffff;
+  }
+
+  .description {
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 40px;
+  }
+
+  .header2 {
+    text-align: center;
+    font-size: 35px;
   }
 }
 
@@ -39,19 +52,25 @@ main {
   font-size: 22px;
 }
 
-.card button {
+.but {
+  position: static;
   border: none;
   outline: 0;
-  padding: 20px;
+  font-weight: bold;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 30px;
   color: white;
   background-color: #000;
   text-align: center;
   cursor: pointer;
-  width: 50%;
+  width: fit-content;
   font-size: 25px;
 }
 
-.card button:hover {
+.button:hover {
   opacity: 0.7;
 }
 
@@ -64,6 +83,7 @@ main {
 .header2 {
   text-align: center;
   font-size: 35px;
+  word-wrap: break-word;
 }
 
 .header3 {
@@ -84,7 +104,6 @@ main {
 
 .description {
   font-size: 20px;
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-left: 10px;
   margin-top: 40px;
 }
