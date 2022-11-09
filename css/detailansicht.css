@@ -3,6 +3,20 @@
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+@media only screen and (min-width: 960px) {
+  main {
+    position: static;
+  }
+
+  main button {
+    width: 30%;
+    font-weight: bold;
+    background-color: rgb(211, 26, 26);
+    border: none;
+    color: #ffffff;
+  }
+}
+
 main {
   position: static;
   margin: 50px;
