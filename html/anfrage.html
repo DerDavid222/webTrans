@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="de">
-<!--TEST-->
   <head>
     <link rel="stylesheet" href="../css/header_stylesheet.css" />
     <link rel="stylesheet" href="../css/footer_stylesheet.css" />
@@ -39,9 +38,6 @@
               <li>
                   <a href="anfrage.html" class="active">Anfrage</a>
               </li>
-              <li>
-                <a href="impressum.html">Impressum</a>
-            </li>
           </ul>
           
       </nav>
@@ -49,83 +45,85 @@
 
     <!-----------------------------------MAIN--------------------------------------->
     <main>
-      <section class="InteresseBox">
-        <h1 class="Überschrift">Sie haben Interesse an unserern Dienstleistungen?</h1>
-        <section class="Text">
-          <br />
-          Falls ja, können Sie gerne eine unverbindliche Anfrage über das
-          nebenstehende Formular an uns senden. <br /><br />
-          Sobald wir Ihre Anfrage entegegengenommen und überprüft haben, werden
-          wir uns per Mail bei Ihnen melden. <br /><br />
-          <b>Hinweis: </b>Sie benötigen ein Benutzerkonto, um eine Anfrage an
-          uns zu stellen.
+      <section class="main_section">
+        <section class="InteresseBox">
+          <h1>Sie haben Interesse an unseren Dienstleistungen?</h1>
+          <section class="Text">
+            <br />
+            Falls ja, können Sie gerne eine unverbindliche Anfrage über das
+            nebenstehende Formular an uns senden. <br /><br />
+            Sobald wir Ihre Anfrage entegegengenommen und überprüft haben, werden
+            wir uns per Mail bei Ihnen melden. <br /><br />
+            <b>Hinweis: </b>Sie benötigen ein Benutzerkonto, um eine Anfrage an
+            uns zu stellen.
+          </section>
         </section>
+        <section class="Formular">
+          <form class="FormularGesamt" name="Auftrag" onsubmit="pruefen();"> 
+            <h1>Auftragsanfrage</h1>
+            <table>
+              <tr>
+                  <td class="input_label">Benutzername </td>
+                  <td><input type="text" class="input_txt" name="Vorname" id="Vorname"/>
+                  </td>
+              </tr>
+              <tr>
+                  <td class="input_label">Passwort </td>
+                  <td><input type="password" class="input_txt" name="Vorname" id="Vorname" />
+                  </td>
+              </tr>
+              <tr>
+                  <td></td>
+                  <td><a href="registrierung.html">Noch kein Kunde? Hier registrieren</a></td>
+              </tr>
+              <tr><td class="TopPad"></td></tr>
+                <tr class="TopPad">
+                  <td class="input_label">Dienstleistung</td>
+                  <td>
+                      <select name="AuftragsArt" class="input_txt" id="Auftragsart">
+                        <option value ="nationaler Transport" selected required >Nationaler Transport</option>
+                        <option value ="internationaler Transport" required >Internationaler Transport</option>
+                        <option value ="Umzug" required >Umzug</option>
+                        <option value ="Lagerhaltung" required >Lagerhaltung</option>
+                      </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="input_label">Auftragszweck</td>
+                  <td>
+                    <section>
+                      <input type="radio" name="xor" id="Privat"  value="privat">
+                      <label class="Beschreibung" for="Privat">Privat</label>
+                    </section>
+                    <section>
+                      <input type="radio" name="xor" id="Geschaeftlich"  value="Geschaeftlich">
+                      <label class="Beschreibung" for="Geschaeftlich">Gesch&auml;ftlich</label> 
+                    </section>
+                    <section>
+                      <input type="radio" name="xor" id="Sonstiges"  value="Sonstiges">
+                      <label class="Beschreibung" for="Sonstiges">Sonstiges</label> 
+                    </section>
+                    </td>
+                </tr>
+                <tr>
+                  <td class="input_label">Beschreibung</td>
+                  <td><textarea type="text" class="input_txt" name="Text" id="beschreibung" cols="30" rows="10" placeholder="Bitte beschreiben Sie Ihre Auftragserteilung."></textarea></td>
+                </tr>
+                <tr>
+                  <td class="input_label">Auführungsdatum </td>
+                  <td><input type="date" class="input_txt" name="Datum" id="eventdate" placeholder="Datum wählen"></td>
+                </tr>
+                <tr></tr>
+                <tr>
+                  <td></td>
+                  <td class="submit_td">
+                    <input class="submit_btn" id="submitbtn" type="submit" name="Senden" value="Absenden">
+                  </td>
+                </tr>
+            </table>
+          </form>
       </section>
-      <section class="Formular">
-        <form class="FormularGesamt" name="Auftrag" onsubmit="pruefen();"> 
-           <h1 class="Überschrift">Auftragsanfrage</h1>
-           <br>
-           <table>
-            <tr>
-                <td class="Beschreibung">Benutzername </td>
-                <td><input type="text" class="InputText" name="Vorname" id="Vorname"/>
-                </td>
-             </tr>
-             <tr>
-                <td class="Beschreibung">Passwort </td>
-                <td><input type="password" class="InputText" name="Vorname" id="Vorname" />
-                </td>
-             </tr>
-             <tr>
-                <td></td>
-                <td><a href="registrierung.html">Noch kein Kunde? Hier registrieren</a></td>
-             </tr>
-             <tr><td class="TopPad"></td></tr>
-              <tr class="TopPad">
-                 <td class="Beschreibung">Dienstleistung</td>
-                 <td>
-                    <select name="AuftragsArt" class="InputText" id="Auftragsart">
-                       <option value ="nationaler Transport" selected required >Nationaler Transport</option>
-                       <option value ="internationaler Transport" required >Internationaler Transport</option>
-                       <option value ="Umzug" required >Umzug</option>
-                       <option value ="Lagerhaltung" required >Lagerhaltung</option>
-                    </select>
-                 </td>
-              </tr>
-              <tr>
-                 <td class="Beschreibung">Auftragszweck</td>
-                 <td>
-                    <input type="radio" name="xor" id="Privat"  value="privat">
-                    <label class="Beschreibung" for="Privat">Privat</label>
-                    <input type="radio" name="xor" id="Geschaeftlich"  value="Geschaeftlich">
-                    <label class="Beschreibung" for="Geschaeftlich">Gesch&auml;ftlich</label> 
-                    <input type="radio" name="xor" id="Sonstiges"  value="Sonstiges">
-                    <label class="Beschreibung" for="Sonstiges">Sonstiges</label> 
-                 </td>
-              </tr>
-              <tr>
-                 <td class="Beschreibung">Beschreibung</td>
-                 <td><textarea type="text" class="InputText" name="Text" id="beschreibung" cols="30" rows="10" placeholder="Bitte beschreiben Sie Ihre Auftragserteilung."></textarea>
-                 </td>
-                 </td>
-              </tr>
-              <tr>
-                 <td class="Beschreibung">Auführungsdatum </td>
-                 <td><input type="date" class="InputText" name="Datum" id="eventdate" placeholder="Datum wählen">
-                 </td>
-              </tr>
-              <tr></tr>
-              <tr>
-                 <td></td>
-                 <td></td>
-                 <td>
-                  <input class="ButtonStyle" id="submitbtn" type="submit" name="Senden" value="Absenden">
-                 </td>
-              </tr>
-           </table>
-        </form>
-     </section>
-
+    </section>
       <!--HIER ENDET MAIN!!!!!-->
     </main>
     <!-----------------------------------FOOTER------------------------------------->

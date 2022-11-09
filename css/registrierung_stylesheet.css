@@ -4,14 +4,11 @@
 
 main {
     position: static;
-    margin-top: 110px;
+    margin-top:330px;
     margin-bottom: 10px;
 }
 
-main section {
-    margin-left: auto;
-    margin-right: auto;
-    width: 20%;    
+main section {    
     padding-left: 50px;
     padding-right: 30px;
     padding-top: 5px;
@@ -48,11 +45,12 @@ main td{
 .input_txt{
     margin-bottom: 10px;
     font-size: 18px;
-    width: 200px
+    width: 100%;
 }
 
 .submit_btn{
-    width: 50%;
+    width: fit-content;
+    padding: 2px;
     height: 35px;
     font-weight: bold;
     background-color: rgb(211, 26, 26);
@@ -62,4 +60,23 @@ main td{
 
 .submit_btn:hover{
     cursor: pointer;
+}
+
+@media only screen and (min-width: 960px) {
+    main{
+        margin-top: 110px;
+    }
+
+    main section{
+        margin:auto;
+        width: 50%;
+    }
+
+    .input_txt{
+        width:200px;
+    }
+
+    .submit_btn{
+        width:50%;
+    }
 }

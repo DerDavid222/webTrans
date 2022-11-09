@@ -4,14 +4,11 @@
 
 main {
     position: static;
-    margin-top: 210px;
+    margin-top: 330px;
     margin-bottom: 110px;
 }
 
-main section {
-    margin-left: auto;
-    margin-right: auto;
-    width: 20%;    
+main section {   
     padding-left: 50px;
     padding-right: 30px;
     padding-top: 5px;
@@ -48,7 +45,7 @@ main td{
 .input_txt{
     margin-bottom: 10px;
     font-size: 18px;
-    width: 200px
+    width: 100%;
 }
 
 .submit_btn{
@@ -68,3 +65,17 @@ main td{
     cursor: pointer;
 }
 
+@media only screen and (min-width: 960px) {
+    main{
+        margin-top:210px;
+    }
+
+    main section {
+        margin:auto;
+        width: 50%; 
+    }
+
+    .input_txt{
+        width: 200px
+    }
+}
