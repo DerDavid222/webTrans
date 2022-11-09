@@ -52,6 +52,13 @@ main {
   font-size: 35px;
 }
 
+.header3 {
+  text-align: center;
+  font-size: 25px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
 .picture {
   width: 70%;
 }
