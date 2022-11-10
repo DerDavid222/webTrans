@@ -1,171 +1,236 @@
 <!--Test123-->
 <!DOCTYPE html>
 <html lang="de">
-
-<head>
+  <head>
     <link rel="stylesheet" href="../css/header_stylesheet.css" />
     <link rel="stylesheet" href="../css/footer_stylesheet.css" />
     <link rel="stylesheet" href="../css/anfrage_stylesheet.css" />
 
-    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-a11y="true"></script>
+    <script
+      src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
+      data-auto-a11y="true"
+    ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <meta charset="utf-8" />
     <title>WebTrans</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <!-----------------------------------HEADER------------------------------------>
     <header>
-        <img src="../Bilder/SamTransLogoNeu.jpg" class="logo" alt="Firmen_Logo">
+      <img src="../Bilder/SamTransLogoNeu.jpg" class="logo" alt="Firmen_Logo" />
 
-        <nav class="navbar">
-            <ul class="login_ul">
-                <li>
-                    <a href="login.html" class="login">Login</a>
-                </li>
-            </ul>
+      <nav class="navbar">
+        <ul class="login_ul">
+          <li>
+            <a href="login.html" class="login">Login</a>
+          </li>
+        </ul>
 
-            <ul class="nav_ul">
-                <li>
-                    <a href="start.html">Start</a>
-                </li>
-                <li>
-                    <a href="dienstleistungen.html">Dienstleistungen</a>
-                </li>
-                <li>
-                    <a href="anfrage.html" class="active">Anfrage</a>
-                </li>
-            </ul>
-
-        </nav>
+        <ul class="nav_ul">
+          <li>
+            <a href="start.html">Start</a>
+          </li>
+          <li>
+            <a href="dienstleistungen.html">Dienstleistungen</a>
+          </li>
+          <li>
+            <a href="anfrage.html" class="active">Anfrage</a>
+          </li>
+        </ul>
+      </nav>
     </header>
 
     <!-----------------------------------MAIN--------------------------------------->
     <main>
-        <section class="main_section">
-            <section class="InteresseBox">
-                <h1>Sie haben Interesse an unseren Dienstleistungen?</h1>
-                <section class="Text">
-                    <br /> Falls ja, können Sie gerne eine unverbindliche Anfrage über das nebenstehende Formular an uns senden. <br /><br /> Sobald wir Ihre Anfrage entegegengenommen und überprüft haben, werden wir uns per Mail bei Ihnen melden. <br
-                    /><br />
-                    <b>Hinweis: </b>Sie benötigen ein Benutzerkonto, um eine Anfrage an uns zu stellen.
-                </section>
-            </section>
-            <section class="Formular">
-                <form class="FormularGesamt" name="Auftrag" onsubmit="pruefen();">
-                    <h1>Auftragsanfrage</h1>
-                    <table>
-                        <tr>
-                            <td class="input_label">Benutzername </td>
-                            <td><input type="text" class="input_txt" name="Vorname" id="Vorname" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="input_label">Passwort </td>
-                            <td><input type="password" class="input_txt" name="Vorname" id="Vorname" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td><a href="registrierung.html">Noch kein Kunde? Hier registrieren</a></td>
-                        </tr>
-                        <tr>
-                            <td class="TopPad"></td>
-                        </tr>
-                        <tr class="TopPad">
-                            <td class="input_label">Dienstleistung</td>
-                            <td>
-                                <select name="AuftragsArt" class="input_txt" id="Auftragsart">
-                        <option value ="nationaler Transport" selected required >Nationaler Transport</option>
-                        <option value ="internationaler Transport" required >Internationaler Transport</option>
-                        <option value ="Umzug" required >Umzug</option>
-                        <option value ="Lagerhaltung" required >Lagerhaltung</option>
-                      </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="input_label">Auftragszweck</td>
-                            <td>
-                                <section>
-                                    <input type="radio" name="xor" id="Privat" value="privat">
-                                    <label class="Beschreibung" for="Privat">Privat</label>
-                                </section>
-                                <section>
-                                    <input type="radio" name="xor" id="Geschaeftlich" value="Geschaeftlich">
-                                    <label class="Beschreibung" for="Geschaeftlich">Gesch&auml;ftlich</label>
-                                </section>
-                                <section>
-                                    <input type="radio" name="xor" id="Sonstiges" value="Sonstiges">
-                                    <label class="Beschreibung" for="Sonstiges">Sonstiges</label>
-                                </section>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="input_label">Beschreibung</td>
-                            <td><textarea type="text" class="input_txt" name="Text" id="beschreibung" cols="30" rows="10" placeholder="Bitte beschreiben Sie Ihre Auftragserteilung."></textarea></td>
-                        </tr>
-                        <tr>
-                            <td class="input_label">Auführungsdatum </td>
-                            <td><input type="date" class="input_txt" name="Datum" id="eventdate" placeholder="Datum wählen"></td>
-                        </tr>
-                        <tr></tr>
-                        <tr>
-                            <td></td>
-                            <td class="submit_td">
-                                <input class="submit_btn" id="submitbtn" type="submit" name="Senden" value="Absenden">
-                            </td>
-                        </tr>
-                    </table>
-                </form>
-            </section>
+      <section class="main_section">
+        <section class="InteresseBox">
+          <h1>Sie haben Interesse an unseren Dienstleistungen?</h1>
+          <section class="Text">
+            <br />
+            Falls ja, können Sie gerne eine unverbindliche Anfrage über das
+            nebenstehende Formular an uns senden. <br /><br />
+            Sobald wir Ihre Anfrage entegegengenommen und überprüft haben,
+            werden wir uns per Mail bei Ihnen melden. <br /><br />
+            <b>Hinweis: </b>Sie benötigen ein Benutzerkonto, um eine Anfrage an
+            uns zu stellen.
+          </section>
         </section>
-        <!--HIER ENDET MAIN!!!!!-->
+        <section class="Formular">
+          <form class="FormularGesamt" name="Auftrag" onsubmit="pruefen();">
+            <h1>Auftragsanfrage</h1>
+            <table>
+              <tr>
+                <td class="input_label">Benutzername</td>
+                <td>
+                  <input
+                    type="text"
+                    class="input_txt"
+                    name="Vorname"
+                    id="Vorname"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td class="input_label">Passwort</td>
+                <td>
+                  <input
+                    type="password"
+                    class="input_txt"
+                    name="Vorname"
+                    id="Vorname"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <a href="registrierung.html"
+                    >Noch kein Kunde? Hier registrieren</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td class="TopPad"></td>
+              </tr>
+              <tr class="TopPad">
+                <td class="input_label">Dienstleistung</td>
+                <td>
+                  <select name="AuftragsArt" class="input_txt" id="Auftragsart">
+                    <option value="nationaler Transport" selected required>
+                      Nationaler Transport
+                    </option>
+                    <option value="internationaler Transport" required>
+                      Internationaler Transport
+                    </option>
+                    <option value="Umzug" required>Umzug</option>
+                    <option value="Lagerhaltung" required>Lagerhaltung</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td class="input_label">Auftragszweck</td>
+                <td>
+                  <section>
+                    <input type="radio" name="xor" id="Privat" value="privat" />
+                    <label class="Beschreibung" for="Privat">Privat</label>
+                  </section>
+                  <section>
+                    <input
+                      type="radio"
+                      name="xor"
+                      id="Geschaeftlich"
+                      value="Geschaeftlich"
+                    />
+                    <label class="Beschreibung" for="Geschaeftlich"
+                      >Gesch&auml;ftlich</label
+                    >
+                  </section>
+                  <section>
+                    <input
+                      type="radio"
+                      name="xor"
+                      id="Sonstiges"
+                      value="Sonstiges"
+                    />
+                    <label class="Beschreibung" for="Sonstiges"
+                      >Sonstiges</label
+                    >
+                  </section>
+                </td>
+              </tr>
+              <tr>
+                <td class="input_label">Beschreibung</td>
+                <td>
+                  <textarea
+                    type="text"
+                    class="input_txt"
+                    name="Text"
+                    id="beschreibung"
+                    cols="30"
+                    rows="10"
+                    placeholder="Bitte beschreiben Sie Ihre Auftragserteilung."
+                  ></textarea>
+                </td>
+              </tr>
+              <tr>
+                <td class="input_label">Auführungsdatum</td>
+                <td>
+                  <input
+                    type="date"
+                    class="input_txt"
+                    name="Datum"
+                    id="eventdate"
+                    placeholder="Datum wählen"
+                  />
+                </td>
+              </tr>
+              <tr></tr>
+              <tr>
+                <td></td>
+                <td class="submit_td">
+                  <input
+                    class="submit_btn"
+                    id="submitbtn"
+                    type="submit"
+                    name="Senden"
+                    value="Absenden"
+                  />
+                </td>
+              </tr>
+            </table>
+          </form>
+        </section>
+      </section>
+      <!--HIER ENDET MAIN!!!!!-->
     </main>
     <!-----------------------------------FOOTER------------------------------------->
     <footer>
-        <ul>
-            <li>
-                <h3 class="footer-text">Kontakt & Impressum</h3>
-            </li>
-            <li class="footer-text">Max Mustermann</li>
-            <li class="footer-text">Musterstrasse 6</li>
-            <li class="footer-text">72525 Musterstadt</li>
-            <li class="footer-text">Tel: 0152 3456789</li>
-            <li><a href="impressum.html" class="footer-text">Impressum</a></li>
-        </ul>
+      <ul>
+        <li>
+          <h3 class="footer-text">Kontakt & Impressum</h3>
+        </li>
+        <li class="footer-text">Max Mustermann</li>
+        <li class="footer-text">Musterstrasse 6</li>
+        <li class="footer-text">72525 Musterstadt</li>
+        <li class="footer-text">Tel: 0152 3456789</li>
+        <li><a href="impressum.html" class="footer-text">Impressum</a></li>
+      </ul>
 
-        <ul>
-            <li>
-                <h3 class="footer-text">WebTrans</h3>
-            </li>
-            <li class="footer-text">Nationale & internationale Transporte</li>
-            <li class="footer-text">24h Express Dienst</li>
-            <li class="footer-text">Umzüge Europaweit</li>
-            <li class="footer-text">Lagerei</li>
-        </ul>
-        <ul>
-            <li>
-                <h3 class="footer-text">Aktuelles</h3>
-            </li>
-            <li class="footer-text">
-                Besinnliche Feiertage und einen guten Rutsch ins das neue Jahr 2021!
-            </li>
-            <li class="footer-text">
-                Wir sind wieder wie gewohnt ab dem 04.01.2021 für Sie da!
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <h3 class="footer-text">Social Media</h3>
-            </li>
-            <li>
-                <a href="https://de-de.facebook.com/pages/category/Transportation-Service/Samuel-Cicek-Transporte-217734082149721/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/samuel.cicek.transporte/?hl=de" target="_blank"><i class="fab fa-instagram"></i></a>
-            </li>
-        </ul>
+      <ul>
+        <li>
+          <h3 class="footer-text">WebTrans</h3>
+        </li>
+        <li class="footer-text">Nationale & internationale Transporte</li>
+        <li class="footer-text">24h Express Dienst</li>
+        <li class="footer-text">Umzüge Europaweit</li>
+        <li class="footer-text">Lagerei</li>
+      </ul>
+      <ul>
+        <li>
+          <h3 class="footer-text">Aktuelles</h3>
+        </li>
+        <li class="footer-text">
+          Besinnliche Feiertage und einen guten Rutsch ins das neue Jahr 2021!
+        </li>
+        <li class="footer-text">
+          Wir sind wieder wie gewohnt ab dem 04.01.2021 für Sie da!
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <h3 class="footer-text">Social Media</h3>
+        </li>
+        <li>
+          <a href="https://de-de.facebook.com/" target="_blank"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a href="https://www.instagram.com/" target="_blank"
+            ><i class="fab fa-instagram"></i
+          ></a>
+        </li>
+      </ul>
     </footer>
-</body>
-
+  </body>
 </html>
