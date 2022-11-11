@@ -3,92 +3,38 @@
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-@media only screen and (min-width: 960px) {
-  main {
-    position: static;
-  }
-
-  .but {
-    width: 40%;
-    font-weight: bold;
-    padding: 10px;
-    margin: 10px;
-    background-color: #000;
-    border: none;
-    color: #ffffff;
-  }
-
-  .description {
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-top: 40px;
-  }
-
-  .header2 {
-    text-align: center;
-    font-size: 35px;
-  }
-}
-
 main {
-  position: static;
-  margin: 50px;
+  margin-top: 315px;
+  margin-bottom: 50px;
+  margin-left:auto;
+  margin-right: auto;
 }
 
 .card {
   box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.2);
-  max-width: auto;
+  width: 100%;
   margin-top: 50px;
-  margin-left: 100px;
+  margin-left: auto;
   margin-bottom: 100px;
-  margin-right: 100px;
+  margin-right: auto;
   text-align: center;
   font-family: arial;
   padding: 20px;
 }
 
-.price {
-  color: grey;
-  font-size: 22px;
-}
-
-.but {
-  position: static;
-  border: none;
-  outline: 0;
-  font-weight: bold;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-right: 30px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: fit-content;
-  font-size: 25px;
-}
-
-.button:hover {
-  opacity: 0.7;
-}
-
-.header {
+.heading {
   text-align: center;
   padding-top: 100px;
   font-size: 50px;
 }
 
-.header2 {
+.heading2 {
   text-align: center;
   font-size: 35px;
   word-wrap: break-word;
 }
 
-.header3 {
+.heading3 {
   text-align: center;
   font-size: 25px;
   margin-top: 5px;
@@ -99,13 +45,50 @@ main {
   width: 70%;
 }
 
-.paragraph {
-  margin: 20px;
-  font-size: 25px;
+p {
+  margin: 20px auto;
+  font-size: 20px;
+  width: 90%;
 }
 
-.description {
-  font-size: 20px;
-  margin-left: 10px;
-  margin-top: 40px;
+button{
+  padding: 2px;
+  height: 50px;
+  font-weight: bold;
+  background-color: rgb(211, 26, 26);
+  border: none;
+  color: #FFFFFF;
+}
+
+button:hover{
+  cursor:pointer;
+}
+
+.anfrage_btn{
+  width:80%;
+}
+
+.uebersicht_btn{
+  width: fit-content;
+  margin-top: 20px;
+  float: right;
+}
+
+@media only screen and (min-width: 960px) {
+  main {
+    margin-top: 100px;
+    width:90%;
+  }
+
+  .card {
+    width:80%;
+  }
+
+  p{
+    width: 80%;
+  }
+
+  .uebersicht_btn{
+    width: 10%;
+  }
 }
