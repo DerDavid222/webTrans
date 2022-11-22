@@ -54,13 +54,13 @@
         var button = document.getElementById("admin");
         if (existsSessionItem("kunde")) {
           console.log("Session object type kunde exists");
-          button.style.visibility = "hidden";
+          button.style.display = "none";
         } else if (existsSessionItem("admin")) {
           console.log("Session object type admin exists");
-          button.style.display = "visible";
+          button.style.display = "inline";
         } else {
           console.log("Session object does not exist");
-          button.style.visibility = "hidden";
+          button.style.display = "none";
         }
       });
     </script>
