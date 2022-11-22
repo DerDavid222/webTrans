@@ -3,7 +3,7 @@
   <head>
     <link rel="stylesheet" href="../css/header_stylesheet.css" />
     <link rel="stylesheet" href="../css/footer_stylesheet.css" />
-    <link rel="stylesheet" href="../css/login_stylesheet.css" />
+    <link rel="stylesheet" href="../css/detailansicht.css" />
 
     <script
       src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
@@ -12,7 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <meta charset="utf-8" />
-    <title>WebTrans</title>
+    <title>Detailansicht</title>
   </head>
 
   <body>
@@ -23,7 +23,7 @@
       <nav class="navbar">
         <ul class="login_ul">
           <li>
-            <a href="anfrage.html" class="login active">Login</a>
+            <a href="login.html" class="login">Login</a>
           </li>
         </ul>
 
@@ -43,58 +43,56 @@
         </ul>
       </nav>
     </header>
-    <!-------------------------------MAIN------------------------------------------->
+
+    <!-----------------------------------MAIN------------------------------------->
     <main>
+      <button
+        type="button"
+        onclick="window.location.href='dienstleistungen.html'"
+        class="uebersicht_btn"
+      >
+        Übersicht
+      </button>
+
       <section>
-        <h1>Login</h1>
-        <table>
-          <tr>
-            <td class="input_label">Benutzername</td>
-            <td>
-              <input
-                type="text"
-                class="input_txt"
-                name="Benutzername"
-                id="Benutzername"
-              />
-            </td>
-          </tr>
+        <h2 class="heading">
+          Transport bis 7,5 Tonnen z.G. (wetterfeste Ware)
+        </h2>
+      </section>
 
-          <tr>
-            <td class="input_label">Passwort</td>
-            <td>
-              <input
-                type="password"
-                class="input_txt"
-                name="Passwort"
-                id="Passwort"
-              />
-            </td>
-          </tr>
+      <section class="card">
+        <img src="../Bilder/truck_detail1.jpg" alt="Truck1" class="picture" />
+        <h1 class="heading2">Ideal für kleinere Palettentransporte</h1>
+        <p class="heading3">Preis richtet sich nach Gewicht und Abmessungen</p>
+        <p class="description">
+          Mit dieser Dienstleistung sind die Kunden gut aufgestellt, die
+          wetterfeste Ware auf Paletten oder lose transportieren wollen. Da kein
+          Aufbau montiert ist, können auch Sondermaße, wie beispielsweise
+          überlange Ware, transportiert werden.
+        </p>
+        <p class="description">
+          Mit dieser Dienstleistung sind die Kunden gut aufgestellt, die
+          wetterfeste Ware auf Paletten oder lose transportieren wollen. Da kein
+          Aufbau montiert ist, können auch Sondermaße, wie beispielsweise
+          überlange Ware, transportiert werden.
+        </p>
+        <p class="description">
+          Mit dieser Dienstleistung sind die Kunden gut aufgestellt, die
+          wetterfeste Ware auf Paletten oder lose transportieren wollen. Da kein
+          Aufbau montiert ist, können auch Sondermaße, wie beispielsweise
+          überlange Ware, transportiert werden.
+        </p>
 
-          <tr>
-            <td></td>
-            <td class="submit_td">
-              <input
-                class="submit_btn"
-                id="submitbtn"
-                type="submit"
-                name="Senden"
-                value="Login"
-              />
-            </td>
-          </tr>
-
-          <tr>
-            <td colspan="2" class="registrieren_link">
-              <a href="registrierung.html"
-                >Noch keine Kunde? Hier registrieren</a
-              >
-            </td>
-          </tr>
-        </table>
+        <button
+          type="button"
+          onclick="window.location.href='anfrage.html'"
+          class="anfrage_btn"
+        >
+          Anfrage
+        </button>
       </section>
     </main>
+
     <!-----------------------------------FOOTER------------------------------------->
     <footer>
       <ul>
@@ -102,7 +100,7 @@
           <h3 class="footer-text">Kontakt & Impressum</h3>
         </li>
         <li class="footer-text">Max Mustermann</li>
-        <li class="footer-text">Musterstadt 6</li>
+        <li class="footer-text">Musterstraße 6</li>
         <li class="footer-text">72525 Musterstadt</li>
         <li class="footer-text">Tel: 0152 3456789</li>
         <li><a href="impressum.html" class="footer-text">Impressum</a></li>

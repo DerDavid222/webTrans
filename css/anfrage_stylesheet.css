@@ -1,12 +1,16 @@
 /* CSS für das Anfrageformular*/
 
-.InteresseBox {
-  float: left;
+* {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+main{
+  margin-top: 330px;
+}
+
+.InteresseBox {
   font-size: 18px;
-  margin-left: 100px;
-  margin-top: 200px;
   margin-bottom: 100px;
   width: 350px;
   height: auto;
@@ -19,12 +23,7 @@
 }
 
 .Formular {
-  background-color: rgb(201, 199, 199);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  float: right;
   margin-right: 100px;
-  margin-top: 200px;
   width: auto;
   height: auto;
   margin-bottom: 200px;
@@ -47,15 +46,88 @@
   border-color: azure;
 }
 
-.InputText {
-  width: 300px;
-  font-size: 15px;
-}
-
-td {
-  padding: 4px;
-}
-
 .TopPad {
   padding-top: 50px;
+}
+
+main table{
+  padding-left: 20px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom:5px;
+  border: 3px solid #2E2E2E;
+}
+
+main h1 {
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
+main td{
+  vertical-align: top;
+  padding: 5px;
+}
+
+.input_label {
+  font-size: 18px;
+  font-weight: bold;
+  padding-right: 30px;
+}
+
+.input_txt{
+  margin-bottom: 10px;
+  font-size: 18px;
+  width: 100%;
+}
+
+.submit_btn{
+  width: fit-content;
+  padding:2px;
+  height: 35px;
+  font-weight: bold;
+  background-color: rgb(211, 26, 26);
+  border: none;
+  color: #FFFFFF;
+}
+
+.submit_td {
+  text-align: right;
+}
+
+.submit_btn:hover{
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 960px) {
+  main{
+    margin-top:100px;
+  }
+
+  .main_section{
+    margin:auto;
+    width:50%;
+  }
+
+  .input_txt{
+    margin-bottom: 10px;
+    font-size: 18px;
+    width: 280px;
+  }
+
+  @media only screen and (min-width: 1210px) {
+    .main_section{
+      width:100%;
+    }
+    
+    .InteresseBox{
+      float: left;
+      margin-top:70px;
+      margin-left: 40px;
+    }
+  
+    .Formular{
+      float: right;
+      margin-left: 50px;
+    }
+  }
 }

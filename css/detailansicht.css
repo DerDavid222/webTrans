@@ -1,0 +1,94 @@
+* {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+main {
+  margin-top: 370px;
+  margin-bottom: 50px;
+  margin-left:auto;
+  margin-right: auto;
+}
+
+.card {
+  box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-bottom: 100px;
+  margin-right: auto;
+  text-align: center;
+  font-family: arial;
+  padding: 20px;
+}
+
+.heading {
+  text-align: center;
+  padding-top: 100px;
+  font-size: 50px;
+}
+
+.heading2 {
+  text-align: center;
+  font-size: 35px;
+  word-wrap: break-word;
+}
+
+.heading3 {
+  text-align: center;
+  font-size: 25px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.picture {
+  width: 70%;
+}
+
+p {
+  margin: 20px auto;
+  font-size: 20px;
+  width: 90%;
+}
+
+button{
+  padding: 2px;
+  height: 50px;
+  font-weight: bold;
+  background-color: rgb(211, 26, 26);
+  border: none;
+  color: #FFFFFF;
+}
+
+button:hover{
+  cursor:pointer;
+}
+
+.anfrage_btn{
+  width:80%;
+}
+
+.uebersicht_btn{
+  width: fit-content;
+  margin-top: 20px;
+  float: right;
+}
+
+@media only screen and (min-width: 960px) {
+  main {
+    margin-top: 100px;
+    width:90%;
+  }
+
+  .card {
+    width:80%;
+  }
+
+  p{
+    width: 80%;
+  }
+
+  .uebersicht_btn{
+    width: 10%;
+  }
+}
