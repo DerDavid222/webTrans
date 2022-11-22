@@ -40,11 +40,23 @@
             <a href="anfrage.html">Anfrage</a>
           </li>
           <li>
-            <a href="adminpage.html">Adminpage</a>
+            <a href="adminpage.html" id="admin">Adminpage</a>
           </li>
         </ul>
       </nav>
     </header>
+    <script>
+      $(document).ready(function () {
+        var button = document.getElementById("admin");
+        if (existsSessionItem("kunde")) {
+          button.style.visibility = "hidden";
+        } else if (existsSessionItem("admin")) {
+          button.style.display = "visible";
+        } else {
+          button.style.display = "hidden";
+        }
+      });
+    </script>
 
     <!-----------------------------------BODY----------------------------------------------------->
     <main>
