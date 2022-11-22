@@ -51,16 +51,16 @@
 
     <script>
       $(document).ready(function () {
-        var button = document.getElementById("admin");
+        var adminbutton = document.getElementById("admin");
         if (existsSessionItem("kunde")) {
           console.log("Session object type kunde exists");
-          button.style.display = "none";
+          adminbutton.style.display = "none";
         } else if (existsSessionItem("admin")) {
           console.log("Session object type admin exists");
-          button.style.display = "inline";
+          adminbutton.style.display = "inline";
         } else {
           console.log("Session object does not exist");
-          button.style.display = "none";
+          adminbutton.style.display = "none";
         }
       });
     </script>
