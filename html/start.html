@@ -28,7 +28,7 @@
       <nav class="navbar">
         <ul class="login_ul">
           <li>
-            <a href="login.html" class="login">Login</a>
+            <a href="login.html" class="login" id="idlogin">Login</a>
           </li>
         </ul>
 
@@ -43,7 +43,7 @@
             <a href="anfrage.html">Anfrage</a>
           </li>
           <li>
-            <a href="adminpage.html" id="admin">Adminpage</a>
+            <a href="adminpage.html" id="idadmin">Adminpage</a>
           </li>
         </ul>
       </nav>
@@ -51,16 +51,19 @@
 
     <script>
       $(document).ready(function () {
-        var button = document.getElementById("admin");
+        var adminbutton = document.getElementById("idadmin");
+        var loginbutton = document.getElementById("idlogin");
         if (existsSessionItem("kunde")) {
           console.log("Session object type kunde exists");
-          button.style.display = "none";
+          adminbutton.style.display = "none";
         } else if (existsSessionItem("admin")) {
           console.log("Session object type admin exists");
-          button.style.display = "inline";
+          adminbutton.style.display = "inline";
+          loginbutton.innerText = "Logout";
         } else {
           console.log("Session object does not exist");
-          button.style.display = "none";
+          adminbutton.style.display = "none";
+          loginbutton.innerText = "Logout";
         }
       });
     </script>
