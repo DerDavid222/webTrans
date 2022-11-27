@@ -56,6 +56,7 @@
         if (existsSessionItem("kunde")) {
           console.log("Session object type kunde exists");
           adminbutton.style.display = "none";
+          loginbutton.innerText = "Logout";
         } else if (existsSessionItem("admin")) {
           console.log("Session object type admin exists");
           adminbutton.style.display = "inline";
@@ -63,7 +64,6 @@
         } else {
           console.log("Session object does not exist");
           adminbutton.style.display = "none";
-          loginbutton.innerText = "Logout";
         }
       });
     </script>
