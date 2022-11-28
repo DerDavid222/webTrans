@@ -14,6 +14,12 @@
       src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
       data-auto-a11y="true"
     ></script>
+    <script src="../javascript/userLogin.js"></script>
+
+    <script>
+      // schutz der seite, nur angemeldete admins haben zugang, alle anderen werden zur login seite geleitet
+      if (!isAdminLoggedIn()) window.location.href = "login.html";
+    </script>
 
     <meta charset="utf-8" />
     <title>WebTrans</title>
@@ -47,25 +53,6 @@
         </ul>
       </nav>
     </header>
-
-    <script>
-      $(document).ready(function () {
-        var adminbutton = document.getElementById("idadmin");
-        var loginbutton = document.getElementById("idlogin");
-        if (existsSessionItem("kunde")) {
-          console.log("Session object type kunde exists");
-          adminbutton.style.display = "none";
-          loginbutton.innerText = "Logout";
-        } else if (existsSessionItem("admin")) {
-          console.log("Session object type admin exists");
-          adminbutton.style.display = "inline";
-          loginbutton.innerText = "Logout";
-        } else {
-          console.log("Session object does not exist");
-          adminbutton.style.display = "none";
-        }
-      });
-    </script>
 
     <!-----------------------------------BODY----------------------------------------------------->
 
@@ -168,5 +155,11 @@
         </li>
       </ul>
     </footer>
+
+    <script>
+      $(document).ready(function () {
+        adjustNavigation();
+      });
+    </script>
   </body>
 </html>
