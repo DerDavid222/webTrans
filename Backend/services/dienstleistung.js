@@ -54,19 +54,8 @@ serviceRouter.post('/dienstleistung', function(request, response) {
     if (helper.isUndefined(request.body.bezeichnung)) 
         errorMsgs.push('bezeichnung fehlt');
     if (helper.isUndefined(request.body.beschreibung)) 
-        request.body.beschreibung = '';
-    if (helper.isUndefined(request.body.details)) 
-        request.body.details = null;
-    if (helper.isUndefined(request.body.nettopreis)) 
-        errorMsgs.push('nettopreis fehlt');
-    if (!helper.isNumeric(request.body.nettopreis)) 
-        errorMsgs.push('nettopreis muss eine Zahl sein');        
-    if (helper.isUndefined(request.body.mehrwertsteuer)) {
-        errorMsgs.push('mehrwertsteuer fehlt');
-    } else if (helper.isUndefined(request.body.mehrwertsteuer.id)) {
-        errorMsgs.push('mehrwertsteuer gesetzt, aber id fehlt');
-    }        
-
+        errorMsgs.push('beschreibung fehlt');   
+    
     if (helper.isUndefined(request.body.bilder)) 
         request.body.bilder = [];
     
@@ -96,18 +85,7 @@ serviceRouter.put('/dienstleistung', function(request, response) {
     if (helper.isUndefined(request.body.bezeichnung)) 
         errorMsgs.push('bezeichnung fehlt');
     if (helper.isUndefined(request.body.beschreibung)) 
-        request.body.beschreibung = '';
-    if (helper.isUndefined(request.body.details)) 
-        request.body.details = null;
-    if (helper.isUndefined(request.body.nettopreis)) 
-        errorMsgs.push('nettopreis fehlt');
-    if (!helper.isNumeric(request.body.nettopreis)) 
-        errorMsgs.push('nettopreis muss eine Zahl sein');      
-    if (helper.isUndefined(request.body.mehrwertsteuer)) {
-        errorMsgs.push('mehrwertsteuer fehlt');
-    } else if (helper.isUndefined(request.body.mehrwertsteuer.id)) {
-        errorMsgs.push('mehrwertsteuer gesetzt, aber id fehlt');
-    }        
+        errorMsgs.push('beschreibung fehlt');       
     if (helper.isUndefined(request.body.bilder)) 
         request.body.bilder = [];
 

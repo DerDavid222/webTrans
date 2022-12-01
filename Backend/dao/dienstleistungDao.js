@@ -43,10 +43,10 @@ class DienstleistungDao {
         return false;
     }
 
-    create(bezeichnung = '', beschreibung = '') {
-        var sql = 'INSERT INTO Dienstleistung (bezeichnung,beschreibung) VALUES (?,?)';
+    create(bezeichnung = '', beschreibung = '', bildpfad='') {
+        var sql = 'INSERT INTO Dienstleistung (bezeichnung,beschreibung,bildpfad) VALUES (?,?,?)';
         var statement = this._conn.prepare(sql);
-        var params = [bezeichnung,beschreibung];
+        var params = [bezeichnung,beschreibung,bildpfad];
         var result = statement.run(params);
 
         if (result.changes != 1) 
@@ -55,10 +55,10 @@ class DienstleistungDao {
         return this.loadById(result.lastInsertRowid);
     }
 
-    update(id, kennzeichnung = '', bezeichnung = '') {
-        var sql = 'UPDATE Dienstleistung SET bezeichnung=?,beschreibung=? WHERE id=?';
+    update(id, bezeichnung = '', beschreibung='', bildpfad='') {
+        var sql = 'UPDATE Dienstleistung SET bezeichnung=?,beschreibung=?,bildpfad=? WHERE id=?';
         var statement = this._conn.prepare(sql);
-        var params = [bezeichnung, beschreibung, id];
+        var params = [bezeichnung, beschreibung, bildpfad, id];
         var result = statement.run(params);
 
         if (result.changes != 1) 

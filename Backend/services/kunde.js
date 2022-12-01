@@ -62,24 +62,19 @@ serviceRouter.post('/kunde', function(request, response) {
         errorMsgs.push('nachname fehlt');
     if (helper.isUndefined(request.body.benutzername)) 
         errorMsgs.push('benutzername fehlt');
+    if (helper.isUndefined(request.body.passwort)) 
+        errorMsgs.push('passwort fehlt');
+    if (helper.isUndefined(request.body.isAdmin)) 
+        errorMsgs.push('isAdmin fehlt');
     if (helper.isUndefined(request.body.adresse)) {
         errorMsgs.push('adresse fehlt');
     } else if (helper.isUndefined(request.body.adresse.id)) {
-        errorMsgs.push('adresse gesetzt, aber id fehlt');
+        errorMsgs.push('adresseId fehlt');
     }
-    if (helper.isUndefined(request.body.telefonnummer)) 
-        request.body.telefonnummer = '';
     if (helper.isUndefined(request.body.email)) 
         errorMsgs.push('email fehlt');
     if (!helper.isEmail(request.body.email)) 
         errorMsgs.push('email hat ein falsches Format');
-    if (helper.isUndefined(request.body.geburtstag)) {
-        request.body.geburtstag = null;
-    } else if (!helper.isGermanDateTimeFormat(request.body.geburtstag)) {
-        errorMsgs.push('geburtstag hat das falsche Format, erlaubt: dd.mm.jjjj');
-    } else {
-        request.body.geburtstag = helper.parseDateTimeString(request.body.geburtstag);
-    }
     
     if (errorMsgs.length > 0) {
         console.log('Service Kunde: Creation not possible, data missing');
@@ -89,7 +84,7 @@ serviceRouter.post('/kunde', function(request, response) {
 
     const kundeDao = new KundeDao(request.app.locals.dbConnection);
     try {
-        var obj = kundeDao.create(request.body.anrede, request.body.vorname, request.body.nachname, request.body.adresse.id, request.body.telefonnummer, request.body.email, request.body.geburtstag);
+        var obj = kundeDao.create(request.body.anrede, request.body.vorname, request.body.nachname, request.body.benutzername, request.body.passwort, request.body.isAdmin, request.body.adresse.id, request.body.email);
         console.log('Service Kunde: Record inserted');
         response.status(200).json(obj);
     } catch (ex) {
@@ -115,24 +110,19 @@ serviceRouter.put('/kunde', function(request, response) {
         errorMsgs.push('nachname fehlt');
     if (helper.isUndefined(request.body.benutzername)) 
         errorMsgs.push('benutzername fehlt');
+    if (helper.isUndefined(request.body.passwort)) 
+        errorMsgs.push('passwort fehlt');
+    if (helper.isUndefined(request.body.isAdmin)) 
+        errorMsgs.push('isAdmin fehlt');
     if (helper.isUndefined(request.body.adresse)) {
         errorMsgs.push('adresse fehlt');
     } else if (helper.isUndefined(request.body.adresse.id)) {
-        errorMsgs.push('adresse gesetzt, aber id fehlt');
+        errorMsgs.push('adresseId fehlt');
     }
-    if (helper.isUndefined(request.body.telefonnummer)) 
-        request.body.telefonnummer = '';
     if (helper.isUndefined(request.body.email)) 
         errorMsgs.push('email fehlt');
     if (!helper.isEmail(request.body.email)) 
         errorMsgs.push('email hat ein falsches Format');
-    if (helper.isUndefined(request.body.geburtstag)) {
-        request.body.geburtstag = null;
-    } else if (!helper.isGermanDateTimeFormat(request.body.geburtstag)) {
-        errorMsgs.push('geburtstag hat das falsche Format, erlaubt: dd.mm.jjjj');
-    } else {
-        request.body.geburtstag = helper.parseDateTimeString(request.body.geburtstag);
-    }
 
     if (errorMsgs.length > 0) {
         console.log('Service Kunde: Update not possible, data missing');
@@ -142,7 +132,7 @@ serviceRouter.put('/kunde', function(request, response) {
 
     const kundeDao = new KundeDao(request.app.locals.dbConnection);
     try {
-        var obj = kundeDao.update(request.body.id, request.body.anrede, request.body.vorname, request.body.nachname, request.body.adresse.id, request.body.telefonnummer, request.body.email, request.body.geburtstag);
+        var obj = kundeDao.update(request.body.id, request.body.anrede, request.body.vorname, request.body.nachname, request.body.benutzername, request.body.passwort, request.body.isAdmin, request.body.adresse.id, request.body.email);
         console.log('Service Kunde: Record updated, id=' + request.body.id);
         response.status(200).json(obj);
     } catch (ex) {

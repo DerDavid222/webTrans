@@ -7,14 +7,8 @@
 CREATE TABLE Dienstleistung (
 	id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	bezeichnung TEXT NOT NULL,
-	beschreibung TEXT NOT NULL
-);
-
-CREATE TABLE Dienstleistungbild (
-	id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-	bildpfad TEXT NOT NULL,
-	dienstleistungId INTEGER NOT NULL,
-	CONSTRAINT fk_Dienstleistungbild1 FOREIGN KEY (dienstleistungId) REFERENCES Dienstleistung(id)
+	beschreibung TEXT NOT NULL,
+	bildpfad TEXT NOT NULL
 );
 
 CREATE TABLE Dienstleistungdetails (
