@@ -7,7 +7,7 @@
 CREATE TABLE Dienstleistung (
 	id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	bezeichnung TEXT NOT NULL,
-	beschreibung TEXT NOT NULL,
+	beschreibung TEXT NOT NULL
 );
 
 CREATE TABLE Dienstleistungbild (
@@ -33,7 +33,7 @@ CREATE TABLE Adresse (
 	strasse TEXT NOT NULL,
 	hausnummer TEXT NOT NULL,
 	plz TEXT NOT NULL,
-	ort TEXT NOT NULL,
+	ort TEXT NOT NULL
 );
 
 CREATE TABLE Kunde (
@@ -43,6 +43,7 @@ CREATE TABLE Kunde (
 	nachname TEXT NOT NULL,
 	benutzername TEXT NOT NULL,
 	passwort TEXT NOT NULL,
+	isAdmin INTEGER NOT NULL DEFAULT 0,
 	adresseId INTEGER NOT NULL,
 	email TEXT NOT NULL,
 	CONSTRAINT fk_Kunde1 FOREIGN KEY (adresseId) REFERENCES Adresse(id)
