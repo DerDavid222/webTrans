@@ -3,7 +3,7 @@
   <head>
     <link rel="stylesheet" href="../css/header_stylesheet.css" />
     <link rel="stylesheet" href="../css/footer_stylesheet.css" />
-    <link rel="stylesheet" href="../css/adminpage_stylesheet.css" />
+    <link rel="stylesheet" href="../css/logout_stylesheet.css" />
 
     <script
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
@@ -14,12 +14,10 @@
       src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
       data-auto-a11y="true"
     ></script>
-    <script src="../javascript/userLogin.js"></script>
-
     <script>
-      // schutz der seite, nur angemeldete admins haben zugang, alle anderen werden zur login seite geleitet
-      if (!isAdminLoggedIn()) window.location.href = "login.html";
+      removeSessionItem("loggedUser"); // dies ist der eigentliche logout
     </script>
+    <script src="../javascript/userLogin.js"></script>
 
     <meta charset="utf-8" />
     <title>WebTrans</title>
@@ -39,7 +37,7 @@
 
         <ul class="nav_ul">
           <li>
-            <a href="start.html">Start</a>
+            <a href="start.html" class="active">Start</a>
           </li>
           <li>
             <a href="dienstleistungen.html">Dienstleistungen</a>
@@ -48,74 +46,34 @@
             <a href="anfrage.html">Anfrage</a>
           </li>
           <li>
-            <a href="adminpage.html" class="active" id="idadmin">Adminpage</a>
+            <a href="adminpage.html" id="idadmin">Adminpage</a>
           </li>
         </ul>
       </nav>
     </header>
 
     <!-----------------------------------BODY----------------------------------------------------->
-
     <main>
-      <section class="table_section">
-        <table>
-          <tr>
-            <th>Benutzername</th>
-            <th>Name</th>
-            <th>Vorname</th>
-            <th>E-Mail</th>
-            <th>Anschrift</th>
-            <th>PLZ</th>
-            <th>Ort</th>
-          </tr>
-          <tr>
-            <td>MaxMustermann</td>
-            <td>Mustermann</td>
-            <td>Max</td>
-            <td>max.mustermann@gmx.de</td>
-            <td>Musterstr. 12</td>
-            <td>12345</td>
-            <td>Musterstadt</td>
-          </tr>
-          <tr>
-            <td>Batman</td>
-            <td>Wayne</td>
-            <td>Bruce</td>
-            <td>bat.man@gmx.de</td>
-            <td>Batcave 42</td>
-            <td>54321</td>
-            <td>Gotham</td>
-          </tr>
-          <tr>
-            <td>PeterPan</td>
-            <td>Pan</td>
-            <td>Peter</td>
-            <td>peterpan@gmx.de</td>
-            <td>Nimmerweg 23</td>
-            <td>98765</td>
-            <td>Nimmerland</td>
-          </tr>
-          <tr>
-            <td class="lastrow"><button>Bearbeiten</button></td>
-            <td class="lastrow"><button>Löschen</button></td>
-            <td class="lastrow"></td>
-            <td class="lastrow"></td>
-            <td class="lastrow"></td>
-            <td class="lastrow"></td>
-            <td class="lastrow"></td>
-          </tr>
-        </table>
+      <section>
+        <img src="../Bilder/truck_start.jpg" class="start_img" />
+        <section class="about-us-section">
+          <h1>Logout</h1>
+          <span>Sie wurden erfolgreich ausgeloggt.</span>
+          <hr />
+          </section>
+        </section>
       </section>
     </main>
+    <!-----------------------------------BODY----------------------------------------------------->
 
-    <!-----------------------------------FOOTER------------------------------------->
+    <!-----------------------------------FOOTER--------------------------------------------------->
     <footer>
       <ul>
         <li>
           <h3 class="footer-text">Kontakt & Impressum</h3>
         </li>
         <li class="footer-text">Max Mustermann</li>
-        <li class="footer-text">Musterstraße 6</li>
+        <li class="footer-text">Musterstadt 6</li>
         <li class="footer-text">72525 Musterstadt</li>
         <li class="footer-text">Tel: 0152 3456789</li>
         <li><a href="impressum.html" class="footer-text">Impressum</a></li>
