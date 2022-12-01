@@ -1,6 +1,6 @@
 const helper = require('../helper.js');
 
-class MehrwertsteuerDao {
+class DienstleistungdetailsDao {
 
     constructor(dbConnection) {
         this._conn = dbConnection;
@@ -11,7 +11,7 @@ class MehrwertsteuerDao {
     }
 
     loadById(id) {
-        var sql = 'SELECT * FROM Mehrwertsteuer WHERE id=?';
+        var sql = 'SELECT * FROM Dienstleistungdetails WHERE id=?';
         var statement = this._conn.prepare(sql);
         var result = statement.get(id);
 
@@ -22,7 +22,7 @@ class MehrwertsteuerDao {
     }
 
     loadAll() {
-        var sql = 'SELECT * FROM Mehrwertsteuer';
+        var sql = 'SELECT * FROM Dienstleistungdetails';
         var statement = this._conn.prepare(sql);
         var result = statement.all();
 
@@ -33,7 +33,7 @@ class MehrwertsteuerDao {
     }
 
     exists(id) {
-        var sql = 'SELECT COUNT(id) AS cnt FROM Mehrwertsteuer WHERE id=?';
+        var sql = 'SELECT COUNT(id) AS cnt FROM Dienstleistungdetails WHERE id=?';
         var statement = this._conn.prepare(sql);
         var result = statement.get(id);
 
@@ -43,10 +43,10 @@ class MehrwertsteuerDao {
         return false;
     }
 
-    create(bezeichnung = '', steuersatz = 19.0) {
-        var sql = 'INSERT INTO Mehrwertsteuer (bezeichnung,steuerSatz) VALUES (?,?)';
+    create(ueberschrift = '', preisinformationen = '', beschreibung='', dienstleistungId = 1) {
+        var sql = 'INSERT INTO Dienstleistungdetails (ueberschrift,preisinformationen,beschreibung,dienstleistungId) VALUES (?,?,?,?)';
         var statement = this._conn.prepare(sql);
-        var params = [bezeichnung, steuersatz];
+        var params = [ueberschrift, preisinformationen, beschreibung, dienstleistungId];
         var result = statement.run(params);
 
         if (result.changes != 1) 
@@ -55,10 +55,10 @@ class MehrwertsteuerDao {
         return this.loadById(result.lastInsertRowid);
     }
 
-    update(id, bezeichnung = '', steuersatz = 19.0) {
-        var sql = 'UPDATE Mehrwertsteuer SET bezeichnung=?,steuerSatz=? WHERE id=?';
+    update(id, ueberschrift = '', preisinformationen = '', beschreibung='', dienstleistungId = 1) {
+        var sql = 'UPDATE Dienstleistungdetails SET ueberschrift=?,preisinformationen=?,beschreibung=?,dienstleistungId=? WHERE id=?';
         var statement = this._conn.prepare(sql);
-        var params = [bezeichnung, steuersatz, id];
+        var params = [ueberschrift, preisinformationen, beschreibung, dienstleistungId, id];
         var result = statement.run(params);
 
         if (result.changes != 1) 
@@ -69,7 +69,7 @@ class MehrwertsteuerDao {
 
     delete(id) {
         try {
-            var sql = 'DELETE FROM Mehrwertsteuer WHERE id=?';
+            var sql = 'DELETE FROM Dienstleistungdetails WHERE id=?';
             var statement = this._conn.prepare(sql);
             var result = statement.run(id);
 
@@ -83,8 +83,8 @@ class MehrwertsteuerDao {
     }
 
     toString() {
-        console.log('MehrwertsteuerDao [_conn=' + this._conn + ']');
+        console.log('DienstleistungdetailsDao [_conn=' + this._conn + ']');
     }
 }
 
-module.exports = MehrwertsteuerDao;
+module.exports = DienstleistungdetailsDao;

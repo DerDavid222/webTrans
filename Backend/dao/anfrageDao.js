@@ -1,6 +1,6 @@
 const helper = require('../helper.js');
 
-class LandDao {
+class AnfrageDao {
 
     constructor(dbConnection) {
         this._conn = dbConnection;
@@ -11,7 +11,7 @@ class LandDao {
     }
 
     loadById(id) {
-        var sql = 'SELECT * FROM Land WHERE id=?';
+        var sql = 'SELECT * FROM Anfrage WHERE id=?';
         var statement = this._conn.prepare(sql);
         var result = statement.get(id);
 
@@ -22,7 +22,7 @@ class LandDao {
     }
 
     loadAll() {
-        var sql = 'SELECT * FROM Land';
+        var sql = 'SELECT * FROM Anfrage';
         var statement = this._conn.prepare(sql);
         var result = statement.all();
 
@@ -33,7 +33,7 @@ class LandDao {
     }
 
     exists(id) {
-        var sql = 'SELECT COUNT(id) AS cnt FROM Land WHERE id=?';
+        var sql = 'SELECT COUNT(id) AS cnt FROM Anfrage WHERE id=?';
         var statement = this._conn.prepare(sql);
         var result = statement.get(id);
 
@@ -43,10 +43,10 @@ class LandDao {
         return false;
     }
 
-    create(kennzeichnung = '', bezeichnung = '') {
-        var sql = 'INSERT INTO Land (kennzeichnung,bezeichnung) VALUES (?,?)';
+    create(kundeId = 1, dienstleistungId = 1, auftragszweck ='', beschreibung = '', ausfuehrungsdatum = null) {
+        var sql = 'INSERT INTO Anfrage (kundeId,dienstleistungId,auftragszweck,beschreibung,ausfuehrungsdatum) VALUES (?,?,?,?,?)';
         var statement = this._conn.prepare(sql);
-        var params = [kennzeichnung, bezeichnung];
+        var params = [kundeId, dienstleistungId, auftragszweck, beschreibung, ausfuehrungsdatum];
         var result = statement.run(params);
 
         if (result.changes != 1) 
@@ -55,10 +55,10 @@ class LandDao {
         return this.loadById(result.lastInsertRowid);
     }
 
-    update(id, kennzeichnung = '', bezeichnung = '') {
-        var sql = 'UPDATE Land SET kennzeichnung=?,bezeichnung=? WHERE id=?';
+    update(id, kundeId = 1, dienstleistungId = 1, auftragszweck ='', beschreibung = '', ausfuehrungsdatum = null) {
+        var sql = 'UPDATE Anfrage SET kundeId=?,dienstleistungId=?,auftragszweck=?,beschreibung=?,ausfuehrungsdatum=? WHERE id=?';
         var statement = this._conn.prepare(sql);
-        var params = [kennzeichnung, bezeichnung, id];
+        var params = [kundeId, dienstleistungId, auftragszweck, beschreibung, ausfuehrungsdatum, id];
         var result = statement.run(params);
 
         if (result.changes != 1) 
@@ -69,7 +69,7 @@ class LandDao {
 
     delete(id) {
         try {
-            var sql = 'DELETE FROM Land WHERE id=?';
+            var sql = 'DELETE FROM Anfrage WHERE id=?';
             var statement = this._conn.prepare(sql);
             var result = statement.run(id);
 
@@ -83,8 +83,8 @@ class LandDao {
     }
 
     toString() {
-        console.log('LandDao [_conn=' + this._conn + ']');
+        console.log('AnfrageDao [_conn=' + this._conn + ']');
     }
 }
 
-module.exports = LandDao;
+module.exports = AnfrageDao;
