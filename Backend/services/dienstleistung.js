@@ -54,10 +54,9 @@ serviceRouter.post('/dienstleistung', function(request, response) {
     if (helper.isUndefined(request.body.bezeichnung)) 
         errorMsgs.push('bezeichnung fehlt');
     if (helper.isUndefined(request.body.beschreibung)) 
-        errorMsgs.push('beschreibung fehlt');   
-    
-    if (helper.isUndefined(request.body.bilder)) 
-        request.body.bilder = [];
+        errorMsgs.push('beschreibung fehlt');
+    if (helper.isUndefined(request.body.bildpfad)) 
+        errorMsgs.push('bildpfad fehlt');
     
     if (errorMsgs.length > 0) {
         console.log('Service Dienstleistung: Creation not possible, data missing');
@@ -67,7 +66,7 @@ serviceRouter.post('/dienstleistung', function(request, response) {
 
     const dienstleistungDao = new DienstleistungDao(request.app.locals.dbConnection);
     try {
-        var obj = dienstleistungDao.create(request.body.kategorie.id, request.body.bezeichnung, request.body.beschreibung, request.body.mehrwertsteuer.id, request.body.details, request.body.nettopreis, request.body.datenblatt, request.body.bilder);
+        var obj = dienstleistungDao.create(request.body.bezeichnung, request.body.beschreibung, request.body.bildpfad);
         console.log('Service Dienstleistung: Record inserted');
         response.status(200).json(obj);
     } catch (ex) {
@@ -86,8 +85,8 @@ serviceRouter.put('/dienstleistung', function(request, response) {
         errorMsgs.push('bezeichnung fehlt');
     if (helper.isUndefined(request.body.beschreibung)) 
         errorMsgs.push('beschreibung fehlt');       
-    if (helper.isUndefined(request.body.bilder)) 
-        request.body.bilder = [];
+    if (helper.isUndefined(request.body.bildpfad)) 
+        errorMsgs.push('bildpfad fehlt');
 
     if (errorMsgs.length > 0) {
         console.log('Service Dienstleistung: Update not possible, data missing');
@@ -97,7 +96,7 @@ serviceRouter.put('/dienstleistung', function(request, response) {
 
     const dienstleistungDao = new DienstleistungDao(request.app.locals.dbConnection);
     try {
-        var obj = dienstleistungDao.update(request.body.id, request.body.kategorie.id, request.body.bezeichnung, request.body.beschreibung, request.body.mehrwertsteuer.id, request.body.details, request.body.nettopreis, request.body.datenblatt, request.body.bilder);
+        var obj = dienstleistungDao.update(request.body.id, request.body.bezeichnung, request.body.beschreibung, request.body.bildpfad);
         console.log('Service Dienstleistung: Record updated, id=' + request.body.id);
         response.status(200).json(obj);
     } catch (ex) {

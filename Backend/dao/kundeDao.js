@@ -79,9 +79,9 @@ class KundeDao {
     }
 
     update(id, anrede = 'Herr', vorname = '', nachname = '', benutzername ='', passwort='', isAdmin=0, adresseId = 1, email = '') {
-        var sql = 'UPDATE Kunde SET anrede=?,vorname=?,nachname=?,benutzername=?,adresseId=?,telefonnummer=?,email=?,geburtstag=? WHERE id=?';
+        var sql = 'UPDATE Kunde SET anrede=?,vorname=?,nachname=?,benutzername=?,passwort=?,isAdmin=?,adresseId=?,email=? WHERE id=?';
         var statement = this._conn.prepare(sql);
-        var params = [(helper.strStartsWith(anrede, 'He') ? 0 : 1), vorname, nachname, benutzername, passwort, isAdmin, adresseId, email];
+        var params = [(helper.strStartsWith(anrede, 'He') ? 0 : 1), vorname, nachname, benutzername, passwort, isAdmin, adresseId, email, id];
         var result = statement.run(params);
 
         if (result.changes != 1) 

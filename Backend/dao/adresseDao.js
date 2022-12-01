@@ -44,7 +44,7 @@ class AdresseDao {
     }
 
     create(strasse='', hausnummer='', plz='', ort='') {
-        var sql = 'INSERT INTO Adresse (strasse,hausnummer,plz,ort) VALUES (?,?)';
+        var sql = 'INSERT INTO Adresse (strasse,hausnummer,plz,ort) VALUES (?,?,?,?)';
         var statement = this._conn.prepare(sql);
         var params = [strasse, hausnummer, plz, ort];
         var result = statement.run(params);
