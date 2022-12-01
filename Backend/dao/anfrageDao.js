@@ -1,4 +1,6 @@
 const helper = require('../helper.js');
+const KundeDao = require('./kundeDao.js');
+
 
 class AnfrageDao {
 
@@ -11,6 +13,8 @@ class AnfrageDao {
     }
 
     loadById(id) {
+        const kundeDao = new KundeDao(this._conn);
+
         var sql = 'SELECT * FROM Anfrage WHERE id=?';
         var statement = this._conn.prepare(sql);
         var result = statement.get(id);
@@ -18,10 +22,15 @@ class AnfrageDao {
         if (helper.isUndefined(result)) 
             throw new Error('No Record found by id=' + id);
 
+        result.kunde = kundeDao.loadById(result.kundeId);
+        delete result.kundeId;
+
         return result;
     }
 
     loadAll() {
+        const kundeDao = new KundeDao(this._conn);
+
         var sql = 'SELECT * FROM Anfrage';
         var statement = this._conn.prepare(sql);
         var result = statement.all();
@@ -29,6 +38,11 @@ class AnfrageDao {
         if (helper.isArrayEmpty(result)) 
             return [];
         
+        for (var i = 0; i < result.length; i++) {
+            result[i].kunde = kundeDao.loadById(result[i].kundeId);
+            delete result[i].kundeId;            
+        }
+
         return result;
     }
 

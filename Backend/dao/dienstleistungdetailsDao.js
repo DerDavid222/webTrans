@@ -1,4 +1,6 @@
 const helper = require('../helper.js');
+const DienstleistungDao = require('./dienstleistungDao.js');
+
 
 class DienstleistungdetailsDao {
 
@@ -11,6 +13,8 @@ class DienstleistungdetailsDao {
     }
 
     loadById(id) {
+        const dienstleistungDao = new DienstleistungDao(this._conn);
+
         var sql = 'SELECT * FROM Dienstleistungdetails WHERE id=?';
         var statement = this._conn.prepare(sql);
         var result = statement.get(id);
@@ -18,16 +22,26 @@ class DienstleistungdetailsDao {
         if (helper.isUndefined(result)) 
             throw new Error('No Record found by id=' + id);
 
+        result.dienstleistung = dienstleistungDao.loadById(result.dienstleistungId);
+        delete result.dienstleistungId;
+
         return result;
     }
 
     loadAll() {
+        const dienstleistungDao = new DienstleistungDao(this._conn);
+
         var sql = 'SELECT * FROM Dienstleistungdetails';
         var statement = this._conn.prepare(sql);
         var result = statement.all();
 
         if (helper.isArrayEmpty(result)) 
             return [];
+
+        for (var i = 0; i < result.length; i++) {
+            result[i].dienstleistung = dienstleistungDao.loadById(result[i].dienstleistungId);
+            delete result[i].dienstleistungId;            
+        }
         
         return result;
     }
