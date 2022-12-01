@@ -1,8 +1,9 @@
 const helper = require('../helper.js');
-const AdresseDao = require('./adresseDao.js');
 const KundeDao = require('./kundeDao.js');
+const DienstleistungDao = require('./dienstleistungDao.js');
 
-class FirmaDao {
+
+class AnfrageDao {
 
     constructor(dbConnection) {
         this._conn = dbConnection;
@@ -13,57 +14,49 @@ class FirmaDao {
     }
 
     loadById(id) {
-        const adresseDao = new AdresseDao(this._conn);
         const kundeDao = new KundeDao(this._conn);
+        const dienstleistungDao = new DienstleistungDao(this._conn);
 
-        var sql = 'SELECT * FROM Firma WHERE id=?';
+        var sql = 'SELECT * FROM Anfrage WHERE id=?';
         var statement = this._conn.prepare(sql);
         var result = statement.get(id);
 
         if (helper.isUndefined(result)) 
             throw new Error('No Record found by id=' + id);
 
-        result.adresse = adresseDao.loadById(result.adresseId);
-        delete result.adresseId;
+        result.dienstleistung = dienstleistungDao.loadById(result.dienstleistungId);
+        delete result.dienstleistungId;
 
-        if (helper.isNull(result.ansprechpartnerId)) {
-            result.ansprechpartner = null;
-        } else {
-            result.ansprechpartner = kundeDao.loadById(result.ansprechpartnerId);
-        }
-        delete result.ansprechpartnerId;
+        result.kunde = kundeDao.loadById(result.kundeId);
+        delete result.kundeId;
 
         return result;
     }
 
     loadAll() {
-        const adresseDao = new AdresseDao(this._conn);
         const kundeDao = new KundeDao(this._conn);
+        const dienstleistungDao = new DienstleistungDao(this._conn);
 
-        var sql = 'SELECT * FROM Firma';
+        var sql = 'SELECT * FROM Anfrage';
         var statement = this._conn.prepare(sql);
         var result = statement.all();
 
         if (helper.isArrayEmpty(result)) 
             return [];
-
+        
         for (var i = 0; i < result.length; i++) {
-            result[i].adresse = adresseDao.loadById(result[i].adresseId);
-            delete result[i].adresseId;
+            result[i].dienstleistung = dienstleistungDao.loadById(result[i].dienstleistungId);
+            delete result[i].dienstleistungId;
 
-            if (helper.isNull(result[i].ansprechpartnerId)) {
-                result[i].ansprechpartner = null;
-            } else {
-                result[i].ansprechpartner = kundeDao.loadById(result[i].ansprechpartnerId);
-            }
-            delete result[i].ansprechpartnerId;
+            result[i].kunde = kundeDao.loadById(result[i].kundeId);
+            delete result[i].kundeId;            
         }
 
         return result;
     }
 
     exists(id) {
-        var sql = 'SELECT COUNT(id) AS cnt FROM Firma WHERE id=?';
+        var sql = 'SELECT COUNT(id) AS cnt FROM Anfrage WHERE id=?';
         var statement = this._conn.prepare(sql);
         var result = statement.get(id);
 
@@ -73,10 +66,10 @@ class FirmaDao {
         return false;
     }
 
-    create(name = '', inhaber = null, beschreibung = '', adresseId = 1, ansprechpartnerId = null) {
-        var sql = 'INSERT INTO Firma (name,inhaber,beschreibung,adresseId,ansprechpartnerId) VALUES (?,?,?,?,?)';
+    create(kundeId = 1, dienstleistungId = 1, auftragszweck ='', beschreibung = '', ausfuehrungsdatum = null) {
+        var sql = 'INSERT INTO Anfrage (kundeId,dienstleistungId,auftragszweck,beschreibung,ausfuehrungsdatum) VALUES (?,?,?,?,?)';
         var statement = this._conn.prepare(sql);
-        var params = [name, inhaber, beschreibung, adresseId, ansprechpartnerId];
+        var params = [kundeId, dienstleistungId, auftragszweck, beschreibung, ausfuehrungsdatum];
         var result = statement.run(params);
 
         if (result.changes != 1) 
@@ -85,10 +78,10 @@ class FirmaDao {
         return this.loadById(result.lastInsertRowid);
     }
 
-    update(id, name = '', inhaber = null, beschreibung = '', adresseId = 1, ansprechpartnerId = null, brancheId = 1) {
-        var sql = 'UPDATE Firma SET name=?,inhaber=?,beschreibung=?,adresseId=?,ansprechpartnerId=? WHERE id=?';
+    update(id, kundeId = 1, dienstleistungId = 1, auftragszweck ='', beschreibung = '', ausfuehrungsdatum = null) {
+        var sql = 'UPDATE Anfrage SET kundeId=?,dienstleistungId=?,auftragszweck=?,beschreibung=?,ausfuehrungsdatum=? WHERE id=?';
         var statement = this._conn.prepare(sql);
-        var params = [name, inhaber, beschreibung, adresseId, ansprechpartnerId, id];
+        var params = [kundeId, dienstleistungId, auftragszweck, beschreibung, ausfuehrungsdatum, id];
         var result = statement.run(params);
 
         if (result.changes != 1) 
@@ -99,7 +92,7 @@ class FirmaDao {
 
     delete(id) {
         try {
-            var sql = 'DELETE FROM Firma WHERE id=?';
+            var sql = 'DELETE FROM Anfrage WHERE id=?';
             var statement = this._conn.prepare(sql);
             var result = statement.run(id);
 
@@ -113,8 +106,8 @@ class FirmaDao {
     }
 
     toString() {
-        console.log('FirmaDao [_conn=' + this._conn + ']');
+        console.log('AnfrageDao [_conn=' + this._conn + ']');
     }
 }
 
-module.exports = FirmaDao;
+module.exports = AnfrageDao;

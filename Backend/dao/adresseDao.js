@@ -1,5 +1,4 @@
 const helper = require('../helper.js');
-const LandDao = require('./landDao.js');
 
 class AdresseDao {
 
@@ -12,8 +11,6 @@ class AdresseDao {
     }
 
     loadById(id) {
-        const landDao = new LandDao(this._conn);
-
         var sql = 'SELECT * FROM Adresse WHERE id=?';
         var statement = this._conn.prepare(sql);
         var result = statement.get(id);
@@ -21,27 +18,17 @@ class AdresseDao {
         if (helper.isUndefined(result)) 
             throw new Error('No Record found by id=' + id);
 
-        result.land = landDao.loadById(result.landId);
-        delete result.landId;
-
         return result;
     }
 
     loadAll() {
-        const landDao = new LandDao(this._conn);
-
         var sql = 'SELECT * FROM Adresse';
         var statement = this._conn.prepare(sql);
         var result = statement.all();
 
         if (helper.isArrayEmpty(result)) 
             return [];
-
-        for (var i = 0; i < result.length; i++) {
-            result[i].land = landDao.loadById(result[i].landId);
-            delete result[i].landId;            
-        }
-
+        
         return result;
     }
 
@@ -56,10 +43,10 @@ class AdresseDao {
         return false;
     }
 
-    create(strasse = '', hausnummer = '', adresszusatz = '', plz = '', ort = '', landId = 1) {
-        var sql = 'INSERT INTO Adresse (strasse,hausnummer,adresszusatz,plz,ort,landId) VALUES (?,?,?,?,?,?)';
+    create(strasse='', hausnummer='', plz='', ort='') {
+        var sql = 'INSERT INTO Adresse (strasse,hausnummer,plz,ort) VALUES (?,?,?,?)';
         var statement = this._conn.prepare(sql);
-        var params = [strasse, hausnummer, adresszusatz, plz, ort, landId];
+        var params = [strasse, hausnummer, plz, ort];
         var result = statement.run(params);
 
         if (result.changes != 1) 
@@ -68,10 +55,10 @@ class AdresseDao {
         return this.loadById(result.lastInsertRowid);
     }
 
-    update(id, strasse = '', hausnummer = '', adresszusatz = '', plz = '', ort = '', landId = 1) {
-        var sql = 'UPDATE Adresse SET strasse=?,hausnummer=?,adresszusatz=?,plz=?,ort=?,landId=? WHERE id=?';
+    update(id, strasse='', hausnummer='', plz='', ort='') {
+        var sql = 'UPDATE Adresse SET strasse=?,hausnummer=?,plz=?,ort=? WHERE id=?';
         var statement = this._conn.prepare(sql);
-        var params = [strasse, hausnummer, adresszusatz, plz, ort, landId, id];
+        var params = [strasse, hausnummer, plz, ort, id];
         var result = statement.run(params);
 
         if (result.changes != 1) 
