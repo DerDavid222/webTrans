@@ -80,6 +80,12 @@ main td{
   width: 100%;
 }
 
+.input_maße{
+  margin-bottom: 10px;
+  font-size: 18px;
+  width: 50px;
+}
+
 .submit_btn{
   width: fit-content;
   padding:2px;

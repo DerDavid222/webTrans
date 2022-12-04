@@ -3,7 +3,8 @@
   <head>
     <link rel="stylesheet" href="../css/header_stylesheet.css" />
     <link rel="stylesheet" href="../css/footer_stylesheet.css" />
-    <link rel="stylesheet" href="../css/detailansicht.css" />
+    <link rel="stylesheet" href="grundgeruest.html" />
+    <link rel="stylesheet" href="../css/impressum_stylesheet.css" />
 
     <script
       src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
@@ -12,7 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <meta charset="utf-8" />
-    <title>Detailansicht</title>
+    <title>WebTrans</title>
   </head>
 
   <body>
@@ -44,56 +45,42 @@
       </nav>
     </header>
 
-    <!-----------------------------------MAIN------------------------------------->
+    <!-----------------------------------BODY----------------------------------------------------->
     <main>
+            <section class="Überschrift">
+              <h1>Ihre Bestellübersicht</h1>
+              <h2>Vielen Dank für Ihre Bestellung!</h2>
+              <section class="Text">
+                <br />
+                Ihre Bestellung wird umgehend bearbeitet. <br /><br />
+                Folgende Dienstleistung bzw. Produkte haben Sie bestellt: <br /><br />
+            </section>
 
-      <section>
-        <h2 class="heading">
-          Transport jeglicher Art
-        </h2>
-      </section>
+            <section class="Bestelluebersicht">
+            <script>
 
-      <section class="card">
-        <img src="../Bilder/fuhrpark.jpg" alt="Truck1" class="picture"/>
-        <h1 class="heading2">Ideal für kleine Transporte</h1>
-        <h2 class="heading3">Preis richtet sich nach Gewicht und Abmessungen</h2>
-        <p class="description">
-          Unser moderner Fuhrpark besteht aus 80 Kühlfahrzeugen. Alle Fahrzeuge sind multitemperaturfähig.
-          Die LKW sind mit moderner Kühltechnik und mit 2 Kammern mit 2 separaten Verdampfern ausgestattet. Sie entsprechen den aktuellen hygienerechtlichen und sicherheitstechnischen Anforderungen.
-          Für die Wartung und Fahrzeugpflege unterhalten wir am Standort Balingen eine eigene Werkstatt sowie eine LKW-Waschanlage.
-          Unsere erfahrenen und gut ausgebildeteten Mitarbeiter/innnen arbeiten unbürokratisch und zielorientiert.
-          Wir erbringen einen erstklassige Leistung zu marktgerechten Preisen. Mit kurzen Entscheidungswegen und einem großen
-          Eigenfuhrpark mit modernsten Fahrzeugen garantieren wir unseren Kunden maximale Flexibilität.
-          Bei all' unserem Handeln steht der Nachhaltigkeitsgedanke mit im Vordergrund
-        </p>
+            function Anfrageuebersicht(){
+            InputText = document.getElementById("vorname").value;
+            document.getElementById('vorname').innerHTML=InputText; //InnerHTML schreibt Ergebnis IN die aktuelle HTML
+            }
+            
+
+            </script> 
+
+            </section>
       
-        <button
-          type="button"
-          onclick="window.location.href='dienstleistungen.html'"
-          class="uebersicht_btn"
-        >
-          Übersicht
-        </button>
-
-        <button
-          type="button"
-          onclick="window.location.href='anfrage.html'"
-          class="anfrage_btn"
-        >
-          Anfrage
-        </button>
-
-      </section>
+        
     </main>
+    <!-----------------------------------BODY----------------------------------------------------->
 
-    <!-----------------------------------FOOTER------------------------------------->
+    <!-----------------------------------FOOTER--------------------------------------------------->
     <footer>
       <ul>
         <li>
           <h3 class="footer-text">Kontakt & Impressum</h3>
         </li>
         <li class="footer-text">Max Mustermann</li>
-        <li class="footer-text">Musterstraße 6</li>
+        <li class="footer-text">Musterstrasse 6</li>
         <li class="footer-text">72525 Musterstadt</li>
         <li class="footer-text">Tel: 0152 3456789</li>
         <li><a href="impressum.html" class="footer-text">Impressum</a></li>

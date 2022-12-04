@@ -90,8 +90,7 @@
                 <td></td>
                 <td>
                   <a href="registrierung.html"
-                    >Noch kein Kunde? Hier registrieren</a
-                  >
+                    >Noch kein Kunde? Hier registrieren</a>
                 </td>
               </tr>
               <tr>
@@ -116,7 +115,7 @@
                 <td class="input_label">Auftragszweck</td>
                 <td>
                   <section>
-                    <input type="radio" name="xor" id="Privat" value="privat" />
+                    <input type="radio" name="xor" id="Privat" value="privat" checked="checked" />
                     <label class="Beschreibung" for="Privat">Privat</label>
                   </section>
                   <section>
@@ -158,6 +157,56 @@
                 </td>
               </tr>
               <tr>
+                <td class="input_label">H&ouml;he</td>
+                <td>
+                  <input
+                    type="number"
+                    class="input_maße"
+                    name="Maße"
+                    id="Hoehe"
+                    min="0"
+                    max="10"
+                    step="0.01"
+                    value="2.0"> m
+                </input>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="input_label">Breite</td>
+                <td>
+                  <input
+                    type="number"
+                    class="input_maße"
+                    name="Maße"
+                    id="Breite"
+                    min="0"
+                    max="100"
+                    step="0.01"
+                    value="10.0"> m
+                </input>
+                </td>
+
+                <tr>
+                  <td class="input_label">L&auml;nge</td>
+                  <td>
+                    <input
+                      type="number"
+                      class="input_maße"
+                      name="Maße"
+                      id="Laenge"
+                      min="0"
+                      max="30"
+                      step="0.01"
+                      value="5.0"> m
+                  </input>
+                  </td>
+  
+                </tr>
+
+              </tr>
+
+              <tr>
                 <td class="input_label">Ausführungsdatum</td>
                 <td>
                   <input
@@ -172,14 +221,9 @@
               <tr></tr>
               <tr>
                 <td></td>
-                <td class="submit_td">
-                  <input
-                    class="submit_btn"
-                    id="submitbtn"
-                    type="submit"
-                    name="Senden"
-                    value="Absenden"
-                  />
+                <td>
+                  <a href="login.html"
+                    >Um eine Anfrage zu stellen, müssen Sie angemeldet sein!</a>
                 </td>
               </tr>
             </table>
