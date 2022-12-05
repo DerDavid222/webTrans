@@ -18,6 +18,7 @@ main{
   padding: 25px 25px 25px 25px;
 }
 
+
 .Text {
   font-weight: 500;
 }
@@ -103,6 +104,7 @@ main td{
 .submit_btn:hover{
   cursor: pointer;
 }
+
 
 @media only screen and (min-width: 960px) {
   main{

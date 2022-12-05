@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="../css/footer_stylesheet.css" />
     <link rel="stylesheet" href="grundgeruest.html" />
     <link rel="stylesheet" href="../css/impressum_stylesheet.css" />
+    <link rel="stylesheet" href="../css/bestellbestätigung_stylesheet.css" />
+
 
     <script
       src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
@@ -47,27 +49,77 @@
 
     <!-----------------------------------BODY----------------------------------------------------->
     <main>
+            <h2>Vielen Dank für Ihre Bestellung!</h2>
+
             <section class="Überschrift">
-              <h1>Ihre Bestellübersicht</h1>
-              <h2>Vielen Dank für Ihre Bestellung!</h2>
-              <section class="Text">
                 <br />
                 Ihre Bestellung wird umgehend bearbeitet. <br /><br />
                 Folgende Dienstleistung bzw. Produkte haben Sie bestellt: <br /><br />
             </section>
 
-            <section class="Bestelluebersicht">
-            <script>
+<section class="Formular_Bestellbestätigung">
+  <form class="FormularGesamt" name="Auftrag">
+    <h1>Bestellbest&auml;tigung</h1>
+    <table>
+      <tr>
+        <td class="input_label">Benutzername</td>
+        <td>
+        </td>
+        <td class="TopPad"></td>
+      </tr>
 
-            function Anfrageuebersicht(){
-            InputText = document.getElementById("vorname").value;
-            document.getElementById('vorname').innerHTML=InputText; //InnerHTML schreibt Ergebnis IN die aktuelle HTML
-            }
-            
+      <tr class="TopPad">
+        <td class="input_label">Dienstleistung</td>
+        <td>
+        </td>
+      </tr>
 
-            </script> 
+      <tr>
+        <td class="input_label">Auftragszweck</td>
+        <td>
+        </td>
+      </tr>
 
-            </section>
+      <tr>
+        <td class="input_label">Beschreibung</td>
+        <td>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="input_label">H&ouml;he</td>
+        <td>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="input_label">Breite</td>
+        <td>
+        </td>
+
+        <tr>
+          <td class="input_label">L&auml;nge</td>
+          <td>
+          </td>
+        </tr>
+
+      </tr>
+
+      <tr>
+        <td class="input_label">Ausführungsdatum</td>
+        <td>
+        </td>
+      </tr>
+
+      <tr></tr>
+      <tr>
+        <td></td>
+        
+      </tr>
+    </table>
+  </form>
+</section>
+
       
         
     </main>
