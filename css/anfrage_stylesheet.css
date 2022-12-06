@@ -18,6 +18,7 @@ main{
   padding: 25px 25px 25px 25px;
 }
 
+
 .Text {
   font-weight: 500;
 }
@@ -80,6 +81,12 @@ main td{
   width: 100%;
 }
 
+.input_maße{
+  margin-bottom: 10px;
+  font-size: 18px;
+  width: 50px;
+}
+
 .submit_btn{
   width: fit-content;
   padding:2px;
@@ -97,6 +104,7 @@ main td{
 .submit_btn:hover{
   cursor: pointer;
 }
+
 
 @media only screen and (min-width: 960px) {
   main{
