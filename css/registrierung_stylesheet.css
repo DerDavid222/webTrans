@@ -58,6 +58,12 @@ main td{
     color: #FFFFFF;
 }
 
+.Beschreibung{
+    font-size: 18px;
+    font-weight: 500;
+    
+}
+
 .submit_btn:hover{
     cursor: pointer;
 }

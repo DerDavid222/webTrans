@@ -21,6 +21,38 @@
   </head>
 
   <body>
+    <!-----------------------------------SCRIPT------------------------------------->
+    <script>
+      $(document).ready(function() {
+            console.log('Document ready, loading data from Service');
+
+            $.ajax({
+                url: 'http://localhost:8000/api/dienstleistung/alle',
+                method: 'get',
+                contentType: 'application/json; charset=utf-8',
+                cache: false,
+				        dataType: 'json'
+            }).done(function (response) {
+                console.log('Data loaded successfully');
+                console.log(response);
+
+                $(response).each(function(idx, item){
+                  console.log(idx);
+                  console.log(item);
+                  let content = "<section class='dl_section'>";
+                  content += "<section class='img_section'>";
+                  content += "<img src='" + item.bildpfad + "'class='dl_bild' alt='Dienstleistungbild'/>";
+                  content += "</section>";
+                  content += "<section class='text_section'>"
+                  content += "<h3>" + item.bezeichnung + "</h3>"
+                  content += "<p class='dl_p'>" + item.beschreibung + "</p>"
+                  content += "<section class='btn_section'> <button type='button' onclick=\"window.location.href='detailansicht.html'\">Detailansicht</button> <button type='button' onclick=\"window.location.href='anfrage.html';\">Anfrage</button></section></section></section>"
+                  
+                  $(document.getElementsByTagName("main")).append(content);
+                });
+            });
+        });
+    </script>
     <!-----------------------------------HEADER------------------------------------->
     <header>
       <img src="../Bilder/WebTransLogoNeu.jpg" class="logo" alt="Firmen_Logo" />
@@ -50,199 +82,7 @@
     </header>
 
     <!-------------------------------MAIN------------------------------------------->
-    <main>
-      <section class="dl_section">
-        <section class="img_section">
-          <img
-            src="../Bilder/WebTransLogoNeu.jpg"
-            class="dl_bild"
-            alt="Firmen_Logo"
-          />
-        </section>
-        <section class="text_section">
-          <h3>Europaweite Teil-und Komplettladungen</h3>
-          <p class="dl_p">
-            Wir realisieren für Sie die optimale Planung und einen ökonomischen Transport von Teil - und Komplettladungen
-            europaweit. Unsere Mitarbeiter/innen unterstützen Ihre Transportplanung und stellen Ihnen Anforderungen entsprechenden
-            Laderaum, termingerecht zur Verfügung.
-          </p>
-          <section class="btn_section">
-            <button
-              type="button"
-              onclick="window.location.href='detailansicht.html'"
-            >
-              Detailansicht
-            </button>
-            <button
-              type="button"
-              onclick="window.location.href='anfrage.html';"
-            >
-              Anfrage
-            </button>
-          </section>
-        </section>
-      </section>
-
-      <section class="dl_section">
-        <section class="img_section">
-          <img
-            src="../Bilder/WebTransLogoNeu.jpg"
-            class="dl_bild"
-            alt="Firmen_Logo"
-          />
-        </section>
-        <section class="text_section">
-          <h3>Weiltweiter Stückgutverkehr</h3>
-          <p class="dl_p">
-            Mit einem umfassenden Frachtnetzwerk für Sammelguttransporte in ganz Europa ermöglicht WebTrans eine präzise Transportplanung für die Lieferung Ihrer Güter. 
-            Wir sind täglich in ganz Europa unterwegs und bieten feste Kapazitäten und hohe Flexibilität.
-            Wir bieten Ihnen massgeschneiderte Konzepte für Sammelguttransporte auf Basis direkter und regelmässiger Abfahrten mit zuverlässigen Lieferzeiten.
-          </p>
-          <section class="btn_section">
-            <button
-              type="button"
-              onclick="window.location.href='detailansicht.html'"
-            >
-              Detailansicht
-            </button>
-            <button
-              type="button"
-              onclick="window.location.href='anfrage.html';"
-            >
-              Anfrage
-            </button>
-          </section>
-        </section>
-      </section>
-
-      <section class="dl_section">
-        <section class="img_section">
-          <img
-            src="../Bilder/WebTransLogoNeu.jpg"
-            class="dl_bild"
-            alt="Firmen_Logo"
-          />
-        </section>
-        <section class="text_section">
-          <h3>Spezial - und Gefahrguttransporte</h3>
-          <p class="dl_p">
-            Spezielle Aufträge und insbesonders als Gefahrgut deklarierte Lasten transportieren wir ganz routiniert, weil sie unser Tagesgeschäft sind.
-            Um allen Anforderungen gerecht werden zu können, sind unsere Fahrzeuge mit der notwendigen Technik für den Transport gefährlicher Güter ausgestattet. Unser Fahrpersonal und unsere Disponenten sind im Umgang mit Gefahrgut bestens geschult. 
-            Es ist ihre Erfahrung die das Spezialtransportgeschäft zu unserem Metier macht. 
-          </p>
-          <section class="btn_section">
-            <button
-              type="button"
-              onclick="window.location.href='detailansicht.html'"
-            >
-              Detailansicht
-            </button>
-            <button
-              type="button"
-              onclick="window.location.href='anfrage.html';"
-            >
-              Anfrage
-            </button>
-          </section>
-        </section>
-      </section>
-
-      <section class="dl_section">
-        <section class="img_section">
-          <img
-            src="../Bilder/WebTransLogoNeu.jpg"
-            class="dl_bild"
-            alt="Firmen_Logo"
-          />
-        </section>
-        <section class="text_section">
-          <h3>Schwertransporte</h3>
-          <p class="dl_p">
-            Für große und komplexe Herausforderungen hat WebTrans eine besondere Leidenschaft. Und alle notwendigen Voraussetzungen für die erfolgreiche Umsetzung Ihrer Projekte. Gerade im Bereich von Großraum- und Schwertransporten gilt es, zahlreiche Aspekte zu beachten. 
-            Dazu gehören neben dem richtigen Fuhrpark mit passenden Fahrzeugkombinationen und top geschulten Fahrern nicht zuletzt langjährige Erfahrung und optimale Kenntnisse der Straßenverkehrsordnung.
-          </p>
-          <section class="btn_section">
-            <button
-              type="button"
-              onclick="window.location.href='detailansicht.html'"
-            >
-              Detailansicht
-            </button>
-            <button
-              type="button"
-              onclick="window.location.href='anfrage.html';"
-            >
-              Anfrage
-            </button>
-          </section>
-        </section>
-      </section>
-
-      <section class="dl_section">
-        <section class="img_section">
-          <img
-            src="../Bilder/WebTransLogoNeu.jpg"
-            class="dl_bild"
-            alt="Firmen_Logo"
-          />
-        </section>
-        <section class="text_section">
-          <h3>Umzugstransporte</h3>
-          <p class="dl_p">
-            Jeder Privatumzug ist so individuell wie Sie selbst und benötigt daher eine gründliche Planung und Vorbereitung, ganz nach Ihren Bedürfnissen und Wünschen.
-            Unser erfahrenes und geschultes Festpersonal begleitet Sie gerne bei Ihrem Umzug in bzw. aus der Bodenseeregion.
-            Mit unserem Full-Service begleiten wir Sie gerne über den kompletten Umzug hinweg.
-          </p>
-          <section class="btn_section">
-            <button
-              type="button"
-              onclick="window.location.href='detailansicht.html'"
-            >
-              Detailansicht
-            </button>
-            <button
-              type="button"
-              onclick="window.location.href='anfrage.html';"
-            >
-              Anfrage
-            </button>
-          </section>
-        </section>
-      </section>
-
-      <section class="dl_section">
-        <section class="img_section">
-          <img
-            src="../Bilder/WebTransLogoNeu.jpg"
-            class="dl_bild"
-            alt="Firmen_Logo"
-          />
-        </section>
-        <section class="text_section">
-          <h3>Sonderfahrten aller Art</h3>
-          <p class="dl_p">
-            Außergewöhnliche Sendungen erfordern maximale Sorgfalt. 
-            Mit den vielzähligen gesetzlichen Vorschriften kennen wir uns bestens aus. 
-            Und komplexe Anforderungen im Rahmen von geforderten Sonderbedingungen sind die Spezialität unserer erfahrenen Disponenten. 
-            Wir bieten maximale Transportqualität, gewährleisten größtmögliche Sicherheit und fahren Ihre Sendung bei aller Sorgsamkeit so schnell wie möglich bis zum Bestimmungsort.
-          </p>
-          <section class="btn_section">
-            <button
-              type="button"
-              onclick="window.location.href='detailansicht.html'"
-            >
-              Detailansicht
-            </button>
-            <button
-              type="button"
-              onclick="window.location.href='anfrage.html';"
-            >
-              Anfrage
-            </button>
-          </section>
-        </section>
-      </section>
-    </main>
+    <main></main>
     <!-----------------------------------FOOTER------------------------------------->
     <footer>
       <ul>
