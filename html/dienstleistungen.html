@@ -48,6 +48,12 @@
                   
                   $(document.getElementsByTagName("main")).append(content);
                 });
+            }).fail(function (response){
+                console.log('Problem while loading data');
+                let content = "<section class=\"failure_sec\"><img src=\"../Bilder/WebTransLogoNeu.jpg\" class=\"failure_pic\" alt=\"Firmen_Logo\" />";
+                content += "<h1 class=\"failure_h\">Fehler beim Laden der Dienstleistungen</h1>";
+                content += "<h1 class=\"failure_h\">Versuchen sie es später erneut</h1></section>";
+                $(document.getElementsByTagName("main")).append(content);
             });
         });
     </script>
