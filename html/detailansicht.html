@@ -15,9 +15,40 @@
       data-auto-a11y="true"
     ></script>
     <script src="../javascript/userLogin.js"></script>
+    <script src="../javascript/urlParameter.js"></script>
 
     <meta charset="utf-8" />
     <title>Detailansicht</title>
+
+    <script>
+      $(document).ready(function() {
+            console.log('Document ready, loading data from Service');
+          if(existsUrlParameter('id')){
+            dienstleistung = getUrlParameterValue('id')
+            $.ajax({
+                url: 'http://localhost:8000/api/dienstleistungdetails/gib/' + dienstleistung,
+                method: 'get',
+                contentType: 'application/json; charset=utf-8',
+                cache: false,
+				        dataType: 'json'
+            }).done(function (response) {
+                console.log('Data loaded successfully');
+                console.log(response);
+                document.getElementById("bezeichnung").innerText = response.dienstleistung.bezeichnung;
+                document.getElementById("ueberschrift").innerText = response.ueberschrift;
+                document.getElementById("beschreibung").innerText = response.beschreibung;
+                document.getElementById("preisinfos").innerText = response.preisinformationen
+                document.getElementById("dienstleistungbild").src = response.dienstleistung.bildpfad;
+                document.getElementById("dienstleistungbild").alt = response.dienstleistung.bezeichnung;
+                document.getElementById("anfragebtn").onclick = function anfrage(){
+                                                                  window.location.href='anfrage.html?id=' + response.dienstleistung.id;
+                                                                };
+            });
+          } else {
+            console.log("Keine Dienstleistung mit der ID " + dienstleistung);
+          }
+        });
+    </script>
   </head>
 
   <body>
@@ -53,24 +84,14 @@
     <main>
 
       <section>
-        <h2 class="heading">
-          Transport jeglicher Art
-        </h2>
+        <h2 id="bezeichnung" class="heading"></h2>
       </section>
 
       <section class="card">
-        <img src="../Bilder/fuhrpark.jpg" alt="Truck1" class="picture"/>
-        <h1 class="heading2">Ideal für kleine Transporte</h1>
-        <h2 class="heading3">Preis richtet sich nach Gewicht und Abmessungen</h2>
-        <p class="description">
-          Unser moderner Fuhrpark besteht aus 80 Kühlfahrzeugen. Alle Fahrzeuge sind multitemperaturfähig.
-          Die LKW sind mit moderner Kühltechnik und mit 2 Kammern mit 2 separaten Verdampfern ausgestattet. Sie entsprechen den aktuellen hygienerechtlichen und sicherheitstechnischen Anforderungen.
-          Für die Wartung und Fahrzeugpflege unterhalten wir am Standort Balingen eine eigene Werkstatt sowie eine LKW-Waschanlage.
-          Unsere erfahrenen und gut ausgebildeteten Mitarbeiter/innnen arbeiten unbürokratisch und zielorientiert.
-          Wir erbringen einen erstklassige Leistung zu marktgerechten Preisen. Mit kurzen Entscheidungswegen und einem großen
-          Eigenfuhrpark mit modernsten Fahrzeugen garantieren wir unseren Kunden maximale Flexibilität.
-          Bei all' unserem Handeln steht der Nachhaltigkeitsgedanke mit im Vordergrund
-        </p>
+        <img id="dienstleistungbild" class="picture"/>
+        <h1 id= "ueberschrift" class="heading2"></h1>
+        <h2 id="preisinfos" class="heading3"></h2>
+        <p id="beschreibung" class="description"></p>
       
         <button
           type="button"
@@ -80,13 +101,7 @@
           Übersicht
         </button>
 
-        <button
-          type="button"
-          onclick="window.location.href='anfrage.html'"
-          class="anfrage_btn"
-        >
-          Anfrage
-        </button>
+        <button id="anfragebtn" type="button" onclick="window.location.href='anfrage.html'" class="anfrage_btn">Anfrage</button>
 
       </section>
     </main>

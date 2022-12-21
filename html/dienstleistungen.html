@@ -44,7 +44,7 @@
                   content += "<section class='text_section'>"
                   content += "<h3>" + item.bezeichnung + "</h3>"
                   content += "<p class='dl_p'>" + item.beschreibung + "</p>"
-                  content += "<section class='btn_section'> <button type='button' onclick=\"window.location.href='detailansicht.html?id=" + item.id + "'\">Detailansicht</button> <button type='button' onclick=\"window.location.href='anfrage.html';\">Anfrage</button></section></section></section>"
+                  content += "<section class='btn_section'> <button type='button' onclick=\"window.location.href='detailansicht.html?id=" + item.id + "'\">Detailansicht</button> <button type='button' onclick=\"window.location.href='anfrage.html?id=" + item.id + "';\">Anfrage</button></section></section></section>"
                   
                   $(document.getElementsByTagName("main")).append(content);
                 });
