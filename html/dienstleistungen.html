@@ -15,6 +15,7 @@
       data-auto-a11y="true"
     ></script>
     <script src="../javascript/userLogin.js"></script>
+    <script src="../javascript/urlParameter.js"></script>
 
     <meta charset="utf-8" />
     <title>WebTrans</title>
@@ -34,11 +35,8 @@
 				        dataType: 'json'
             }).done(function (response) {
                 console.log('Data loaded successfully');
-                console.log(response);
 
                 $(response).each(function(idx, item){
-                  console.log(idx);
-                  console.log(item);
                   let content = "<section class='dl_section'>";
                   content += "<section class='img_section'>";
                   content += "<img src='" + item.bildpfad + "'class='dl_bild' alt='Dienstleistungbild'/>";
@@ -46,7 +44,7 @@
                   content += "<section class='text_section'>"
                   content += "<h3>" + item.bezeichnung + "</h3>"
                   content += "<p class='dl_p'>" + item.beschreibung + "</p>"
-                  content += "<section class='btn_section'> <button type='button' onclick=\"window.location.href='detailansicht.html'\">Detailansicht</button> <button type='button' onclick=\"window.location.href='anfrage.html';\">Anfrage</button></section></section></section>"
+                  content += "<section class='btn_section'> <button type='button' onclick=\"window.location.href='detailansicht.html?id=" + item.id + "'\">Detailansicht</button> <button type='button' onclick=\"window.location.href='anfrage.html';\">Anfrage</button></section></section></section>"
                   
                   $(document.getElementsByTagName("main")).append(content);
                 });
