@@ -43,9 +43,10 @@
                 document.getElementById("anfragebtn").onclick = function anfrage(){
                                                                   window.location.href='anfrage.html?id=' + response.dienstleistung.id;
                                                                 };
+            }).fail(function () {
+              document.getElementById("bezeichnung").innerText = "Keine Dienstleistung mit der ID " + dienstleistung;
+              $(document.getElementsByClassName("bezeichnung_section")).append("<img src=\"../Bilder/WebTransLogoNeu.jpg\" alt=\"Firmen_Logo\" />");
             });
-          } else {
-            console.log("Keine Dienstleistung mit der ID " + dienstleistung);
           }
         });
     </script>
@@ -83,7 +84,7 @@
     <!-----------------------------------MAIN------------------------------------->
     <main>
 
-      <section>
+      <section class="bezeichnung_section">
         <h2 id="bezeichnung" class="heading"></h2>
       </section>
 
