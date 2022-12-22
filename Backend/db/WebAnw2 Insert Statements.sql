@@ -35,6 +35,13 @@ INSERT INTO Dienstleistungdetails (ueberschrift, preisinformationen, beschreibun
           Wir erbringen einen erstklassige Leistung zu marktgerechten Preisen. Mit kurzen Entscheidungswegen und einem großen
           Eigenfuhrpark mit modernsten Fahrzeugen garantieren wir unseren Kunden maximale Flexibilität.
           Bei all unserem Handeln steht der Nachhaltigkeitsgedanke mit im Vordergrund', 5);
+INSERT INTO Dienstleistungdetails (ueberschrift, preisinformationen, beschreibung, dienstleistungId) VALUES ('Ideal für kleine Transporte', 'Preis richtet sich nach Gewicht und Abmessungen', 'Unser moderner Fuhrpark besteht aus 80 Kühlfahrzeugen. Alle Fahrzeuge sind multitemperaturfähig.
+          Die LKW sind mit moderner Kühltechnik und mit 2 Kammern mit 2 separaten Verdampfern ausgestattet. Sie entsprechen den aktuellen hygienerechtlichen und sicherheitstechnischen Anforderungen.
+          Für die Wartung und Fahrzeugpflege unterhalten wir am Standort Balingen eine eigene Werkstatt sowie eine LKW-Waschanlage.
+          Unsere erfahrenen und gut ausgebildeteten Mitarbeiter/innnen arbeiten unbürokratisch und zielorientiert.
+          Wir erbringen einen erstklassige Leistung zu marktgerechten Preisen. Mit kurzen Entscheidungswegen und einem großen
+          Eigenfuhrpark mit modernsten Fahrzeugen garantieren wir unseren Kunden maximale Flexibilität.
+          Bei all unserem Handeln steht der Nachhaltigkeitsgedanke mit im Vordergrund', 6);
 
 INSERT INTO Adresse (strasse, hausnummer, plz, ort) VALUES ('TEST', '42', '12345', 'TEST');
 INSERT INTO Adresse (strasse, hausnummer, plz, ort) VALUES ('TEST2', '666', '54321', 'TEST2');
