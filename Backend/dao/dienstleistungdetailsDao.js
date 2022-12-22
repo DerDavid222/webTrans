@@ -15,7 +15,7 @@ class DienstleistungdetailsDao {
     loadById(id) {
         const dienstleistungDao = new DienstleistungDao(this._conn);
 
-        var sql = 'SELECT * FROM Dienstleistungdetails WHERE id=?';
+        var sql = 'SELECT * FROM Dienstleistungdetails WHERE dienstleistungId=?';
         var statement = this._conn.prepare(sql);
         var result = statement.get(id);
 
