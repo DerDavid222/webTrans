@@ -69,30 +69,6 @@
           <form class="FormularGesamt" name="Auftrag" onsubmit="pruefen();">
             <h1>Auftragsanfrage</h1>
             <table>
-              <tr>
-                <td class="input_label">Benutzername</td>
-                <td>
-                  <input
-                    type="text"
-                    class="input_txt"
-                    name="Vorname"
-                    id="Vorname"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td class="input_label">Passwort</td>
-                <td>
-                  <input
-                    type="password"
-                    class="input_txt"
-                    name="Vorname"
-                    id="Vorname"
-                  />
-                </td>
-
-                <td class="TopPad"></td>
-              </tr>
               <tr class="TopPad">
                 <td class="input_label">Dienstleistung</td>
                 <td>
@@ -219,7 +195,7 @@
               <tr>
                 <td></td>
                 <td>
-                  <a href="login.html"
+                  <a href="login.html" id="idinquiry"
                     >Um eine Anfrage zu stellen, müssen Sie angemeldet sein!</a>
                 </td>
               </tr>
@@ -280,6 +256,7 @@
     <script>
       $(document).ready(function () {
         adjustNavigation();
+        adjustInquiry();
       });
     </script>
   </body>
