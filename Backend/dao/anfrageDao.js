@@ -1,5 +1,5 @@
 const helper = require("../helper.js");
-const KundeDao = require("./benutzerDao.js");
+const BenutzerDao = require("./benutzerDao.js");
 const DienstleistungDao = require("./dienstleistungDao.js");
 
 class AnfrageDao {
@@ -12,7 +12,7 @@ class AnfrageDao {
   }
 
   loadById(id) {
-    const kundeDao = new KundeDao(this._conn);
+    const benutzerDao = new BenutzerDao(this._conn);
     const dienstleistungDao = new DienstleistungDao(this._conn);
 
     var sql = "SELECT * FROM Anfrage WHERE id=?";
@@ -25,14 +25,14 @@ class AnfrageDao {
     result.dienstleistung = dienstleistungDao.loadById(result.dienstleistungId);
     delete result.dienstleistungId;
 
-    result.kunde = kundeDao.loadById(result.kundeId);
-    delete result.kundeId;
+    result.benutzer = benutzerDao.loadById(result.benutzerId);
+    delete result.benutzerId;
 
     return result;
   }
 
   loadAll() {
-    const kundeDao = new KundeDao(this._conn);
+    const benutzerDao = new BenutzerDao(this._conn);
     const dienstleistungDao = new DienstleistungDao(this._conn);
 
     var sql = "SELECT * FROM Anfrage";
@@ -47,8 +47,8 @@ class AnfrageDao {
       );
       delete result[i].dienstleistungId;
 
-      result[i].kunde = kundeDao.loadById(result[i].kundeId);
-      delete result[i].kundeId;
+      result[i].benutzer = benutzerDao.loadById(result[i].benutzerId);
+      delete result[i].benutzerId;
     }
 
     return result;
@@ -65,17 +65,17 @@ class AnfrageDao {
   }
 
   create(
-    kundeId = 1,
+    benutzerId = 1,
     dienstleistungId = 1,
     auftragszweck = "",
     beschreibung = "",
     ausfuehrungsdatum = null
   ) {
     var sql =
-      "INSERT INTO Anfrage (kundeId,dienstleistungId,auftragszweck,beschreibung,ausfuehrungsdatum) VALUES (?,?,?,?,?)";
+      "INSERT INTO Anfrage (benutzerId,dienstleistungId,auftragszweck,beschreibung,ausfuehrungsdatum) VALUES (?,?,?,?,?)";
     var statement = this._conn.prepare(sql);
     var params = [
-      kundeId,
+      benutzerId,
       dienstleistungId,
       auftragszweck,
       beschreibung,
@@ -91,17 +91,17 @@ class AnfrageDao {
 
   update(
     id,
-    kundeId = 1,
+    benutzerId = 1,
     dienstleistungId = 1,
     auftragszweck = "",
     beschreibung = "",
     ausfuehrungsdatum = null
   ) {
     var sql =
-      "UPDATE Anfrage SET kundeId=?,dienstleistungId=?,auftragszweck=?,beschreibung=?,ausfuehrungsdatum=? WHERE id=?";
+      "UPDATE Anfrage SET benutzerId=?,dienstleistungId=?,auftragszweck=?,beschreibung=?,ausfuehrungsdatum=? WHERE id=?";
     var statement = this._conn.prepare(sql);
     var params = [
-      kundeId,
+      benutzerId,
       dienstleistungId,
       auftragszweck,
       beschreibung,

@@ -26,28 +26,28 @@ INSERT INTO Dienstleistungdetails (ueberschrift, preisinformationen, beschreibun
           Für die Wartung und Fahrzeugpflege unterhalten wir am Standort Balingen eine eigene Werkstatt sowie eine LKW-Waschanlage.
           Unsere erfahrenen und gut ausgebildeteten Mitarbeiter/innnen arbeiten unbürokratisch und zielorientiert.
           Wir erbringen einen erstklassige Leistung zu marktgerechten Preisen. Mit kurzen Entscheidungswegen und einem großen
-          Eigenfuhrpark mit modernsten Fahrzeugen garantieren wir unseren Kunden maximale Flexibilität.
+          Eigenfuhrpark mit modernsten Fahrzeugen garantieren wir unseren Benutzern maximale Flexibilität.
           Bei all unserem Handeln steht der Nachhaltigkeitsgedanke mit im Vordergrund', 4);
 INSERT INTO Dienstleistungdetails (ueberschrift, preisinformationen, beschreibung, dienstleistungId) VALUES ('Ideal für kleine Transporte', 'Preis richtet sich nach Gewicht und Abmessungen', 'Unser moderner Fuhrpark besteht aus 80 Kühlfahrzeugen. Alle Fahrzeuge sind multitemperaturfähig.
           Die LKW sind mit moderner Kühltechnik und mit 2 Kammern mit 2 separaten Verdampfern ausgestattet. Sie entsprechen den aktuellen hygienerechtlichen und sicherheitstechnischen Anforderungen.
           Für die Wartung und Fahrzeugpflege unterhalten wir am Standort Balingen eine eigene Werkstatt sowie eine LKW-Waschanlage.
           Unsere erfahrenen und gut ausgebildeteten Mitarbeiter/innnen arbeiten unbürokratisch und zielorientiert.
           Wir erbringen einen erstklassige Leistung zu marktgerechten Preisen. Mit kurzen Entscheidungswegen und einem großen
-          Eigenfuhrpark mit modernsten Fahrzeugen garantieren wir unseren Kunden maximale Flexibilität.
+          Eigenfuhrpark mit modernsten Fahrzeugen garantieren wir unseren Benutzern maximale Flexibilität.
           Bei all unserem Handeln steht der Nachhaltigkeitsgedanke mit im Vordergrund', 5);
 INSERT INTO Dienstleistungdetails (ueberschrift, preisinformationen, beschreibung, dienstleistungId) VALUES ('Ideal für kleine Transporte', 'Preis richtet sich nach Gewicht und Abmessungen', 'Unser moderner Fuhrpark besteht aus 80 Kühlfahrzeugen. Alle Fahrzeuge sind multitemperaturfähig.
           Die LKW sind mit moderner Kühltechnik und mit 2 Kammern mit 2 separaten Verdampfern ausgestattet. Sie entsprechen den aktuellen hygienerechtlichen und sicherheitstechnischen Anforderungen.
           Für die Wartung und Fahrzeugpflege unterhalten wir am Standort Balingen eine eigene Werkstatt sowie eine LKW-Waschanlage.
           Unsere erfahrenen und gut ausgebildeteten Mitarbeiter/innnen arbeiten unbürokratisch und zielorientiert.
           Wir erbringen einen erstklassige Leistung zu marktgerechten Preisen. Mit kurzen Entscheidungswegen und einem großen
-          Eigenfuhrpark mit modernsten Fahrzeugen garantieren wir unseren Kunden maximale Flexibilität.
+          Eigenfuhrpark mit modernsten Fahrzeugen garantieren wir unseren Benutzern maximale Flexibilität.
           Bei all unserem Handeln steht der Nachhaltigkeitsgedanke mit im Vordergrund', 6);
 
 INSERT INTO Adresse (strasse, hausnummer, plz, ort) VALUES ('TEST', '42', '12345', 'TEST');
 INSERT INTO Adresse (strasse, hausnummer, plz, ort) VALUES ('TEST2', '666', '54321', 'TEST2');
 
-INSERT INTO Kunde (anrede, vorname, nachname, benutzername, passwort, isAdmin, adresseId, email) VALUES (1, 'TEST', 'TEST', 'TEST', 'TEST', 0, 1, 'TEST@gmx.de');
-INSERT INTO Kunde (anrede, vorname, nachname, benutzername, passwort, isAdmin, adresseId, email) VALUES (0, 'TEST2', 'TEST2', 'TEST2', 'TEST2', 1, 2, 'TEST2@gmx.de');
+INSERT INTO Benutzer (anrede, vorname, nachname, benutzername, passwort, isAdmin, adresseId, email) VALUES (1, 'TEST', 'TEST', 'TEST', 'TEST', 0, 1, 'TEST@gmx.de');
+INSERT INTO Benutzer (anrede, vorname, nachname, benutzername, passwort, isAdmin, adresseId, email) VALUES (0, 'TEST2', 'TEST2', 'TEST2', 'TEST2', 1, 2, 'TEST2@gmx.de');
 
-INSERT INTO Anfrage (kundeId, dienstleistungId, auftragszweck, beschreibung, ausfuehrungsdatum) VALUES (1, 1, 'TEST', 'TEST', '01.01.1900');
-INSERT INTO Anfrage (kundeId, dienstleistungId, auftragszweck, beschreibung, ausfuehrungsdatum) VALUES (2, 2, 'TEST2', 'TEST2', '02.02.1900');
+INSERT INTO Anfrage (benutzerId, dienstleistungId, auftragszweck, beschreibung, ausfuehrungsdatum) VALUES (1, 1, 'TEST', 'TEST', '01.01.1900');
+INSERT INTO Anfrage (benutzerId, dienstleistungId, auftragszweck, beschreibung, ausfuehrungsdatum) VALUES (2, 2, 'TEST2', 'TEST2', '02.02.1900');
