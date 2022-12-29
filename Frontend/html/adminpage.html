@@ -23,6 +23,58 @@
 
     <meta charset="utf-8" />
     <title>WebTrans</title>
+
+    <script>
+      let changes = 0;
+      let rowsToChange = new Array();
+
+      function changeValues(){
+        if(changes === 0) {
+          changes = 1;
+          document.getElementById("changeBtn").innerText = "Speichern";
+
+          let rows = document.querySelectorAll("table tr");
+          rowsToChange = new Array();
+
+          for (let i = 1; i < rows.length; i++) {
+            
+            let checkbox = rows[i].querySelector("input[type='checkbox']");
+            if (checkbox.checked) {
+              rowsToChange.push(rows[i]);
+              rows[i].setAttribute("style", "background-color:#ff9494");
+              tabledatas = rows[i].querySelectorAll("td");
+              for(let j=0; j < tabledatas.length-1; j++){
+                tabledatas[j].setAttribute("contenteditable", "true");
+              }
+            }
+          }
+        } else if(changes === 1){
+          changes = 0;
+          document.getElementById("changeBtn").innerText = "Bearbeiten";
+          for(let i=0; i<rowsToChange.length; i++){
+            tabledatas = rowsToChange[i].querySelectorAll("td");
+            for(let j=0; j < tabledatas.length-1; j++){
+                tabledatas[j].setAttribute("contenteditable", "false");
+            }
+            if(rowsToChange[i].rowIndex%2 === 0){
+              rowsToChange[i].setAttribute("style", "background-color:white");
+            } else {
+              rowsToChange[i].setAttribute("style", "background-color:#f2f2f2");
+            }
+          }          
+        }
+      }
+
+      function deleteRows(){
+        let rows = document.querySelectorAll("table tr");
+        for (let i = rows.length-1; i>0; i--){
+          let checkbox = rows[i].querySelector("input[type='checkbox']");
+          if (checkbox.checked){
+            rows[i].parentNode.removeChild(rows[i]);
+          }
+        }
+      }
+    </script>
   </head>
 
   <body>
@@ -60,6 +112,7 @@
       <section class="table_section">
         <table>
           <tr>
+            <th class="checkbox_td"></th>
             <th>Benutzername</th>
             <th>Anrede</th>
             <th>Name</th>
@@ -68,9 +121,10 @@
             <th>Anschrift</th>
             <th>PLZ</th>
             <th>Ort</th>
-            <th></th>
+            <th>Admin</th>
           </tr>
           <tr>
+            <td class="checkbox_td"><input type="checkbox" id="selected" name="id1" value="id"></td>
             <td>MaxMustermann</td>
             <td>Herr</td>
             <td>Mustermann</td>
@@ -79,9 +133,10 @@
             <td>Musterstr. 12</td>
             <td>12345</td>
             <td>Musterstadt</td>
-            <td><input type="checkbox" id="selected" name="selected" value="id"></td>
+            <td>1</td>
           </tr>
           <tr>
+            <td class="checkbox_td"><input type="checkbox" id="selected" name="id2" value="id"></td>
             <td>Batman</td>
             <td>Frau</td>
             <td>Wayne</td>
@@ -90,9 +145,10 @@
             <td>Batcave 42</td>
             <td>54321</td>
             <td>Gotham</td>
-            <td><input type="checkbox" id="selected" name="selected" value="id"></td>
+            <td>0</td>            
           </tr>
           <tr>
+            <td class="checkbox_td"><input type="checkbox" id="selected" name="id3" value="id"></td>
             <td>PeterPan</td>
             <td>Herr</td>
             <td>Pan</td>
@@ -101,18 +157,13 @@
             <td>Nimmerweg 23</td>
             <td>98765</td>
             <td>Nimmerland</td>
-            <td><input type="checkbox" id="selected" name="selected" value="id"></td>
-          </tr>
-          <tr>
-            <td class="lastrow"><button>Bearbeiten</button></td>
-            <td class="lastrow"><button>Löschen</button></td>
-            <td class="lastrow"></td>
-            <td class="lastrow"></td>
-            <td class="lastrow"></td>
-            <td class="lastrow"></td>
-            <td class="lastrow"></td>
+            <td>0</td>
           </tr>
         </table>
+      </section>
+      <section class="button_section">
+        <button id="changeBtn" onclick="changeValues()">Bearbeiten</button>
+        <button id="deleteBtn" onclick="deleteRows()">Löschen</button>
       </section>
     </main>
 
