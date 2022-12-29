@@ -53,10 +53,10 @@ serviceRouter.post('/anfrage', function(request, response) {
     console.log('Service Anfrage: Client requested creation of new record');
 
     var errorMsgs=[];
-    if (helper.isUndefined(request.body.kunde)) {
-        errorMsgs.push('kunde fehlt');    
-    } else if (helper.isUndefined(request.body.kunde.id)) {
-        errorMsgs.push('kundeId fehlt');
+    if (helper.isUndefined(request.body.benutzer)) {
+        errorMsgs.push('benutzer fehlt');    
+    } else if (helper.isUndefined(request.body.benutzer.id)) {
+        errorMsgs.push('benutzerId fehlt');
     }
     if (helper.isUndefined(request.body.dienstleistung)) {
         errorMsgs.push('dienstleistung fehlt');
@@ -78,7 +78,7 @@ serviceRouter.post('/anfrage', function(request, response) {
 
     const anfrageDao = new AnfrageDao(request.app.locals.dbConnection);
     try {
-        var obj = anfrageDao.create(request.body.kunde.id, request.body.dienstleistung.id, request.body.auftragszweck, request.body.beschreibung, request.body.ausfuehrungsdatum);
+        var obj = anfrageDao.create(request.body.benutzer.id, request.body.dienstleistung.id, request.body.auftragszweck, request.body.beschreibung, request.body.ausfuehrungsdatum);
         console.log('Service Anfrage: Record inserted');
         response.status(200).json(obj);
     } catch (ex) {
@@ -93,10 +93,10 @@ serviceRouter.put('/anfrage', function(request, response) {
     var errorMsgs=[];
     if (helper.isUndefined(request.body.id)) 
         errorMsgs.push('id fehlt');
-    if (helper.isUndefined(request.body.kunde)) 
-        errorMsgs.push('kunde fehlt');    
-    if (helper.isUndefined(request.body.kunde.id)) 
-        errorMsgs.push('kundeId fehlt');
+    if (helper.isUndefined(request.body.benutzer)) 
+        errorMsgs.push('benutzer fehlt');    
+    if (helper.isUndefined(request.body.benutzer.id)) 
+        errorMsgs.push('benutzerId fehlt');
     if (helper.isUndefined(request.body.dienstleistung)) 
         errorMsgs.push('dienstleistung fehlt');
     if (helper.isUndefined(request.body.dienstleistung.id)) 
@@ -116,7 +116,7 @@ serviceRouter.put('/anfrage', function(request, response) {
 
     const anfrageDao = new AnfrageDao(request.app.locals.dbConnection);
     try {
-        var obj = anfrageDao.update(request.body.id, request.body.kunde.id, request.body.dienstleistung.id, request.body.auftragszweck, request.body.beschreibung, request.body.ausfuehrungsdatum);
+        var obj = anfrageDao.update(request.body.id, request.body.benutzer.id, request.body.dienstleistung.id, request.body.auftragszweck, request.body.beschreibung, request.body.ausfuehrungsdatum);
         console.log('Service Anfrage: Record updated, id=' + request.body.id);
         response.status(200).json(obj);
     } catch (ex) {
