@@ -93,7 +93,6 @@ class BenutzerDao {
     benutzername = "",
     passwort = "",
     isAdmin = 0,
-    adresseId = 1,
     email = "",
     strasse = "",
     hausnummer = "",
@@ -101,7 +100,7 @@ class BenutzerDao {
     ort = ""
   ) {
     var sql =
-      "UPDATE Benutzer SET anrede=?,vorname=?,nachname=?,benutzername=?,passwort=?,isAdmin=?,adresseId=?,email=?,strasse=?,hausnummer=?,plz=?,ort=? WHERE id=?";
+      "UPDATE Benutzer SET anrede=?,vorname=?,nachname=?,benutzername=?,passwort=?,isAdmin=?,email=?,strasse=?,hausnummer=?,plz=?,ort=? WHERE id=?";
     var statement = this._conn.prepare(sql);
     var params = [
       helper.strStartsWith(anrede, "He") ? 0 : 1,
@@ -110,12 +109,12 @@ class BenutzerDao {
       benutzername,
       passwort,
       isAdmin,
-      adresseId,
       email,
       strasse,
       hausnummer,
       plz,
-      ort
+      ort,
+      id
     ];
     var result = statement.run(params);
 
