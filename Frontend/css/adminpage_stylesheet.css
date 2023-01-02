@@ -16,6 +16,12 @@ main{
     overflow-x:auto;
 }
 
+.button_section{
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 table{
     margin-top: 50px;
     width:100%;
@@ -35,16 +41,16 @@ th {
     color: #FFFFFF;
 }
 
-.lastrow {
-    border: none;
-    text-align: left;
-    border-top: 1px solid #444444
+.checkbox_td{
+    width: fit-content;
 }
 
 button{
-    width: 100%;
+    width: 20%;
     padding: 2px;
     height: 35px;
+    margin-top: 10px;
+    margin-right: 10px;
     font-weight: bold;
     background-color: rgb(211, 26, 26);
     border: none;

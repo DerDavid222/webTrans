@@ -23,6 +23,168 @@
 
     <meta charset="utf-8" />
     <title>WebTrans</title>
+
+    <script>
+      let changes = 0;
+      let rowsToChange = new Array();
+      let initialValues = new Array();
+
+      function changeValues(){
+        if(changes === 0) {
+          let rows = document.querySelectorAll("table tr");
+          rowsToChange = new Array();
+          initialValues = new Array();
+          
+          for (let i = 1; i < rows.length; i++) {
+            let checkbox = rows[i].querySelector("input[type='checkbox']");
+            if (checkbox.checked) {
+              rowsToChange.push(rows[i]);
+              rows[i].setAttribute("style", "background-color:#ff9494");
+              tabledatas = rows[i].querySelectorAll("td");
+              for(let j=1; j < tabledatas.length; j++){
+                initialValues.push(tabledatas[j].innerText);
+                tabledatas[j].setAttribute("contenteditable", "true");
+              }
+            }
+          }
+
+          if(rowsToChange.length != 0){
+            changes = 1;
+            document.getElementById("changeBtn").innerText = "Speichern";
+            document.getElementById("deleteBtn").innerText = "Verwerfen";
+          }
+
+        } else if(changes === 1){
+          changes = 0;
+          document.getElementById("changeBtn").innerText = "Bearbeiten";
+          document.getElementById("deleteBtn").innerText = "Löschen";
+          for(let i=0; i<rowsToChange.length; i++){
+            let newValues = new Array();
+            tabledatas = rowsToChange[i].querySelectorAll("td");
+            tabledatas[0].querySelector("input[type='checkbox']").checked = false;
+            for(let j=1; j < tabledatas.length; j++){
+                newValues.push(tabledatas[j].innerText);
+                tabledatas[j].setAttribute("contenteditable", "false");
+            }
+            
+            $.ajax({
+                url: 'http://localhost:8000/api/benutzer/gib/' + rowsToChange[i].id,
+                method: 'get',
+                contentType: 'application/json; charset=utf-8',
+                cache: false,
+				        dataType: 'json',
+              }).done(function (outerResponse) {
+                let newData = JSON.stringify({
+                        'id': rowsToChange[i].id,
+                        'passwort': outerResponse.passwort,
+                        'benutzername': newValues[0],
+                        'anrede': newValues[1],
+                        'nachname': newValues[2],
+                        'vorname': newValues[3],
+                        'email': newValues[4],
+                        'strasse': newValues[5],
+                        'hausnummer': newValues[6],
+                        'plz': newValues[7],
+                        'ort': newValues[8],
+                        'isAdmin': newValues[9]
+                      })
+                $.ajax({
+                url: 'http://localhost:8000/api/benutzer',
+                method: 'put',
+                contentType: 'application/json; charset=utf-8',
+                cache: false,
+                data: newData,
+                }).done(function (response) {
+                  console.log("Benutzer with id=" + response.id + " updated successfully");
+                });
+              });
+
+            if(rowsToChange[i].rowIndex%2 === 0){
+              rowsToChange[i].setAttribute("style", "background-color:white");
+            } else {
+              rowsToChange[i].setAttribute("style", "background-color:#f2f2f2");
+            }
+          }          
+        }
+      }
+
+      function deleteValues(){
+        if(changes === 0){
+          let rows = document.querySelectorAll("table tr");
+          for (let i = rows.length-1; i>0; i--){
+            console.log(typeof rows[i].id)
+            let checkbox = rows[i].querySelector("input[type='checkbox']");
+            if (checkbox.checked){
+              $.ajax({
+                url: 'http://localhost:8000/api/benutzer/' + rows[i].id,
+                method: 'delete',
+                contentType: 'application/json; charset=utf-8',
+                cache: false,
+				        dataType: 'json'
+              }).done(function (response) {
+                console.log(response + " removed successfully");
+                rows[i].parentNode.removeChild(rows[i]);
+              });
+            }
+          }
+        } else if(changes === 1){
+          changes = 0;
+          document.getElementById("changeBtn").innerText = "Bearbeiten";
+          document.getElementById("deleteBtn").innerText = "Löschen";
+          for(let i=0; i<rowsToChange.length; i++){
+            tabledatas = rowsToChange[i].querySelectorAll("td");
+            tabledatas[0].querySelector("input[type='checkbox']").checked = false;
+            for(let j=1; j < tabledatas.length; j++){
+                tabledatas[j].setAttribute("contenteditable", "false");
+                tabledatas[j].innerText = initialValues[j-1];
+            }
+            if(rowsToChange[i].rowIndex%2 === 0){
+              rowsToChange[i].setAttribute("style", "background-color:white");
+            } else {
+              rowsToChange[i].setAttribute("style", "background-color:#f2f2f2");
+            }
+          }
+        }
+      }
+
+
+      $(document).ready(function() {
+            console.log('Document ready, loading data from Service');
+
+            $.ajax({
+                url: 'http://localhost:8000/api/benutzer/alle',
+                method: 'get',
+                contentType: 'application/json; charset=utf-8',
+                cache: false,
+				        dataType: 'json'
+            }).done(function (response) {
+                console.log('Data loaded successfully');
+
+                $(response).each(function(idx, item){
+                  let content = "<tr id=" + item.id + ">";
+                  content += "<td class=\"checkbox_td\"><input type=\"checkbox\" id=\"selected\" name=\"" + item.id + "\" value=\"id\"></td>";
+                  content += "<td>" + item.benutzername + "</td>";
+                  content += "<td>" + item.anrede + "</td>";
+                  content += "<td>" + item.nachname + "</td>";
+                  content += "<td>" + item.vorname + "</td>";
+                  content += "<td>" + item.email + "</td>";
+                  content += "<td>" + item.strasse + "</td>" 
+                  content += "<td>" + item.hausnummer + "</td>";
+                  content += "<td>" + item.plz + "</td>";
+                  content += "<td>" + item.ort + "</td>";
+                  content += "<td>" + item.isAdmin + "</td>";
+                  
+                  $(document.getElementById("admin_table")).append(content);
+                });
+            }).fail(function (){
+                console.log('Problem while loading data');
+                let content = "<section class=\"failure_sec\"><img src=\"../Bilder/WebTransLogoNeu.jpg\" class=\"failure_pic\" alt=\"Firmen_Logo\" />";
+                content += "<h1 class=\"failure_h\">Fehler beim Laden der Daten</h1>";
+                content += "<h1 class=\"failure_h\">Versuchen sie es später erneut</h1></section>";
+                $(document.getElementsByTagName("main")).append(content);
+            });
+        });
+    </script>
   </head>
 
   <body>
@@ -58,61 +220,25 @@
 
     <main>
       <section class="table_section">
-        <table>
+        <table id="admin_table">
           <tr>
+            <th class="checkbox_td"></th>
             <th>Benutzername</th>
             <th>Anrede</th>
             <th>Name</th>
             <th>Vorname</th>
             <th>E-Mail</th>
-            <th>Anschrift</th>
+            <th>Strasse</th>
+            <th>Hausnr.</th>
             <th>PLZ</th>
             <th>Ort</th>
-            <th></th>
-          </tr>
-          <tr>
-            <td>MaxMustermann</td>
-            <td>Herr</td>
-            <td>Mustermann</td>
-            <td>Max</td>
-            <td>max.mustermann@gmx.de</td>
-            <td>Musterstr. 12</td>
-            <td>12345</td>
-            <td>Musterstadt</td>
-            <td><input type="checkbox" id="selected" name="selected" value="id"></td>
-          </tr>
-          <tr>
-            <td>Batman</td>
-            <td>Frau</td>
-            <td>Wayne</td>
-            <td>Bruce</td>
-            <td>bat.man@gmx.de</td>
-            <td>Batcave 42</td>
-            <td>54321</td>
-            <td>Gotham</td>
-            <td><input type="checkbox" id="selected" name="selected" value="id"></td>
-          </tr>
-          <tr>
-            <td>PeterPan</td>
-            <td>Herr</td>
-            <td>Pan</td>
-            <td>Peter</td>
-            <td>peterpan@gmx.de</td>
-            <td>Nimmerweg 23</td>
-            <td>98765</td>
-            <td>Nimmerland</td>
-            <td><input type="checkbox" id="selected" name="selected" value="id"></td>
-          </tr>
-          <tr>
-            <td class="lastrow"><button>Bearbeiten</button></td>
-            <td class="lastrow"><button>Löschen</button></td>
-            <td class="lastrow"></td>
-            <td class="lastrow"></td>
-            <td class="lastrow"></td>
-            <td class="lastrow"></td>
-            <td class="lastrow"></td>
+            <th>Admin</th>
           </tr>
         </table>
+      </section>
+      <section class="button_section">
+        <button id="changeBtn" onclick="changeValues()">Bearbeiten</button>
+        <button id="deleteBtn" onclick="deleteValues()">Löschen</button>
       </section>
     </main>
 

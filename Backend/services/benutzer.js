@@ -86,14 +86,17 @@ serviceRouter.post("/benutzer", function (request, response) {
   if (helper.isUndefined(request.body.passwort))
     errorMsgs.push("passwort fehlt");
   if (helper.isUndefined(request.body.isAdmin)) errorMsgs.push("isAdmin fehlt");
-  if (helper.isUndefined(request.body.adresse)) {
-    errorMsgs.push("adresse fehlt");
-  } else if (helper.isUndefined(request.body.adresse.id)) {
-    errorMsgs.push("adresseId fehlt");
-  }
   if (helper.isUndefined(request.body.email)) errorMsgs.push("email fehlt");
   if (!helper.isEmail(request.body.email))
     errorMsgs.push("email hat ein falsches Format");
+  if (helper.isUndefined(request.body.strasse))
+    errorMsgs.push("strasse fehlt");
+  if (helper.isUndefined(request.body.hausnummer))
+    errorMsgs.push("hausnummer fehlt");
+  if (helper.isUndefined(request.body.plz))
+    errorMsgs.push("plz fehlt");
+  if (helper.isUndefined(request.body.ort))
+    errorMsgs.push("ort fehlt");
 
   if (errorMsgs.length > 0) {
     console.log("Service Benutzer: Creation not possible, data missing");
@@ -117,8 +120,11 @@ serviceRouter.post("/benutzer", function (request, response) {
       request.body.benutzername,
       request.body.passwort,
       request.body.isAdmin,
-      request.body.adresse.id,
-      request.body.email
+      request.body.email,
+      request.body.strasse,
+      request.body.hausnummer,
+      request.body.plz,
+      request.body.ort
     );
     console.log("Service Benutzer: Record inserted");
     response.status(200).json(obj);
@@ -152,14 +158,17 @@ serviceRouter.put("/benutzer", function (request, response) {
   if (helper.isUndefined(request.body.passwort))
     errorMsgs.push("passwort fehlt");
   if (helper.isUndefined(request.body.isAdmin)) errorMsgs.push("isAdmin fehlt");
-  if (helper.isUndefined(request.body.adresse)) {
-    errorMsgs.push("adresse fehlt");
-  } else if (helper.isUndefined(request.body.adresse.id)) {
-    errorMsgs.push("adresseId fehlt");
-  }
   if (helper.isUndefined(request.body.email)) errorMsgs.push("email fehlt");
   if (!helper.isEmail(request.body.email))
     errorMsgs.push("email hat ein falsches Format");
+  if (helper.isUndefined(request.body.strasse))
+    errorMsgs.push("strasse fehlt");
+  if (helper.isUndefined(request.body.hausnummer))
+    errorMsgs.push("hausnummer fehlt");
+  if (helper.isUndefined(request.body.plz))
+    errorMsgs.push("plz fehlt");
+  if (helper.isUndefined(request.body.ort))
+    errorMsgs.push("ort fehlt");
 
   if (errorMsgs.length > 0) {
     console.log("Service Benutzer: Update not possible, data missing");
@@ -184,8 +193,11 @@ serviceRouter.put("/benutzer", function (request, response) {
       request.body.benutzername,
       request.body.passwort,
       request.body.isAdmin,
-      request.body.adresse.id,
-      request.body.email
+      request.body.email,
+      request.body.strasse,
+      request.body.hausnummer,
+      request.body.plz,
+      request.body.ort
     );
     console.log("Service Benutzer: Record updated, id=" + request.body.id);
     response.status(200).json(obj);
