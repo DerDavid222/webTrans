@@ -43,11 +43,10 @@ INSERT INTO Dienstleistungdetails (ueberschrift, preisinformationen, beschreibun
           Eigenfuhrpark mit modernsten Fahrzeugen garantieren wir unseren Benutzern maximale Flexibilität.
           Bei all unserem Handeln steht der Nachhaltigkeitsgedanke mit im Vordergrund', 6);
 
-INSERT INTO Adresse (strasse, hausnummer, plz, ort) VALUES ('TEST', '42', '12345', 'TEST');
-INSERT INTO Adresse (strasse, hausnummer, plz, ort) VALUES ('TEST2', '666', '54321', 'TEST2');
-
-INSERT INTO Benutzer (anrede, vorname, nachname, benutzername, passwort, isAdmin, adresseId, email) VALUES (1, 'TEST', 'TEST', 'TEST', 'TEST', 0, 1, 'TEST@gmx.de');
-INSERT INTO Benutzer (anrede, vorname, nachname, benutzername, passwort, isAdmin, adresseId, email) VALUES (0, 'TEST2', 'TEST2', 'TEST2', 'TEST2', 1, 2, 'TEST2@gmx.de');
+INSERT INTO Benutzer (anrede, vorname, nachname, benutzername, passwort, isAdmin, email, strasse, hausnummer, plz, ort) VALUES (0, 'Max', 'Mustermann', 'MaxMustermann', 'TEST', 1, 'max.mustermann@gmx.de', 'Musterstr', '12', '12345', 'Musterstadt');
+INSERT INTO Benutzer (anrede, vorname, nachname, benutzername, passwort, isAdmin, email, strasse, hausnummer, plz, ort) VALUES (0, 'Bruce', 'Wayne', 'Batman', 'IAmBatman', 0, 'bat.man@gmx.de', 'Batcave', '42', '54321', 'Gotham');
+INSERT INTO Benutzer (anrede, vorname, nachname, benutzername, passwort, isAdmin, email, strasse, hausnummer, plz, ort) VALUES (0, 'Peter', 'Pan', 'PeterPan', 'Kindskopf01', 0, 'peterpan@gmx.de', 'Nimmerweg', '23', '98765', 'Nimmerland');
+INSERT INTO Benutzer (anrede, vorname, nachname, benutzername, passwort, isAdmin, email, strasse, hausnummer, plz, ort) VALUES (1, 'Bibi', 'Blocksberg', 'Bibi', 'Kartoffelbrei', 0, 'blcoksberg.bibi@gmx.de', 'Lange Straße', '5', '76548', 'Neustadt');
 
 INSERT INTO Anfrage (benutzerId, dienstleistungId, auftragszweck, beschreibung, ausfuehrungsdatum) VALUES (1, 1, 'TEST', 'TEST', '01.01.1900');
 INSERT INTO Anfrage (benutzerId, dienstleistungId, auftragszweck, beschreibung, ausfuehrungsdatum) VALUES (2, 2, 'TEST2', 'TEST2', '02.02.1900');

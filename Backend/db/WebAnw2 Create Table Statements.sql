@@ -20,15 +20,7 @@ CREATE TABLE Dienstleistungdetails (
 	CONSTRAINT fk_Dienstleistungdetails1 FOREIGN KEY (dienstleistungId) REFERENCES Dienstleistung(id)
 );
 -- ------------------------------
--- Benutzer, Adresse
-
-CREATE TABLE Adresse (
-	id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-	strasse TEXT NOT NULL,
-	hausnummer TEXT NOT NULL,
-	plz TEXT NOT NULL,
-	ort TEXT NOT NULL
-);
+-- Benutzer
 
 CREATE TABLE Benutzer (
 	id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -38,9 +30,11 @@ CREATE TABLE Benutzer (
 	benutzername TEXT NOT NULL,
 	passwort TEXT NOT NULL,
 	isAdmin INTEGER NOT NULL DEFAULT 0,
-	adresseId INTEGER NOT NULL,
-	email TEXT NOT NULL,
-	CONSTRAINT fk_Benutzer1 FOREIGN KEY (adresseId) REFERENCES Adresse(id)
+	email TEXT,
+	strasse TEXT,
+	hausnummer TEXT,
+	plz TEXT,
+	ort TEXT
 );
 
 -- ------------------------------
