@@ -16,9 +16,41 @@
       data-auto-a11y="true"
     ></script>
     <script src="../javascript/userLogin.js"></script>
+    <script src="../javascript/urlParameter.js"></script>
 
     <meta charset="utf-8" />
     <title>WebTrans</title>
+
+    <script>
+      $(document).ready(function() {
+            console.log('Document ready, loading data from Service');
+
+            $.ajax({
+                url: 'http://localhost:8000/api/dienstleistung/alle',
+                method: 'get',
+                contentType: 'application/json; charset=utf-8',
+                cache: false,
+				        dataType: 'json'
+            }).done(function (response) {
+                console.log('Data loaded successfully');
+                let selectedOptionId = 0;
+                let urlId = "";
+                if(existsUrlParameter('id')){
+                  urlId = getUrlParameterValue('id');
+                }
+
+                $(response).each(function(idx, item){
+                  if(urlId == item.id){
+                    selectedOptionId = idx;
+                  }
+                  let content = "<option id=\"option_" + item.id + "\" value=\"" + item.bezeichnung + "\">" + item.bezeichnung + "</option>";
+                  $(document.getElementById("Auftragsart")).append(content);
+                });
+
+                document.getElementById("Auftragsart")[selectedOptionId].selected = true;
+            });
+        });
+    </script>
   </head>
 
   <body>
@@ -72,15 +104,7 @@
               <tr class="TopPad">
                 <td class="input_label">Dienstleistung</td>
                 <td>
-                  <select name="AuftragsArt" class="input_txt" id="Auftragsart">
-                    <option value="nationaler Transport" selected required>
-                      Nationaler Transport
-                    </option>
-                    <option value="internationaler Transport" required>
-                      Internationaler Transport
-                    </option>
-                    <option value="Umzug" required>Umzug</option>
-                    <option value="Lagerhaltung" required>Lagerhaltung</option>
+                  <select name="AuftragsArt" class="input_txt" id="Auftragsart" required>
                   </select>
                 </td>
               </tr>
