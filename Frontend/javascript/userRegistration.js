@@ -15,6 +15,16 @@ function registerNewUser(){
             maxId = item.id;
         });
         console.log('Found MaxID successfully');
+        let newUser = new Array();
+        let tableData = new Array();
+        let textFields = new Array();
+        textFields = document.querySelectorAll("table tr");
+        for(let i=0; i<textFields.length; i++){
+            tableData = textFields[i].querySelectorAll(".input_txt");
+            for(let j=0; j<tableData.length; j++){
+                console.log(tableData[j].value);
+            }
+        }
 
     }).fail(function (){
         console.log('Problem while finding MaxID');
