@@ -24,7 +24,7 @@
       $(document).ready(function() {
             console.log('Document ready, loading data from Service');
           if(existsUrlParameter('id')){
-            dienstleistung = getUrlParameterValue('id')
+            dienstleistung = getUrlParameterValue('id');
             $.ajax({
                 url: 'http://localhost:8000/api/dienstleistungdetails/gib/' + dienstleistung,
                 method: 'get',

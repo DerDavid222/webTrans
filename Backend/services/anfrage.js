@@ -67,6 +67,12 @@ serviceRouter.post('/anfrage', function(request, response) {
         errorMsgs.push('auftragszweck fehlt');
     if (helper.isUndefined(request.body.beschreibung)) 
         errorMsgs.push('beschreibung fehlt');
+    if (helper.isUndefined(request.body.hoehe)) 
+        errorMsgs.push('hoehe fehlt');
+    if (helper.isUndefined(request.body.breite)) 
+        errorMsgs.push('breite fehlt');
+    if (helper.isUndefined(request.body.laenge)) 
+        errorMsgs.push('laenge fehlt');
     if (helper.isUndefined(request.body.ausfuehrungsdatum)) 
         errorMsgs.push('ausfuehrungsdatum fehlt');
     
@@ -78,7 +84,7 @@ serviceRouter.post('/anfrage', function(request, response) {
 
     const anfrageDao = new AnfrageDao(request.app.locals.dbConnection);
     try {
-        var obj = anfrageDao.create(request.body.benutzer.id, request.body.dienstleistung.id, request.body.auftragszweck, request.body.beschreibung, request.body.ausfuehrungsdatum);
+        var obj = anfrageDao.create(request.body.benutzer.id, request.body.dienstleistung.id, request.body.auftragszweck, request.body.beschreibung, request.body.hoehe, request.body.breite, request.body.laenge, request.body.ausfuehrungsdatum);
         console.log('Service Anfrage: Record inserted');
         response.status(200).json(obj);
     } catch (ex) {
@@ -105,6 +111,12 @@ serviceRouter.put('/anfrage', function(request, response) {
         errorMsgs.push('auftragszweck fehlt');
     if (helper.isUndefined(request.body.beschreibung)) 
         errorMsgs.push('beschreibung fehlt');
+    if (helper.isUndefined(request.body.hoehe)) 
+        errorMsgs.push('hoehe fehlt');
+    if (helper.isUndefined(request.body.breite)) 
+        errorMsgs.push('breite fehlt');
+    if (helper.isUndefined(request.body.laenge)) 
+        errorMsgs.push('laenge fehlt');
     if (helper.isUndefined(request.body.ausfuehrungsdatum)) 
         errorMsgs.push('ausfuehrungsdatum fehlt');
 
@@ -116,7 +128,7 @@ serviceRouter.put('/anfrage', function(request, response) {
 
     const anfrageDao = new AnfrageDao(request.app.locals.dbConnection);
     try {
-        var obj = anfrageDao.update(request.body.id, request.body.benutzer.id, request.body.dienstleistung.id, request.body.auftragszweck, request.body.beschreibung, request.body.ausfuehrungsdatum);
+        var obj = anfrageDao.update(request.body.id, request.body.benutzer.id, request.body.dienstleistung.id, request.body.auftragszweck, request.body.beschreibung, request.body.hoehe, request.body.breite, request.body.laenge, request.body.ausfuehrungsdatum);
         console.log('Service Anfrage: Record updated, id=' + request.body.id);
         response.status(200).json(obj);
     } catch (ex) {

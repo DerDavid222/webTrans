@@ -16,9 +16,66 @@
       data-auto-a11y="true"
     ></script>
     <script src="../javascript/userLogin.js"></script>
+    <script src="../javascript/urlParameter.js"></script>
 
     <meta charset="utf-8" />
     <title>WebTrans</title>
+
+    <script>
+      $(document).ready(function() {
+            console.log('Document ready, loading data from Service');
+
+            $.ajax({
+                url: 'http://localhost:8000/api/dienstleistung/alle',
+                method: 'get',
+                contentType: 'application/json; charset=utf-8',
+                cache: false,
+				        dataType: 'json'
+            }).done(function (response) {
+                console.log('Data loaded successfully');
+                let selectedOptionId = 0;
+                let urlId = "";
+                if(existsUrlParameter('id')){
+                  urlId = getUrlParameterValue('id');
+                }
+
+                $(response).each(function(idx, item){
+                  if(urlId == item.id){
+                    selectedOptionId = idx;
+                  }
+                  let content = "<option value=\"" + item.id + "\">" + item.bezeichnung + "</option>";
+                  $(document.getElementById("Auftragsart")).append(content);
+                });
+
+                document.getElementById("Auftragsart")[selectedOptionId].selected = true;
+            });
+        });
+
+        function neuerAuftrag() {
+          if(isUserLoggedIn()){
+            let auftragszweck = "Privat";
+            for(i=0; i<document.getElementsByName("xor").length; i++){
+              if(document.getElementsByName("xor")[i].checked){
+                auftragszweck = document.getElementsByName("xor")[i].value;
+              }
+            }
+
+            let auftragsdaten = JSON.stringify(
+            {
+              benutzer:loggedUser.id,
+              dienstleistung:document.getElementById("Auftragsart").options[document.getElementById("Auftragsart").selectedIndex].value,
+              auftragszweck:auftragszweck,
+              beschreibung:document.getElementById("beschreibung").value,
+              hoehe:document.getElementById("Hoehe").value,
+              breite:document.getElementById("Breite").value,
+              laenge:document.getElementById("Laenge").value,
+              ausfuehrungsdatum:document.getElementById("eventdate").value
+            });
+            
+            sessionStorage.setItem("auftragsdaten", auftragsdaten);
+          }
+        }
+    </script>
   </head>
 
   <body>
@@ -72,15 +129,7 @@
               <tr class="TopPad">
                 <td class="input_label">Dienstleistung</td>
                 <td>
-                  <select name="AuftragsArt" class="input_txt" id="Auftragsart">
-                    <option value="nationaler Transport" selected required>
-                      Nationaler Transport
-                    </option>
-                    <option value="internationaler Transport" required>
-                      Internationaler Transport
-                    </option>
-                    <option value="Umzug" required>Umzug</option>
-                    <option value="Lagerhaltung" required>Lagerhaltung</option>
+                  <select name="AuftragsArt" class="input_txt" id="Auftragsart" required>
                   </select>
                 </td>
               </tr>
@@ -88,7 +137,7 @@
                 <td class="input_label">Auftragszweck</td>
                 <td>
                   <section>
-                    <input type="radio" name="xor" id="Privat" value="privat" checked="checked" />
+                    <input type="radio" name="xor" id="Privat" value="Privat" checked="checked" />
                     <label class="Beschreibung" for="Privat">Privat</label>
                   </section>
                   <section>
@@ -96,7 +145,7 @@
                       type="radio"
                       name="xor"
                       id="Geschaeftlich"
-                      value="Geschaeftlich"
+                      value="Gesch&auml;ftlich"
                     />
                     <label class="Beschreibung" for="Geschaeftlich"
                       >Gesch&auml;ftlich</label
@@ -195,7 +244,7 @@
               <tr>
                 <td></td>
                 <td>
-                  <a href="login.html" id="idinquiry"
+                  <a href="login.html" id="idinquiry" onclick="neuerAuftrag()"
                     >Um eine Anfrage zu stellen, müssen Sie angemeldet sein!</a>
                 </td>
               </tr>

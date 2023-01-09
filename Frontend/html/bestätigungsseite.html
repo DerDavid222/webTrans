@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="../css/impressum_stylesheet.css" />
     <link rel="stylesheet" href="../css/bestellbestätigung_stylesheet.css" />
 
-
     <script
       src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
       data-auto-a11y="true"
@@ -15,6 +14,64 @@
 
     <meta charset="utf-8" />
     <title>WebTrans</title>
+
+    <script>
+      $(document).ready(function() {
+      let auftragsdaten = JSON.parse(sessionStorage.getItem("auftragsdaten"));
+      if (sessionStorage.getItem("auftragGesichert") === null && sessionStorage.getItem("auftragsdaten") !== null){
+        $.ajax({
+          url: 'http://localhost:8000/api/benutzer/gib/' + auftragsdaten.benutzer,
+          method: 'get',
+          contentType: 'application/json; charset=utf-8',
+          cache: false,
+          dataType: 'json',
+        }).done(function(response){
+          auftragsdaten.benutzer = response;
+          $.ajax({
+            url: 'http://localhost:8000/api/dienstleistung/gib/' + auftragsdaten.dienstleistung,
+            method: 'get',
+            contentType: 'application/json; charset=utf-8',
+            cache: false,
+            dataType: 'json',
+          }).done(function(response2){
+            auftragsdaten.dienstleistung = response2;
+            $.ajax({
+              url: 'http://localhost:8000/api/anfrage',
+              method: 'post',
+              contentType: 'application/json; charset=utf-8',
+              cache: false,
+              data: JSON.stringify(auftragsdaten)
+            }).done(function (response3){
+              console.log("new Auftrag with id=" + response3.id + " created");
+              
+              document.getElementById("benutzername_td").innerText = response3.benutzer.benutzername;
+              document.getElementById("dienstleistung_td").innerText = response3.dienstleistung.bezeichnung;
+              document.getElementById("auftragszweck_td").innerText = response3.auftragszweck;
+              document.getElementById("beschreibung_td").innerText = response3.beschreibung;
+              document.getElementById("hoehe_td").innerText = response3.hoehe;
+              document.getElementById("breite_td").innerText = response3.breite;
+              document.getElementById("laenge_td").innerText = response3.laenge;
+              document.getElementById("ausfuehrungsdatum_td").innerText = response3.ausfuehrungsdatum;
+
+              auftragsdaten.benutzer = response3.benutzer.benutzername;
+              auftragsdaten.dienstleistung = response3.dienstleistung.bezeichnung;
+              sessionStorage.setItem("auftragsdaten", JSON.stringify(auftragsdaten));
+              sessionStorage.setItem("auftragGesichert", "1");
+            });
+          });
+        });
+      } else {
+        document.getElementById("benutzername_td").innerText = auftragsdaten.benutzer;
+        document.getElementById("dienstleistung_td").innerText = auftragsdaten.dienstleistung;
+        document.getElementById("auftragszweck_td").innerText = auftragsdaten.auftragszweck;
+        document.getElementById("beschreibung_td").innerText = auftragsdaten.beschreibung;
+        document.getElementById("hoehe_td").innerText = auftragsdaten.hoehe + " m";
+        document.getElementById("breite_td").innerText = auftragsdaten.breite + " m";
+        document.getElementById("laenge_td").innerText = auftragsdaten.laenge + " m";
+        document.getElementById("ausfuehrungsdatum_td").innerText = auftragsdaten.ausfuehrungsdatum;
+      }
+    });
+    </script>
   </head>
 
   <body>
@@ -62,43 +119,41 @@
     <table>
       <tr>
         <td class="input_label">Benutzername</td>
-        <td>
-        </td>
-        <td class="TopPad"></td>
+        <td id="benutzername_td"></td>
       </tr>
 
       <tr class="TopPad">
         <td class="input_label">Dienstleistung</td>
-        <td>
+        <td id="dienstleistung_td">
         </td>
       </tr>
 
       <tr>
         <td class="input_label">Auftragszweck</td>
-        <td>
+        <td id="auftragszweck_td">
         </td>
       </tr>
 
       <tr>
         <td class="input_label">Beschreibung</td>
-        <td>
+        <td id="beschreibung_td">
         </td>
       </tr>
 
       <tr>
         <td class="input_label">H&ouml;he</td>
-        <td>
+        <td id="hoehe_td">
         </td>
       </tr>
 
       <tr>
         <td class="input_label">Breite</td>
-        <td>
+        <td id="breite_td">
         </td>
 
         <tr>
           <td class="input_label">L&auml;nge</td>
-          <td>
+          <td id="laenge_td">
           </td>
         </tr>
 
@@ -106,15 +161,10 @@
 
       <tr>
         <td class="input_label">Ausführungsdatum</td>
-        <td>
+        <td id="ausfuehrungsdatum_td">
         </td>
       </tr>
-
       <tr></tr>
-      <tr>
-        <td></td>
-        
-      </tr>
     </table>
   </form>
 </section>

@@ -48,5 +48,5 @@ INSERT INTO Benutzer (anrede, vorname, nachname, benutzername, passwort, isAdmin
 INSERT INTO Benutzer (anrede, vorname, nachname, benutzername, passwort, isAdmin, email, strasse, hausnummer, plz, ort) VALUES (0, 'Peter', 'Pan', 'PeterPan', 'Kindskopf01', 0, 'peterpan@gmx.de', 'Nimmerweg', '23', '98765', 'Nimmerland');
 INSERT INTO Benutzer (anrede, vorname, nachname, benutzername, passwort, isAdmin, email, strasse, hausnummer, plz, ort) VALUES (1, 'Bibi', 'Blocksberg', 'Bibi', 'Kartoffelbrei', 0, 'blcoksberg.bibi@gmx.de', 'Lange Straße', '5', '76548', 'Neustadt');
 
-INSERT INTO Anfrage (benutzerId, dienstleistungId, auftragszweck, beschreibung, ausfuehrungsdatum) VALUES (1, 1, 'TEST', 'TEST', '01.01.1900');
-INSERT INTO Anfrage (benutzerId, dienstleistungId, auftragszweck, beschreibung, ausfuehrungsdatum) VALUES (2, 2, 'TEST2', 'TEST2', '02.02.1900');
+INSERT INTO Anfrage (benutzerId, dienstleistungId, auftragszweck, beschreibung, hoehe, breite, laenge, ausfuehrungsdatum) VALUES (1, 4, 'TEST', 'TEST', 5.0, 5.0, 5.0, '01.01.1900');
+INSERT INTO Anfrage (benutzerId, dienstleistungId, auftragszweck, beschreibung, hoehe, breite, laenge, ausfuehrungsdatum) VALUES (2, 5, 'TEST2', 'TEST2', 10.5, 7.4, 8.2, '02.02.1900');
