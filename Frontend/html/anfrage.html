@@ -43,13 +43,38 @@
                   if(urlId == item.id){
                     selectedOptionId = idx;
                   }
-                  let content = "<option id=\"option_" + item.id + "\" value=\"" + item.bezeichnung + "\">" + item.bezeichnung + "</option>";
+                  let content = "<option value=\"" + item.id + "\">" + item.bezeichnung + "</option>";
                   $(document.getElementById("Auftragsart")).append(content);
                 });
 
                 document.getElementById("Auftragsart")[selectedOptionId].selected = true;
             });
         });
+
+        function neuerAuftrag() {
+          if(isUserLoggedIn()){
+            let auftragszweck = "Privat";
+            for(i=0; i<document.getElementsByName("xor").length; i++){
+              if(document.getElementsByName("xor")[i].checked){
+                auftragszweck = document.getElementsByName("xor")[i].value;
+              }
+            }
+
+            let auftragsdaten = JSON.stringify(
+            {
+              benutzer:loggedUser.id,
+              dienstleistung:document.getElementById("Auftragsart").options[document.getElementById("Auftragsart").selectedIndex].value,
+              auftragszweck:auftragszweck,
+              beschreibung:document.getElementById("beschreibung").value,
+              hoehe:document.getElementById("Hoehe").value,
+              breite:document.getElementById("Breite").value,
+              laenge:document.getElementById("Laenge").value,
+              ausfuehrungsdatum:document.getElementById("eventdate").value
+            });
+            
+            sessionStorage.setItem("auftragsdaten", auftragsdaten);
+          }
+        }
     </script>
   </head>
 
@@ -112,7 +137,7 @@
                 <td class="input_label">Auftragszweck</td>
                 <td>
                   <section>
-                    <input type="radio" name="xor" id="Privat" value="privat" checked="checked" />
+                    <input type="radio" name="xor" id="Privat" value="Privat" checked="checked" />
                     <label class="Beschreibung" for="Privat">Privat</label>
                   </section>
                   <section>
@@ -120,7 +145,7 @@
                       type="radio"
                       name="xor"
                       id="Geschaeftlich"
-                      value="Geschaeftlich"
+                      value="Gesch&auml;ftlich"
                     />
                     <label class="Beschreibung" for="Geschaeftlich"
                       >Gesch&auml;ftlich</label
@@ -219,7 +244,7 @@
               <tr>
                 <td></td>
                 <td>
-                  <a href="login.html" id="idinquiry"
+                  <a href="login.html" id="idinquiry" onclick="neuerAuftrag()"
                     >Um eine Anfrage zu stellen, müssen Sie angemeldet sein!</a>
                 </td>
               </tr>

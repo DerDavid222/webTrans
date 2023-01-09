@@ -45,6 +45,9 @@ CREATE TABLE Anfrage (
 	dienstleistungId INTEGER NOT NULL,
 	auftragszweck TEXT NOT NULL,
 	beschreibung TEXT NOT NULL,
+	hoehe REAL NOT NULL,
+	breite REAL NOT NULL,
+	laenge REAL NOT NULL,
 	ausfuehrungsdatum TEXT NOT NULL,
 	CONSTRAINT fk_Anfrage1 FOREIGN KEY (benutzerId) REFERENCES Benutzer(id),
 	CONSTRAINT fk_Anfrage2 FOREIGN KEY (dienstleistungId) REFERENCES Dienstleistung(id)

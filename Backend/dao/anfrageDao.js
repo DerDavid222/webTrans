@@ -69,17 +69,23 @@ class AnfrageDao {
     dienstleistungId = 1,
     auftragszweck = "",
     beschreibung = "",
-    ausfuehrungsdatum = null
+    hoehe=0.0,
+    breite=0.0,
+    laenge=0.0,
+    ausfuehrungsdatum = "01.01.1900"
   ) {
     var sql =
-      "INSERT INTO Anfrage (benutzerId,dienstleistungId,auftragszweck,beschreibung,ausfuehrungsdatum) VALUES (?,?,?,?,?)";
+      "INSERT INTO Anfrage (benutzerId,dienstleistungId,auftragszweck,beschreibung,hoehe,breite,laenge,ausfuehrungsdatum) VALUES (?,?,?,?,?,?,?,?)";
     var statement = this._conn.prepare(sql);
     var params = [
       benutzerId,
       dienstleistungId,
       auftragszweck,
       beschreibung,
-      ausfuehrungsdatum,
+      hoehe,
+      breite,
+      laenge,
+      ausfuehrungsdatum
     ];
     var result = statement.run(params);
 
@@ -95,18 +101,24 @@ class AnfrageDao {
     dienstleistungId = 1,
     auftragszweck = "",
     beschreibung = "",
+    hoehe=0.0,
+    breite=0.0,
+    laenge=0.0,
     ausfuehrungsdatum = null
   ) {
     var sql =
-      "UPDATE Anfrage SET benutzerId=?,dienstleistungId=?,auftragszweck=?,beschreibung=?,ausfuehrungsdatum=? WHERE id=?";
+      "UPDATE Anfrage SET benutzerId=?,dienstleistungId=?,auftragszweck=?,beschreibung=?,hoehe=?,breite=?,laenge=?,ausfuehrungsdatum=? WHERE id=?";
     var statement = this._conn.prepare(sql);
     var params = [
       benutzerId,
       dienstleistungId,
       auftragszweck,
       beschreibung,
+      hoehe,
+      breite,
+      laenge,
       ausfuehrungsdatum,
-      id,
+      id
     ];
     var result = statement.run(params);
 
