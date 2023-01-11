@@ -13,9 +13,10 @@ function registerNewUser(){
     }).done(function (response) {
         $(response).each(function(idx, item){
             maxId = item.id;
+            console.log('Found MaxID successfully');
+            maxId++;
         });
 
-        console.log('Found MaxID successfully');
         let newUser = new Array();
         let tableData = new Array();
         let textFields = new Array();
