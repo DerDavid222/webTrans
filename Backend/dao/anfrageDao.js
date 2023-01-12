@@ -1,3 +1,4 @@
+const { DateTime } = require("luxon");
 const helper = require("../helper.js");
 const BenutzerDao = require("./benutzerDao.js");
 const DienstleistungDao = require("./dienstleistungDao.js");
@@ -72,8 +73,12 @@ class AnfrageDao {
     hoehe=0.0,
     breite=0.0,
     laenge=0.0,
-    ausfuehrungsdatum = "01.01.1900"
+    ausfuehrungsdatum = null
   ) {
+
+    if (helper.isNull(ausfuehrungsdatum)) 
+      ausfuehrungsdatum = helper.formatToGermanDate(helper.getNow());
+
     var sql =
       "INSERT INTO Anfrage (benutzerId,dienstleistungId,auftragszweck,beschreibung,hoehe,breite,laenge,ausfuehrungsdatum) VALUES (?,?,?,?,?,?,?,?)";
     var statement = this._conn.prepare(sql);

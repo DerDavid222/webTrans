@@ -1,6 +1,7 @@
 const helper = require('../helper.js');
 const AnfrageDao = require('../dao/anfrageDao.js');
 const express = require('express');
+const { DateTime } = require('luxon');
 var serviceRouter = express.Router();
 
 console.log('- Service Anfrage');
@@ -73,8 +74,11 @@ serviceRouter.post('/anfrage', function(request, response) {
         errorMsgs.push('breite fehlt');
     if (helper.isUndefined(request.body.laenge)) 
         errorMsgs.push('laenge fehlt');
-    if (helper.isUndefined(request.body.ausfuehrungsdatum)) 
+    if (helper.isUndefined(request.body.ausfuehrungsdatum)){
         errorMsgs.push('ausfuehrungsdatum fehlt');
+    } else {
+        request.body.ausfuehrungsdatum = helper.formatToGermanDate(DateTime.fromFormat(request.body.ausfuehrungsdatum, "yyyy-MM-dd"));
+    }
     
     if (errorMsgs.length > 0) {
         console.log('Service Anfrage: Creation not possible, data missing');
@@ -117,8 +121,11 @@ serviceRouter.put('/anfrage', function(request, response) {
         errorMsgs.push('breite fehlt');
     if (helper.isUndefined(request.body.laenge)) 
         errorMsgs.push('laenge fehlt');
-    if (helper.isUndefined(request.body.ausfuehrungsdatum)) 
+    if (helper.isUndefined(request.body.ausfuehrungsdatum)) {
         errorMsgs.push('ausfuehrungsdatum fehlt');
+    } else {
+        request.body.ausfuehrungsdatum = helper.formatToGermanDate(DateTime.fromFormat(request.body.ausfuehrungsdatum, "yyyy-MM-dd"));
+    }
 
     if (errorMsgs.length > 0) {
         console.log('Service Anfrage: Update not possible, data missing');
