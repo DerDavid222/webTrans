@@ -30,45 +30,46 @@ function registerNewUser(){
             }
         }
 
-        for(let k=0; k<newUser.length; k++){
-            console.log(k);
-            console.log(newUser[k]);
-        }        
-
         formOfAdress = document.querySelector('input[name=xor]:checked').value;
         if (formOfAdress == "w"){
             console.log('Weibliche Anrede');
-            newUser[9] = 1;
+            newUser[9] = 'Frau';
         } else {
             console.log('Männliche Anrede');
-            newUser[9] = 0;
+            newUser[9] = 'Herr';
         }
     }).fail(function (){
         console.log('Problem while finding MaxID');
     });
 
-    console.log('Push Content to DB');
-    let newData = JSON.stringify({
-        'id': maxId,
-        'passwort': newUser[7],
-        'benutzername': newUser[0],
-        'anrede': newUser[9],
-        'nachname': newUser[1],
-        'vorname': newUser[2],
-        'email': newUser[3],
-        'strasse': newUser[4],
-        'hausnummer': 0,    //kein extra Feld dafür verfügbar
-        'plz': newUser[5],
-        'ort': newUser[6],
-        'isAdmin': 0
-    })
     $.ajax({
+        url: 'http://localhost:8000/api/benutzer/gib/1',
+        method: 'get',
+        contentType: 'application/json; charset=utf-8',
+        cache: false,
+        dataType: 'json',
+      }).done(function (outerResponse) {
+        let newData = JSON.stringify({
+                'passwort': newUser[7],
+                'benutzername': newUser[0],
+                'anrede': newUser[9],
+                'nachname': newUser[1],
+                'vorname': newUser[2],
+                'email': newUser[3],
+                'strasse': newUser[4],
+                'hausnummer': '187',
+                'plz': newUser[5],
+                'ort': newUser[6],
+                'isAdmin': 0
+              })
+        $.ajax({
         url: 'http://localhost:8000/api/benutzer',
-        method: 'put',
+        method: 'post',
         contentType: 'application/json; charset=utf-8',
         cache: false,
         data: newData,
-        }).done(function (response){
-        console.log("Benutzer with id=" + response.id + " registered successfully");
-    });
+        }).done(function (response) {
+          console.log("Benutzer with id=" + response.id + " updated successfully");
+        });
+      });
 }
