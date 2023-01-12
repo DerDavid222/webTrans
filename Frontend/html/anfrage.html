@@ -73,6 +73,9 @@
             });
             
             sessionStorage.setItem("auftragsdaten", auftragsdaten);
+            if(sessionStorage.getItem("auftragGesichert") !== null){
+              sessionStorage.removeItem("auftragGesichert");
+            }
           }
         }
     </script>
