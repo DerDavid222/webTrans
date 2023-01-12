@@ -1,7 +1,6 @@
 //Registrierung für neue Benutzer
 
 function registerNewUser(){
-    let maxId = 0;
     let newUser = new Array();
     let tableData = new Array();
     let textFields = new Array();
@@ -14,12 +13,6 @@ function registerNewUser(){
         dataType: 'json'
 
     }).done(function (response) {
-        $(response).each(function(idx, item){
-            maxId = item.id;
-            console.log('Found MaxID successfully');
-            maxId++;
-        });
-
         textFields = document.querySelectorAll("table tr");
         let counter = 0;
         for(let i=0; i<textFields.length; i++){
