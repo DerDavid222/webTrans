@@ -76,7 +76,9 @@ serviceRouter.post('/anfrage', function(request, response) {
         errorMsgs.push('laenge fehlt');
     if (helper.isUndefined(request.body.ausfuehrungsdatum)){
         errorMsgs.push('ausfuehrungsdatum fehlt');
-    } else {
+    } else if(request.body.ausfuehrungsdatum===""){
+        request.body.ausfuehrungsdatum = helper.getGermanNow();
+    } else{
         request.body.ausfuehrungsdatum = helper.formatToGermanDate(DateTime.fromFormat(request.body.ausfuehrungsdatum, "yyyy-MM-dd"));
     }
     
