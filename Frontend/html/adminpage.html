@@ -31,7 +31,7 @@
 
       function changeValues(){
         if(changes === 0) {
-          let rows = document.querySelectorAll("table tr");
+          let rows = document.getElementById("admin_table").querySelectorAll("table tr");
           rowsToChange = new Array();
           initialValues = new Array();
           
@@ -50,14 +50,14 @@
 
           if(rowsToChange.length != 0){
             changes = 1;
-            document.getElementById("changeBtn").innerText = "Speichern";
-            document.getElementById("deleteBtn").innerText = "Verwerfen";
+            document.getElementById("changeUserBtn").innerText = "Speichern";
+            document.getElementById("deleteUserBtn").innerText = "Verwerfen";
           }
 
         } else if(changes === 1){
           changes = 0;
-          document.getElementById("changeBtn").innerText = "Bearbeiten";
-          document.getElementById("deleteBtn").innerText = "Löschen";
+          document.getElementById("changeUserBtn").innerText = "Bearbeiten";
+          document.getElementById("deleteUserBtn").innerText = "Löschen";          
           for(let i=0; i<rowsToChange.length; i++){
             let newValues = new Array();
             tabledatas = rowsToChange[i].querySelectorAll("td");
@@ -108,23 +108,30 @@
         }
       }
 
-      function deleteValues(){
+      function deleteValues(dataType){
+        console.log(dataType);
         if(changes === 0){
-          let rows = document.querySelectorAll("table tr");
+          let rows;
+          if (dataType === "benutzer"){
+            rows = document.getElementById("admin_table").querySelectorAll("table tr");
+          } else {
+            rows = document.getElementById("inquiry_table").querySelectorAll("table tr");
+          }
           for (let i = rows.length-1; i>0; i--){
-            console.log(typeof rows[i].id)
             let checkbox = rows[i].querySelector("input[type='checkbox']");
-            if (checkbox.checked){
-              $.ajax({
-                url: 'http://localhost:8000/api/benutzer/' + rows[i].id,
-                method: 'delete',
-                contentType: 'application/json; charset=utf-8',
-                cache: false,
-				        dataType: 'json'
-              }).done(function (response) {
-                console.log(response + " removed successfully");
-                rows[i].parentNode.removeChild(rows[i]);
-              });
+            if (checkbox !== null){
+              if (checkbox.checked){
+                $.ajax({
+                  url: 'http://localhost:8000/api/' + dataType + "/" + rows[i].id,
+                  method: 'delete',
+                  contentType: 'application/json; charset=utf-8',
+                  cache: false,
+                  dataType: 'json'
+                }).done(function (response) {
+                  console.log(response + " removed successfully");
+                  rows[i].parentNode.removeChild(rows[i]);
+                });
+              }
             }
           }
         } else if(changes === 1){
@@ -158,7 +165,7 @@
                 cache: false,
 				        dataType: 'json'
             }).done(function (response) {
-                console.log('Data loaded successfully');
+                console.log('Users loaded successfully');
 
                 $(response).each(function(idx, item){
                   let content = "<tr id=" + item.id + ">";
@@ -173,16 +180,49 @@
                   content += "<td>" + item.plz + "</td>";
                   content += "<td>" + item.ort + "</td>";
                   content += "<td>" + item.isAdmin + "</td>";
+                  content += "</tr>"
                   
                   $(document.getElementById("admin_table")).append(content);
                 });
             }).fail(function (){
                 console.log('Problem while loading data');
-                let content = "<section class=\"failure_sec\"><img src=\"../Bilder/WebTransLogoNeu.jpg\" class=\"failure_pic\" alt=\"Firmen_Logo\" />";
-                content += "<h1 class=\"failure_h\">Fehler beim Laden der Daten</h1>";
+                let content = "<section class=\"failure_sec\">"
+                content += "<h1 class=\"failure_h\">Fehler beim Laden der Benutzer</h1>";
                 content += "<h1 class=\"failure_h\">Versuchen sie es später erneut</h1></section>";
-                $(document.getElementsByTagName("main")).append(content);
+                $(document.getElementsByClassName("admin_section")).append(content);
             });
+
+            $.ajax({
+                url: 'http://localhost:8000/api/anfrage/alle',
+                method: 'get',
+                contentType: 'application/json; charset=utf-8',
+                cache: false,
+				        dataType: 'json'
+            }).done(function (response){
+              console.log('Inquiries loaded successfully');
+              $(response).each(function(idx, item){
+
+                  let content = "<tr id=" + item.id + ">";
+                  content += "<td class=\"checkbox_td\"><input type=\"checkbox\" id=\"selected\" name=\"" + item.id + "\" value=\"id\"></td>";
+                  content += "<td>" + item.benutzer.benutzername + "</td>";
+                  content += "<td>" + item.dienstleistung.bezeichnung + "</td>";
+                  content += "<td>" + item.auftragszweck + "</td>";
+                  content += "<td>" + item.beschreibung + "</td>";
+                  content += "<td>" + item.hoehe + "</td>";
+                  content += "<td>" + item.breite + "</td>" 
+                  content += "<td>" + item.laenge + "</td>";
+                  content += "<td>" + item.ausfuehrungsdatum + "</td>";
+                  content += "</tr>";
+                  
+                  $(document.getElementById("inquiry_table")).append(content);
+                });
+            }).fail(function (){
+                console.log('Problem while loading data');
+                let content = "<section class=\"failure_sec\">";
+                content += "<h1 class=\"failure_h\">Fehler beim Laden der Anfragen</h1>";
+                content += "<h1 class=\"failure_h\">Versuchen sie es später erneut</h1></section>";
+                $(document.getElementsByClassName("inquiry_section")).append(content);
+            });;
         });
     </script>
   </head>
@@ -219,7 +259,7 @@
     <!-----------------------------------BODY----------------------------------------------------->
 
     <main>
-      <section class="table_section">
+      <section class="table_section table_outer admin_section">
         <table id="admin_table">
           <tr>
             <th class="checkbox_td"></th>
@@ -237,8 +277,27 @@
         </table>
       </section>
       <section class="button_section">
-        <button id="changeBtn" onclick="changeValues()">Bearbeiten</button>
-        <button id="deleteBtn" onclick="deleteValues()">Löschen</button>
+        <button id="changeUserBtn" onclick="changeValues()">Bearbeiten</button>
+        <button id="deleteUserBtn" onclick="deleteValues('benutzer')">Löschen</button>
+      </section>
+
+      <section class="table_section table_outer inquiry_section">
+        <table id="inquiry_table" class="scrollingTable">
+          <tr>
+            <th class="checkbox_td"></th>
+            <th>Benutzername</th>
+            <th>Dienstleistung</th>
+            <th>Auftragszweck</th>
+            <th>Beschreibung</th>
+            <th>H&ouml;he</th>
+            <th>Breite</th>
+            <th>L&auml;nge</th>
+            <th>Ausfuehrungsdatum</th>
+          </tr>
+        </table>
+      </section>
+      <section class="button_section">
+        <button id="deleteInquiryBtn" onclick="deleteValues('anfrage')">Löschen</button>
       </section>
     </main>
 
