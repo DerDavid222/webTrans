@@ -1,4 +1,9 @@
+//const { table } = require("console");
+
 var loggedUser = null;
+let newLogin = new Array();
+let textField = new Array();
+let tableData = new Array();
 
 // laden aus der session, wird immer durchgeführt beim Laden der Seite
 if (existsSessionItem("loggedUser")) {
@@ -44,21 +49,40 @@ function adjustInquiry() {
   }
 }
 
-//prüft die eingegebenen Daten gegen die DB
-function userLogin(){
-  let newLogin = new Array();
-  let textField = new Array();
-  let tableData = new Array();
+//holt die Inputs aus den Eingabefeldern
+function getUserInput(){
   textField = document.querySelectorAll("table tr");
   let counter = 0;
   for(let i=0; i<textField.length; i++){
       tableData = textField[i].querySelectorAll(".input_txt");
       for(let j=0; j<tableData.length; j+=2){
+        if(tableData[j].value !== ""){
           newLogin[counter] = tableData[j].value;
-          counter++;
+        }else{
+          newLogin[counter] = "false";
+        }
+        counter++;
       }
   }
+}
 
+//prüft, ob alle Felder ausgefüllt sind
+function checkFilled(){
+  let erg = true;
+  for(let j=0; j<newLogin.length; j++){
+    if(newLogin[j] === "false"){
+      $("#hinweis").text("Bitte füllen Sie alle nötigen Felder aus!");
+      erg = false;
+    }else{
+      $("#hinweis").text("Geben Sie Ihre Anmeldedaten ein.");
+    }
+  }
+  return erg;
+}
+
+
+//prüft die Daten gegen die DB
+function checkAccess(){
   let newData = JSON.stringify({
     "benutzername": newLogin[0],
     "passwort": newLogin[1]
@@ -74,5 +98,6 @@ function userLogin(){
     console.log("Benutzer hat Zugang: ", response)
   }).fail(function (){
     console.log('Problem while loading Data');
+    $("#hinweis").text("Die Anmeldedaten sind nicht korrekt!");
   });
 }

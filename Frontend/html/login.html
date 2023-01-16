@@ -55,6 +55,9 @@
         <h1>Login</h1>
         <table>
           <tr>
+            <td id="hinweis">Geben Sie Ihre Anmeldedaten ein.</td>
+          </tr>
+          <tr>
             <td class="input_label">Benutzername</td>
             <td>
               <input
@@ -154,12 +157,18 @@
     </footer>
 
     <script>
+      let res = false;
       $(document).ready(function () {
         adjustNavigation();
       });
 
       $("#submitbtn").click(function () {
         console.log("login button wurde geklickt");
+        getUserInput();
+        var filled = checkFilled();
+        if(filled === true){
+          checkAccess();
+        }
       });
 /*
         // TODO prüfen, ob alle beiden Login Felder ausgefüllt sind
