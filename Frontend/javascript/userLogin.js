@@ -43,3 +43,36 @@ function adjustInquiry() {
       .attr("href", "login.html");
   }
 }
+
+//prüft die eingegebenen Daten gegen die DB
+function userLogin(){
+  let newLogin = new Array();
+  let textField = new Array();
+  let tableData = new Array();
+  textField = document.querySelectorAll("table tr");
+  let counter = 0;
+  for(let i=0; i<textField.length; i++){
+      tableData = textField[i].querySelectorAll(".input_txt");
+      for(let j=0; j<tableData.length; j+=2){
+          newLogin[counter] = tableData[j].value;
+          counter++;
+      }
+  }
+
+  let newData = JSON.stringify({
+    "benutzername": newLogin[0],
+    "passwort": newLogin[1]
+  });
+  const parsedData = JSON.parse(newData);
+  $.ajax({
+    url: 'http://localhost:8000/api/benutzer/zugang',
+    method: 'get',
+    contentType: 'application/json',
+    data: parsedData,
+    dataType: 'json',
+  }).done(function (response){
+    console.log("Benutzer hat Zugang: ", response)
+  }).fail(function (){
+    console.log('Problem while loading Data');
+  });
+}

@@ -86,7 +86,7 @@
                 type="button"
                 name="Senden"
                 value="Login"
-              onclick="window.location.href='dienstleistungen.html'"
+              onclick="userLogin()"
               class="submit_btn"
             >
               Login
@@ -158,7 +158,7 @@
         adjustNavigation();
       });
 
-      $("#submitbtn").click(function () {
+      /*$("#submitbtn").click(function () {
         console.log("login button wurde geklickt");
 
         // TODO prüfen, ob alle beiden Login Felder ausgefüllt sind
@@ -179,7 +179,7 @@
         setJSONSessionItem("loggedUser", response);
         // springen zur dienstleistungs seite
         window.location.href = "dienstleistungen.html";
-      });
+      });*/
     </script>
   </body>
 </html>
