@@ -66,6 +66,32 @@ serviceRouter.get("/benutzer/existiert/:id", function (request, response) {
   }
 });
 
+serviceRouter.get("/benutzer/zugang", function(request, response) {
+  console.log('Service Benutzer: Client requested check, if user has access');
+
+  var errorMsgs=[];
+  if (helper.isUndefined(request.query.benutzername)) 
+      errorMsgs.push("benutzername fehlt");
+  if (helper.isUndefined(request.query.passwort)) 
+      errorMsgs.push("passwort fehlt");
+
+  if (errorMsgs.length > 0) {
+      console.log('Service Benutzer: check not possible, data missing');
+      response.status(400).json({ 'fehler': true, 'nachricht': 'Funktion nicht möglich. Fehlende Daten: ' + helper.concatArray(errorMsgs) });
+      return;
+  }
+
+  const benutzerDao = new BenutzerDao(request.app.locals.dbConnection);
+  try {
+      var hasaccess = benutzerDao.hasaccess(request.query.benutzername, request.query.passwort);
+      console.log('Service Benutzer: Check if user has access, hasaccess=' + hasaccess);
+      response.status(200).json(hasaccess);
+  } catch (ex) {
+      console.error('Service Benutzer: Error checking if user has access. Exception occured: ' + ex.message);
+      response.status(400).json({ 'fehler': true, 'nachricht': ex.message });
+  }
+});
+
 serviceRouter.post("/benutzer", function (request, response) {
   console.log("Service Benutzer: Client requested creation of new record");
 
