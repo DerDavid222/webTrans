@@ -75,6 +75,10 @@ module.exports.trim = function(val) {
     return val.trim();
 }
 
+module.exports.getGermanNow = function(){
+    return this.formatToGermanDate(this.getNow);
+}
+
 // returns current date time
 module.exports.getNow = function() {
     return DateTime.local();

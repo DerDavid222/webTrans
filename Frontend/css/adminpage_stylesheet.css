@@ -2,6 +2,9 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   }
+header {
+    z-index: 10;
+}
 
 main{
     margin-top: 340px;
@@ -39,10 +42,17 @@ th, td{
 th {
     background-color: #2E2E2E;
     color: #FFFFFF;
+    position:sticky;
+    top: 0px;
 }
 
 .checkbox_td{
     width: fit-content;
+}
+
+.table_outer {
+    height: 15em; 
+    overflow: auto; 
 }
 
 button{
@@ -62,6 +72,14 @@ button:hover {
 }
 
 tbody tr:nth-child(even){background-color: #f2f2f2}
+
+.failure_sec{
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+}
 
 @media only screen and (min-width: 960px) {
     main {

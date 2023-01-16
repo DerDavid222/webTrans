@@ -23,6 +23,10 @@
 
     <script>
       $(document).ready(function() {
+            if(sessionStorage.getItem("auftragsdaten") !== null){
+              sessionStorage.removeItem("auftragsdaten");
+            }
+
             console.log('Document ready, loading data from Service');
 
             $.ajax({
@@ -48,6 +52,15 @@
                 });
 
                 document.getElementById("Auftragsart")[selectedOptionId].selected = true;
+            }).fail(function(){
+                document.getElementById("form_section").style.visibility = "hidden";
+                document.getElementById("text_section").style.visibility = "hidden";
+
+                console.log('Problem while loading data');
+                let content = "<section class=\"failure_sec\"><img src=\"../Bilder/WebTransLogoNeu.jpg\" class=\"failure_pic\" alt=\"Firmen_Logo\" />";
+                content += "<h1 class=\"failure_h\">Ein Problem mit dem Server ist aufgetreten</h1>";
+                content += "<h1 class=\"failure_h\">Versuchen sie es später erneut</h1></section>";
+                $(document.getElementsByTagName("main")).append(content);
             });
         });
 
@@ -73,6 +86,9 @@
             });
             
             sessionStorage.setItem("auftragsdaten", auftragsdaten);
+            if(sessionStorage.getItem("auftragGesichert") !== null){
+              sessionStorage.removeItem("auftragGesichert");
+            }
           }
         }
     </script>
@@ -109,7 +125,7 @@
 
     <!-----------------------------------MAIN--------------------------------------->
     <main>
-      <section class="main_section">
+      <section id="text_section" class="main_section">
         <section class="InteresseBox">
           <h1>Sie haben Interesse an unseren Dienstleistungen?</h1>
           <section class="Text">
@@ -122,7 +138,7 @@
             uns zu stellen.
           </section>
         </section>
-        <section class="Formular">
+        <section id = "form_section" class="Formular">
           <form class="FormularGesamt" name="Auftrag" onsubmit="pruefen();">
             <h1>Auftragsanfrage</h1>
             <table>
