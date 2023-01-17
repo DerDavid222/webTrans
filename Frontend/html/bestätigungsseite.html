@@ -11,12 +11,15 @@
       data-auto-a11y="true"
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="../javascript/sessionHandling.js"></script>
+    <script src="../javascript/userLogin.js"></script>
 
     <meta charset="utf-8" />
     <title>WebTrans</title>
 
     <script>
       $(document).ready(function() {
+        adjustNavigation();
       let auftragsdaten = JSON.parse(sessionStorage.getItem("auftragsdaten"));
       if (sessionStorage.getItem("auftragGesichert") === null && sessionStorage.getItem("auftragsdaten") !== null){
         $.ajax({
@@ -82,7 +85,7 @@
       <nav class="navbar">
         <ul class="login_ul">
           <li>
-            <a href="login.html" class="login">Login</a>
+            <a href="login.html" id="idlogin" class="login">Login</a>
           </li>
         </ul>
 
@@ -97,7 +100,7 @@
             <a href="anfrage.html">Anfrage</a>
           </li>
           <li>
-            <a href="adminpage.html">Adminpage</a>
+            <a href="adminpage.html" id="idadmin">Adminpage</a>
           </li>
         </ul>
       </nav>
