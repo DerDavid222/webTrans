@@ -1,4 +1,9 @@
+//const { table } = require("console");
+
 var loggedUser = null;
+let newLogin = new Array();
+let textField = new Array();
+let tableData = new Array();
 
 // laden aus der session, wird immer durchgeführt beim Laden der Seite
 if (existsSessionItem("loggedUser")) {
@@ -42,4 +47,69 @@ function adjustInquiry() {
       .text("Anfrage nicht möglich - zum Login hier klicken")
       .attr("href", "login.html");
   }
+}
+
+//holt die Inputs aus den Eingabefeldern
+function getUserInput(){
+  textField = document.querySelectorAll("table tr");
+  let counter = 0;
+  for(let i=0; i<textField.length; i++){
+      tableData = textField[i].querySelectorAll(".input_txt");
+      for(let j=0; j<tableData.length; j+=2){
+        if(tableData[j].value !== ""){
+          newLogin[counter] = tableData[j].value;
+        }else{
+          newLogin[counter] = "false";
+        }
+        counter++;
+      }
+  }
+}
+
+//prüft, ob alle Felder ausgefüllt sind
+function checkFilled(){
+  let erg = true;
+  for(let j=0; j<newLogin.length; j++){
+    if(newLogin[j] === "false"){
+      $("#hinweis").text("Bitte füllen Sie alle nötigen Felder aus!");
+      erg = false;
+    }else{
+      $("#hinweis").text("Geben Sie Ihre Anmeldedaten ein.");
+    }
+  }
+  return erg;
+}
+
+
+//prüft die Daten gegen die DB
+function checkAccess(){
+  let newData = JSON.stringify({
+    "benutzername": newLogin[0],
+    "passwort": newLogin[1]
+  });
+  const parsedData = JSON.parse(newData);
+  console.log(parsedData);
+  return parsedData;
+  /*$.ajax({
+    url: 'http://localhost:8000/api/benutzer/zugang',
+    method: 'get',
+    contentType: 'application/json',
+    data: parsedData,
+    dataType: 'json',
+  }).done(function (response){
+    console.log("Benutzer hat Zugang: ", response)
+    //let arr1 = new Array(response.id, response.vorname.value, response.nachname.value, response.isAdmin);
+    console.log(response.id, response.vorname, response.nachname, response.isAdmin);
+    var returnVal = {
+      id: response.id,
+      name: response.vorname+' '+response.nachname,
+      isAdmin: response.isAdmin,
+    };
+    returnVal = JSON.stringify(returnVal);
+    return returnVal;
+  }).fail(function (){
+    console.log('Problem while loading Data');
+    $("#hinweis").text("Die Anmeldedaten sind nicht korrekt!");
+    return false;
+  });*/
 }

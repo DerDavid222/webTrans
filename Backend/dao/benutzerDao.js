@@ -48,6 +48,21 @@ class BenutzerDao {
     return false;
   }
 
+  hasaccess(benutzername, passwort) {
+    //const benutzerrolleDao = new BenutzerrolleDao(this._conn);
+    //const personDao = new PersonDao(this._conn);
+
+    var sql = 'SELECT ID FROM Benutzer WHERE benutzername=? AND passwort=?';
+    var statement = this._conn.prepare(sql);
+    var params = [benutzername, passwort];
+    var result = statement.get(params);
+
+    if (helper.isUndefined(result)) 
+        throw new Error('User has no access');
+
+    return this.loadById(result.id);
+  }
+
   create(
     anrede = "Herr",
     vorname = "",
