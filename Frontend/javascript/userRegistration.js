@@ -63,6 +63,7 @@ function registerNewUser(){
         data: newData,
         }).done(function (response) {
           console.log("Benutzer with id=" + response.id + " updated successfully");
+          window.location.href = "login.html";
         });
       });
 }
