@@ -157,7 +157,6 @@
     </footer>
 
     <script>
-      let res = false;
       $(document).ready(function () {
         adjustNavigation();
       });
@@ -167,29 +166,34 @@
         getUserInput();
         var filled = checkFilled();
         if(filled === true){
-          checkAccess();
+          const parsed = checkAccess();
+          let boolAdmin = false;
+          
+          $.ajax({
+            url: 'http://localhost:8000/api/benutzer/zugang',
+            method: 'get',
+            contentType: 'application/json',
+            data: parsed,
+            dataType: 'json',
+          }).done(function (response){
+            console.log("Benutzer hat Zugang: ", response)
+            console.log(response.id, response.vorname, response.nachname, response.isAdmin);
+            if(response.isAdmin === 1){
+              boolAdmin = true;
+            }
+            var res = {
+              id: response.id,
+              name: response.vorname+' '+response.nachname,
+              isAdmin: boolAdmin
+            };
+            setJSONSessionItem("loggedUser", res);
+            window.location.href = "dienstleistungen.html";
+          }).fail(function (){
+            console.log('Problem while loading Data');
+            $("#hinweis").text("Die Anmeldedaten sind nicht korrekt!");
+          });
         }
       });
-/*
-        // TODO prüfen, ob alle beiden Login Felder ausgefüllt sind
-        // TODO Ajax aufruf zum Backend was die Daten aus dem Formular prüft gegen DB
-        // falls korrekt ein JSON Objekt mit status 200 zurück erhält
-        // ansonsten wenn keine Daten in db enthalten oder fehlerhaft oder felder nicht ausgefüllt, dann zeige fehlermeldung, login fehlgeschlagen
-
-        //////////////////////////////////////////////////////
-        // simulation, setzen objekt händisch
-        var response = {
-          id: 7,
-          name: "Max Mustermann",
-          isAdmin: true,
-        };
-        ///////////////////
-
-        // empfangene objekt in der session speichern, damit ist der user angemeldet
-        setJSONSessionItem("loggedUser", response);
-        // springen zur dienstleistungs seite
-        window.location.href = "dienstleistungen.html";
-      });*/
     </script>
   </body>
 </html>

@@ -88,7 +88,9 @@ function checkAccess(){
     "passwort": newLogin[1]
   });
   const parsedData = JSON.parse(newData);
-  $.ajax({
+  console.log(parsedData);
+  return parsedData;
+  /*$.ajax({
     url: 'http://localhost:8000/api/benutzer/zugang',
     method: 'get',
     contentType: 'application/json',
@@ -96,8 +98,18 @@ function checkAccess(){
     dataType: 'json',
   }).done(function (response){
     console.log("Benutzer hat Zugang: ", response)
+    //let arr1 = new Array(response.id, response.vorname.value, response.nachname.value, response.isAdmin);
+    console.log(response.id, response.vorname, response.nachname, response.isAdmin);
+    var returnVal = {
+      id: response.id,
+      name: response.vorname+' '+response.nachname,
+      isAdmin: response.isAdmin,
+    };
+    returnVal = JSON.stringify(returnVal);
+    return returnVal;
   }).fail(function (){
     console.log('Problem while loading Data');
     $("#hinweis").text("Die Anmeldedaten sind nicht korrekt!");
-  });
+    return false;
+  });*/
 }
