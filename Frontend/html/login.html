@@ -15,6 +15,7 @@
       data-auto-a11y="true"
     ></script>
     <script src="../javascript/userLogin.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/2.0.2/sha.js"></script>
 
     <meta charset="utf-8" />
     <title>WebTrans</title>
@@ -89,7 +90,7 @@
                 type="button"
                 name="Senden"
                 value="Login"
-              onclick=""
+              onclick="mySubmit()"
               class="submit_btn"
             >
               Login
@@ -160,6 +161,15 @@
       $(document).ready(function () {
         adjustNavigation();
       });
+
+      function mySubmit(obj){
+        var pwdObj = document.getElementById('Passwort');
+        var hashObj = new jsSHA("SHA-512", "TEXT", {numRounds: 1});
+        hashObj.update(pwdObj.value);
+        var hash = hashObj.getHash("HEX");
+        pwdObj.value = hash;
+        console.log('hashed: ', pwdObj.value);
+      }
 
       $("#submitbtn").click(function () {
         console.log("login button wurde geklickt");
