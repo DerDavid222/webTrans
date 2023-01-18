@@ -181,8 +181,6 @@ serviceRouter.put("/benutzer", function (request, response) {
     errorMsgs.push("nachname fehlt");
   if (helper.isUndefined(request.body.benutzername))
     errorMsgs.push("benutzername fehlt");
-  if (helper.isUndefined(request.body.passwort))
-    errorMsgs.push("passwort fehlt");
   if (helper.isUndefined(request.body.isAdmin)) errorMsgs.push("isAdmin fehlt");
   if (helper.isUndefined(request.body.email)) errorMsgs.push("email fehlt");
   if (!helper.isEmail(request.body.email))
@@ -217,7 +215,6 @@ serviceRouter.put("/benutzer", function (request, response) {
       request.body.vorname,
       request.body.nachname,
       request.body.benutzername,
-      request.body.passwort,
       request.body.isAdmin,
       request.body.email,
       request.body.strasse,
