@@ -19,14 +19,15 @@ function registerNewUser(){
         for(let i=0; i<textFields.length; i++){
             tableData = textFields[i].querySelectorAll(".input_txt");
             for(let j=0; j<tableData.length; j+=2){
-                newUser[counter] = tableData[j].value;
+                if(tableData[j].value !== ""){
+                    newUser[counter] = tableData[j].value;
+                }else{
+                    newUser[counter] = "false";
+                }
                 counter++;
             }
+
         }
-        if (newUser[8] !== newUser[9]){
-            $("#hinweis").text("Passwörter sind nicht identisch!");
-        }
-        pwhash = mySubmit(this);
 
         formOfAdress = document.querySelector('input[name=xor]:checked').value;
         if (formOfAdress == "w"){
@@ -35,6 +36,23 @@ function registerNewUser(){
         } else {
             console.log('Männliche Anrede');
             newUser[10] = 'Herr';
+        }
+
+        for(let k=0; k<newUser.length; k++){
+            if(newUser[k] === "false"){
+                $("#hinweis").text("Füllen Sie alle nötigen Felder aus!");
+                break
+            }else{
+                $("#hinweis").text("Geben Sie Ihre Anmeldedaten ein.");
+                if (newUser[8] !== newUser[9]){
+                    $("#hinweis").text("Passwörter sind nicht identisch!");
+                    document.getElementById('Passwort').value = "";
+                    document.getElementById('PasswortWh').value = "";
+                    pwhash=false;
+                }else{
+                    pwhash = mySubmit(this);
+                }
+            }
         }
     }).fail(function (){
         console.log('Problem while finding MaxID');
@@ -68,7 +86,7 @@ function registerNewUser(){
         data: newData,
         }).done(function (response) {
           console.log("Benutzer with id=" + response.id + " updated successfully");
-          //window.location.href = "login.html";
+          window.location.href = "login.html";
         });
       });
 }
