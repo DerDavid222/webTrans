@@ -70,9 +70,12 @@ function getUserInput(){
 function checkFilled(){
   let erg = true;
   for(let j=0; j<newLogin.length; j++){
+    console.log('newvalr',newLogin[j]);
     if(newLogin[j] === "false"){
       $("#hinweis").text("Bitte füllen Sie alle nötigen Felder aus!");
+      document.getElementById('Passwort').value = "";
       erg = false;
+      return erg;
     }else{
       $("#hinweis").text("Geben Sie Ihre Anmeldedaten ein.");
     }
@@ -83,33 +86,23 @@ function checkFilled(){
 
 //prüft die Daten gegen die DB
 function checkAccess(){
+  let newPwHash = mySubmit();
   let newData = JSON.stringify({
     "benutzername": newLogin[0],
-    "passwort": newLogin[1]
+    "passwort": newPwHash
   });
   const parsedData = JSON.parse(newData);
   console.log(parsedData);
   return parsedData;
-  /*$.ajax({
-    url: 'http://localhost:8000/api/benutzer/zugang',
-    method: 'get',
-    contentType: 'application/json',
-    data: parsedData,
-    dataType: 'json',
-  }).done(function (response){
-    console.log("Benutzer hat Zugang: ", response)
-    //let arr1 = new Array(response.id, response.vorname.value, response.nachname.value, response.isAdmin);
-    console.log(response.id, response.vorname, response.nachname, response.isAdmin);
-    var returnVal = {
-      id: response.id,
-      name: response.vorname+' '+response.nachname,
-      isAdmin: response.isAdmin,
-    };
-    returnVal = JSON.stringify(returnVal);
-    return returnVal;
-  }).fail(function (){
-    console.log('Problem while loading Data');
-    $("#hinweis").text("Die Anmeldedaten sind nicht korrekt!");
-    return false;
-  });*/
+}
+
+//hashed das Passwort
+function mySubmit(){
+  var pwdObj = document.getElementById('Passwort');
+  var hashObj = new jsSHA("SHA-512", "TEXT", {numRounds: 1});
+  hashObj.update(pwdObj.value);
+  var hash = hashObj.getHash("HEX");
+  pwdObj.value = hash;
+  console.log('hashed: ', pwdObj.value);
+  return pwdObj.value;
 }

@@ -90,7 +90,7 @@
                 type="button"
                 name="Senden"
                 value="Login"
-              onclick="mySubmit()"
+              onclick=""
               class="submit_btn"
             >
               Login
@@ -162,19 +162,11 @@
         adjustNavigation();
       });
 
-      function mySubmit(obj){
-        var pwdObj = document.getElementById('Passwort');
-        var hashObj = new jsSHA("SHA-512", "TEXT", {numRounds: 1});
-        hashObj.update(pwdObj.value);
-        var hash = hashObj.getHash("HEX");
-        pwdObj.value = hash;
-        console.log('hashed: ', pwdObj.value);
-      }
-
       $("#submitbtn").click(function () {
         console.log("login button wurde geklickt");
         getUserInput();
         var filled = checkFilled();
+        console.log('var filled', filled);
         if(filled === true){
           const parsed = checkAccess();
           let boolAdmin = false;
@@ -201,6 +193,7 @@
           }).fail(function (){
             console.log('Problem while loading Data');
             $("#hinweis").text("Die Anmeldedaten sind nicht korrekt!");
+            document.getElementById('Passwort').value = "";
           });
         }
       });
