@@ -4,6 +4,7 @@ function registerNewUser(){
     let newUser = new Array();
     let tableData = new Array();
     let textFields = new Array();
+    let pwhash = "";
     console.log('Get number of registered Users');
     $.ajax({
         url: 'http://localhost:8000/api/benutzer/alle',
@@ -22,14 +23,18 @@ function registerNewUser(){
                 counter++;
             }
         }
+        if (newUser[8] !== newUser[9]){
+            $("#hinweis").text("Passwörter sind nicht identisch!");
+        }
+        pwhash = mySubmit(this);
 
         formOfAdress = document.querySelector('input[name=xor]:checked').value;
         if (formOfAdress == "w"){
             console.log('Weibliche Anrede');
-            newUser[9] = 'Frau';
+            newUser[10] = 'Frau';
         } else {
             console.log('Männliche Anrede');
-            newUser[9] = 'Herr';
+            newUser[10] = 'Herr';
         }
     }).fail(function (){
         console.log('Problem while finding MaxID');
@@ -43,9 +48,9 @@ function registerNewUser(){
         dataType: 'json',
       }).done(function (outerResponse) {
         let newData = JSON.stringify({
-                'passwort': newUser[8],
+                'passwort': pwhash,
                 'benutzername': newUser[0],
-                'anrede': newUser[9],
+                'anrede': newUser[10],
                 'nachname': newUser[1],
                 'vorname': newUser[2],
                 'email': newUser[3],
@@ -63,7 +68,17 @@ function registerNewUser(){
         data: newData,
         }).done(function (response) {
           console.log("Benutzer with id=" + response.id + " updated successfully");
-          window.location.href = "login.html";
+          //window.location.href = "login.html";
         });
       });
 }
+
+function mySubmit(obj){
+    var pwdObj = document.getElementById('Passwort');
+    var hashObj = new jsSHA("SHA-512", "TEXT", {numRounds: 1});
+    hashObj.update(pwdObj.value);
+    var hash = hashObj.getHash("HEX");
+    pwdObj.value = hash;
+    console.log('hashed: ', pwdObj.value);
+    return pwdObj.value;
+  }
