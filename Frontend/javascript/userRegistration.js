@@ -51,6 +51,7 @@ function registerNewUser(){
                     pwhash=false;
                 }else{
                     pwhash = mySubmit(this);
+                    break
                 }
             }
         }
@@ -86,7 +87,7 @@ function registerNewUser(){
         data: newData,
         }).done(function (response) {
           console.log("Benutzer with id=" + response.id + " updated successfully");
-          window.location.href = "login.html";
+          //window.location.href = "login.html";
         });
       });
 }
