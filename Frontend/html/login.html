@@ -15,6 +15,7 @@
       data-auto-a11y="true"
     ></script>
     <script src="../javascript/userLogin.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/2.0.2/sha.js"></script>
 
     <meta charset="utf-8" />
     <title>WebTrans</title>
@@ -165,6 +166,7 @@
         console.log("login button wurde geklickt");
         getUserInput();
         var filled = checkFilled();
+        console.log('var filled', filled);
         if(filled === true){
           const parsed = checkAccess();
           let boolAdmin = false;
@@ -191,6 +193,7 @@
           }).fail(function (){
             console.log('Problem while loading Data');
             $("#hinweis").text("Die Anmeldedaten sind nicht korrekt!");
+            document.getElementById('Passwort').value = "";
           });
         }
       });
